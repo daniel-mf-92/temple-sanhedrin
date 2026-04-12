@@ -118,6 +118,25 @@ Hardware event occurs
 ```
 Zero software layers between event and record. The log touches the metal.
 
+## Law 9 — Resource Supremacy / Crash on Log Failure (Modernization Agent)
+
+The Book of Truth has ABSOLUTE priority over all system resources. The OS dies before the log dies.
+
+Violations:
+- Code that skips a log entry due to memory pressure instead of reclaiming from other subsystems
+- Code that allows continued execution after a log write failure
+- Any config flag, boot parameter, or API that disables the halt-on-failure behavior
+- Memory reclamation that frees unsealed (unconfirmed) log pages before user/cache pages
+- Disk reclamation that deletes log files before all non-log files are exhausted
+
+Required behavior:
+- Priority order: Book of Truth > kernel core > process memory > file cache > user files > swap
+- If log cannot be written after exhausting all reclamation: `HLT` instruction, unconditional
+- The HLT is in the log write path itself — not a separate error handler that could be removed
+- Serial port liveness must be checked; dead UART = immediate HLT
+
+The machine that cannot record must not run.
+
 ## Sanhedrin Enforcement
 
 The Sanhedrin agent does NOT modify the other repos. It:
