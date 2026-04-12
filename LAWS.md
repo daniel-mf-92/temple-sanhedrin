@@ -93,6 +93,31 @@ Checks:
 - At least 1 commit in the last 30 minutes during active hours
 - No stuck Codex process (running > 25 minutes = likely hung)
 
+## Law 8 — Book of Truth Immediacy & Hardware Proximity (Modernization Agent)
+
+The Book of Truth must record each act SYNCHRONOUSLY and as close to hardware as possible.
+
+Violations:
+- Log entries written in a deferred/async callback instead of inline with the operation
+- Buffered writes that batch multiple events before serial output
+- Log queue or ring buffer that decouples the event from the serial `out` instruction
+- Driver abstraction layer between the log code and the UART port (0x3F8)
+- Interrupt logging that happens AFTER the ISR returns instead of INSIDE the IDT handler
+- MSR/TSC reads going through a wrapper library instead of raw `rdmsr`/`rdtsc`
+- Page table change logging that hooks above the PTE modification instead of inline with it
+- Any software layer between the hardware event and the `out 0x3F8` that could be
+  bypassed, disabled, or compromised independently of the logging code
+
+Required pattern:
+```
+Hardware event occurs
+  → Log entry composed (same instruction sequence)
+    → `out 0x3F8` emits bytes to serial (same instruction sequence)
+      → Entry written to in-memory ring buffer (same instruction sequence)
+        → Page sealed if buffer page full (same instruction sequence)
+```
+Zero software layers between event and record. The log touches the metal.
+
 ## Sanhedrin Enforcement
 
 The Sanhedrin agent does NOT modify the other repos. It:
