@@ -77,3 +77,8 @@ If failure blocks compilation: flag as CRITICAL.
 Also check email (via Daniel-Google MCP) for GitHub Actions failure notifications:
 - Search for: `from:notifications@github.com subject:"Run failed" newer_than:1h`
 - If found: extract repo, workflow, commit, and cross-reference with gh run list
+
+### 9. Test VM compilation verification
+The Azure test VM (52.157.85.234) runs QEMU with TempleOS every 15 min.
+Check its results: ssh azureuser@52.157.85.234 'sqlite3 /home/azureuser/test-results.db "SELECT * FROM tests ORDER BY ts DESC LIMIT 5;"'
+If compile tests are failing: flag as CRITICAL and research the error.
