@@ -137,6 +137,29 @@ Required behavior:
 
 The machine that cannot record must not run.
 
+## Law 10 — Immutable OS Image (Modernization Agent)
+
+Once installed, the OS cannot be modified on the device. Full reinstall required for any change.
+
+Violations:
+- Any code path that remounts the OS partition as writable
+- Any update/patch/hotfix mechanism in the kernel
+- Self-modifying kernel code, runtime patching, or kexec
+- Module loading that alters kernel behavior post-boot
+- QEMU launch commands missing `-drive readonly=on` for the OS image
+
+## Law 11 — Book of Truth Local Access Only (Modernization Agent)
+
+The Book of Truth can only be read with direct physical access. No remote viewing ever.
+
+Violations:
+- Any network-accessible API, endpoint, or protocol for reading the log
+- Log export commands (dump to USB, print to file, copy to removable media)
+- Serial port output being forwarded, streamed, or proxied to a remote host
+- Any code path that makes log contents available outside the local console
+
+The Ark is in the Holy of Holies. You must be present to see it.
+
 ## Sanhedrin Enforcement
 
 The Sanhedrin agent does NOT modify the other repos. It:

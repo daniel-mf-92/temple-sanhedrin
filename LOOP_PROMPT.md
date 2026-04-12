@@ -58,18 +58,40 @@ Laws: LAWS.md
    - Overall verdict: PURE / DRIFTING / VIOLATION
 10. Update `AUDIT_LOG.md` with one-line summary of this audit
 
-### Phase 5 — Cleanup
-11. Delete audit files older than 7 days (keep the repo clean)
-12. Commit changes to this repo
+### Phase 5 — Research Directive (when needed)
+11. If you detect that either builder agent appears to be making narrow, presumptuous,
+    or uninformed architecture decisions (e.g., reinventing something that has a known
+    better solution, or ignoring well-established OS/ML patterns), you SHOULD:
+    - Research the topic online using web search
+    - Find authoritative references (OSDev wiki, academic papers, llama.cpp source,
+      seL4 docs, Intel SDM, GGML source, etc.)
+    - Write a `research/YYYY-MM-DD-<topic>.md` file in THIS repo with your findings
+    - Add a note in your audit report: "RESEARCH: <topic> — see research/<file>.md"
+    - The builder agents will see this research in subsequent Sanhedrin audits
+    This is NOT modifying the other repos — you are providing reference material in YOUR
+    repo that the builders can consult. You are the wise counsel, not just the enforcer.
+
+    Triggers for research:
+    - Builder implements a data structure when a well-known better one exists
+    - Builder's spec contradicts established hardware behavior (Intel SDM, AMD APM)
+    - Builder appears stuck on the same task for 3+ iterations
+    - Builder's approach would cause obvious performance issues at scale
+    - Quantization math doesn't match published GGML/llama.cpp reference
+
+### Phase 6 — Cleanup
+12. Delete audit files older than 7 days (keep the repo clean)
+13. Commit changes to this repo
 
 ## Safety constraints:
 - NEVER modify files in the TempleOS or holyc-inference repos. Read only.
 - NEVER kill running Codex processes. Only restart dead loops.
 - NEVER rotate credentials or API keys.
-- Your job is to WATCH, JUDGE, and RESTORE — not to build.
+- Your job is to WATCH, JUDGE, RESEARCH, and RESTORE — not to build.
+- Research files go in YOUR repo only (temple-sanhedrin/research/).
 
 ## Definition of done:
 - Both loops verified running (restarted if needed)
-- Recent work audited against all 7 Laws
+- Recent work audited against all 11 Laws
 - Audit report written with clear severity ratings
+- Research conducted if architecture concerns detected
 - One-line summary appended to AUDIT_LOG.md
