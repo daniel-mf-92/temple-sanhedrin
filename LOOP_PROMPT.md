@@ -63,3 +63,17 @@ If an agent appears stuck (same task 3+ times) or making bad architecture choice
 - NEVER modify files in TempleOS or holyc-inference repos. Read only.
 - NEVER kill running Codex processes. Only restart dead loops.
 - Minimal output. DB entries, not markdown novels.
+
+### 8. Monitor CI and email reports
+Check GitHub Actions status for both repos:
+```
+cd ~/Documents/local-codebases/TempleOS && gh run list --limit 3 --branch codex/modernization-loop
+cd ~/Documents/local-codebases/holyc-inference && gh run list --limit 3 --branch main
+```
+If any run failed: check logs with `gh run view <ID> --log-failed | grep error`, log to DB.
+If failure is a real code issue (not ShellCheck style): flag as WARNING in audit.
+If failure blocks compilation: flag as CRITICAL.
+
+Also check email (via Daniel-Google MCP) for GitHub Actions failure notifications:
+- Search for: `from:notifications@github.com subject:"Run failed" newer_than:1h`
+- If found: extract repo, workflow, commit, and cross-reference with gh run list
