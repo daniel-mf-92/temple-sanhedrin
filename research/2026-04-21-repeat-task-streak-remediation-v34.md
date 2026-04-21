@@ -1,16 +1,13 @@
-# Repeat-task streak remediation (v34)
+# Repeat-task streak remediation (IQ-920, CQ-965)
 
-Trigger: recent80 shows repeated task IDs (`inference: IQ-920 x3`, `modernization: CQ-965 x3`).
+Trigger: repeated task IDs (3x) observed in recent 80 builder iterations.
 
-External guidance synthesized:
-- Use retry backoff with jitter (not fixed retries) to avoid synchronized re-attempt storms in agent loops.
-- Use workflow/job concurrency groups so duplicate runs collapse to one active execution path.
-- Use dual-threshold alerting: INFO for isolated failures; WARNING only when repeated streak + no file-progress signal.
-- Gate retries by progress evidence: require changed code surface or task-id advancement before re-running same task.
+- Add hard repeat guard: if same task appears 3x in window, block it for 2 cycles and force next oldest unblocked task.
+- Add reflection memory: persist last failure cause + "what changed" delta; reject retries with identical plan hashes.
+- Add exploration fallback: after 2 failed retries, require one orthogonal strategy (different file set or validation path).
+- Add progress gate: retry only when diff touches code artifacts relevant to task acceptance.
 
-Actionable policy update for loops:
-1) Max same-task repeats per rolling 20 iterations: 2 (third repeat triggers forced task diversification).
-2) Add randomized cooldown (jittered) before repeat execution.
-3) Auto-open a new queue item when repeat threshold trips, referencing failed/stalled task ID.
-
-References: AWS Architecture Blog (Exponential Backoff and Jitter), GitHub Actions Concurrency docs, Google SRE Workbook (Alerting on SLOs).
+References:
+- https://arxiv.org/abs/2210.03629
+- https://arxiv.org/abs/2303.11366
+- https://arxiv.org/abs/2303.17651
