@@ -1,18 +1,20 @@
-# Repeat-task streak remediation v48
+# Repeat-task streak remediation (v48)
 
-Trigger: inference task `IQ-980` repeated 3x (all pass) in recent 12 iterations.
+Trigger: builder tasks repeating 3x in recent 60 iterations (`CQ-1018`, `CQ-1014`, `CQ-1013`, `CQ-1009`, `IQ-980`, `IQ-970`).
 
-Findings:
-- Add hard turn/step caps so loops fail fast instead of re-running the same task endlessly (LangGraph recursion-limit pattern).
-- Track consecutive same-task executions as a first-class metric and trigger forced task reselection when streak >=2.
-- Shift from outcome-only pass/fail to evaluator-backed progress scoring so repeated “pass without novelty” is downgraded.
+Findings from external patterns:
+- Add a hard circuit breaker: after 3 repeats of same task ID, force task-family switch for the next 2 iterations.
+- Use jittered retry delays for API/transient failures; prevents synchronized retry storms and fake "stuck" patterns.
+- Score progress by artifact delta (new `.HC`/`.sh`/tests or net LOC change), not by task completion text.
+- Add lightweight eval checks per iteration (prompt→artifact→rule checks→score) to catch low-progress loops early.
 
-Applied Sanhedrin guidance for next loop prompts:
-- Require novelty gate: each iteration must touch at least one new symbol/function or new failing test.
-- If same task repeats twice, auto-pick next highest-priority unblocked IQ and append blocker note.
-- Keep failure handling weather-based: transient API/timeout errors are INFO unless streaked with zero delta.
+Suggested guardrails for loop prompts:
+1. If same task ID appears 3 times in last 20 runs, ban that ID for 2 runs.
+2. Require one of: new HolyC function, new test assertion, or new harness script per run.
+3. Treat transport/API timeouts as infra-noise, not law violations, but still add jitter before retry.
 
 References:
-- https://github.langchain.ac.cn/langgraph/how-tos/recursion-limit/recursion-limit.ipynb
-- https://developers.openai.com/cookbook/examples/evaluation/use-cases/web-search-evaluation
-- https://developers.openai.com/cookbook/examples/partners/self_evolving_agents/autonomous_agent_retraining
+- https://martinfowler.com/bliki/CircuitBreaker.html
+- https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/
+- https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/
+- https://developers.openai.com/blog/eval-skills
