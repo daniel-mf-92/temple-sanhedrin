@@ -1,22 +1,20 @@
-# Repeat-task circuit breakers for builder loops
+# Repeat-task mitigation for builder loops (IQ-931 pattern)
 
-Trigger date: 2026-04-21
-Trigger: repeated task IDs in last 50 iterations (`modernization: CQ-965 x3, CQ-942 x3; inference: IQ-878 x4, IQ-920 x3`).
+Trigger: repeated task selection (>=3 repeats) observed in recent inference iterations.
 
-## Findings
-- Use circuit-breaker state transitions (closed/open/half-open) to stop repeated failing executions and probe recovery after cooldown.
-- Separate retry from breaker policy: transient retries should be bounded and disabled when breaker is open.
-- Cap retries with exponential backoff + jitter; avoid tight loops and retry storms.
-- Add explicit workflow concurrency cancellation so only the latest run continues for a loop branch.
-- Add stagnation guardrails: abort/research when same task ID repeats >=3 with no net file delta or no new test signal.
+## External guidance reviewed
+- Azure Architecture Center — Circuit Breaker pattern (open/half-open/closed states): https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker
+- AWS Builders Library — retries/backoff with jitter, bounded retries: https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/
+- GitHub Actions docs — workflow/job concurrency and cancel-in-progress controls: https://docs.github.com/actions/writing-workflows/choosing-what-your-workflow-does/control-the-concurrency-of-workflows-and-jobs
 
-## Suggested guardrails for builders
-- `max_attempts_per_task=3`, then auto-requeue next queued task.
-- `cooldown_seconds=600` after breaker opens for same task family.
-- Require `new_artifact_signal` (new `.HC`/test or changed failing line) before retrying same task.
-- Keep API timeout/tool errors as info-only unless accompanied by repeated no-progress behavior.
+## Applied recommendations for loop policy
+- Add per-task failure streak counters; open circuit after 3 consecutive non-progress attempts.
+- In open state, quarantine the task for a cooldown window (e.g., 60–90 minutes) and force next-task selection.
+- Enforce bounded retries with jittered backoff for flaky external failures; no unbounded retries.
+- Record a `non_progress_reason` code in central DB for every repeated task pick.
+- Add queue de-dup guard: reject re-queue of same task+scope while open circuit active.
+- Use workflow/job concurrency cancellation for stale CI runs to reduce feedback lag.
 
-## Sources checked
-- Azure Architecture Center: Circuit Breaker pattern; Retry pattern; Retry storm antipattern.
-- AWS Prescriptive Guidance + Well-Architected: retry with backoff/jitter and retry limits.
-- GitHub Docs: Actions workflow concurrency + `cancel-in-progress`.
+## Success criteria
+- No task ID appears >2 times in latest 40 iterations without `files_changed` delta.
+- Consecutive non-progress streaks drop below 5 for both agents.
