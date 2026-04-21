@@ -1,15 +1,15 @@
-# Repeat-task streak mitigation (IQ-878 pattern)
+# Repeat-task streak mitigation (2026-04-21)
 
-Trigger: inference task `IQ-878` repeated 3+ times in recent 120 iterations.
+Trigger: repeated task IDs (3+ consecutive) in builder loops.
 
-Findings (applied to loop governance):
-- Add a short tabu window: block re-selecting same task ID for N iterations unless prior run was `fail`.
-- Add attempt budget per task ID (e.g., max 2 consecutive `pass` iterations); then force next sibling task.
-- Add strategy registry notes per task to prevent retrying same approach.
-- Add queue scorer with novelty boost and recency penalty.
-- Add circuit-breaker: if same task selected 3 times in 60 min, require explicit new acceptance criterion.
+Findings:
+- Add novelty gate: block re-issuing same task_id after 2 consecutive passes unless new failing evidence appears.
+- Add retry budget per task_id (max 3 attempts / 6h), then force dequeue and pick highest-impact sibling task.
+- Require delta-proof in loop prompt: each retry must cite new file, new test assertion, or new failing signal.
+- Add cooldown window (30-60m) before task_id can re-enter active slot.
+- Promote "stuck" class alerts to WARNING when streak>=3; CRITICAL only when compile/regression is blocked.
 
-Sources:
-- https://arxiv.org/html/2504.15228v1
-- https://addyosmani.com/blog/self-improving-agents/
-- https://dev.to/alessandro_pignati/stop-the-loop-how-to-prevent-infinite-conversations-in-your-ai-agents-ekj
+Operational policy for Sanhedrin:
+- Keep single failures as INFO.
+- Treat repeated failures without progress as WARNING.
+- Treat 5+ consecutive failures with no artifact delta as stuck and require research refresh.
