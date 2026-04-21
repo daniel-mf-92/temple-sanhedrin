@@ -1,16 +1,19 @@
-# Loop stall guardrails for repeated task IDs
+# Loop stall guardrails (CQ-942 repeated 3x)
 
-Trigger: repeated task IDs observed (`CQ-877` x4, `IQ-839/842/844` x3).
+Trigger: modernization repeated `CQ-942` three consecutive passes.
 
 Findings:
-- Add fingerprint-based repetition detection (same task/tool signature repeated >=3) and force a strategy change prompt.
-- Add cooldown/backoff after no-progress cycles to reduce thrash and token waste.
-- Add task dedup + in-progress lock so same task ID cannot be re-selected while recent attempts exist.
-- Route repeated-task events to a dead-letter queue after N retries with explicit human triage note.
-- Keep AGENTS/task context compact and current so stale instructions do not cause rework loops.
+- Add capped retries with exponential backoff + jitter for transient tool/API failures.
+- Stop blind retries after max attempts; route to alternate subtask or investigation mode.
+- Use circuit-breaker behavior for persistent failures (open after threshold, cool-down, half-open probe).
+- Gate duplicate runs with workflow concurrency to reduce repeated no-op loops.
+- Mark a task as "stuck" when same task repeats >=3 with low file delta; force task rotation.
 
-Sources:
-- https://arxiv.org/html/2603.05344v3
-- https://arxiv.org/html/2604.05854
-- https://blog.logrocket.com/ai-agent-task-queues/
-- https://addyosmani.com/blog/self-improving-agents/
+Proposed Sanhedrin enforcement:
+- If same task repeats >=3, write WARNING audit and require one of: different file target, changed test target, or explicit blocker note.
+- If repeats >=5, require research note + task pivot.
+
+References:
+- https://docs.cloud.google.com/model-armor/retry-strategy
+- https://github.com/MicrosoftDocs/architecture-center/blob/main/docs/patterns/retry-content.md
+- https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency
