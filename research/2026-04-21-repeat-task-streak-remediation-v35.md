@@ -1,17 +1,13 @@
 # Repeat-task streak remediation (v35)
 
-Trigger: repeated task IDs in recent iterations (inference IQ-920 x3, modernization CQ-965 x3).
+Trigger: repeated task IDs detected (inference IQ-920 x3, modernization CQ-965 x3).
 
 Findings:
-- Use explicit stuck-loop detection threshold at 3 repeated identical task IDs, then force strategy change (decompose task, new evidence target, or alternate subsystem slice).
-- Apply bounded retries with randomized exponential backoff for transient failures only; do not retry deterministic logic misses.
-- Track retry/stuck metrics as first-class signals (repeat-rate, consecutive-failure streak, circuit-open events) and alert on sustained elevation.
+- CI should optimize for fast, deterministic feedback; repeated retries without change indicate weak signal quality (Martin Fowler CI).
+- Classify flaky vs deterministic failures and quarantine flaky paths so mainline keeps signal integrity (GitHub Actions flaky-build research, arXiv 2602.02307).
+- Use multi-window thresholds (short+long) before escalating "stuck" alerts to reduce noise while catching persistent regressions (Google SRE burn-rate guidance).
 
-Suggested guardrails for loop prompts:
-- If same task appears 3 times in 80-window: require next iteration to target different file cluster and include one new validation command.
-- If same task appears 5 times: circuit-breaker that blocks reselecting task for 10 iterations.
-
-References:
-- https://sre.google/sre-book/addressing-cascading-failures/
-- https://sre.google/workbook/alerting-on-slos/
-- https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/
+Applied guidance for Sanhedrin policy:
+- Keep single failure as INFO; treat repeated same-task loops as WARNING.
+- Escalate to research/remediation when same task repeats >=3 without meaningful file-scope change.
+- Promote CRITICAL only when compile gate or VM compile verification fails.
