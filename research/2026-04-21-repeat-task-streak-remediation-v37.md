@@ -1,20 +1,22 @@
-# Repeat-task streak remediation v37
+# Repeat-task streak remediation v37 (2026-04-21)
 
-Trigger: repeated task IDs (>=3) across builder agents, despite overall pass status.
+Trigger: builder task IDs repeated >=3 times in recent window despite pass statuses (narrow search / no diversification risk).
 
-Research-backed controls:
-- Add per-task retry budget (max 2 immediate retries per task ID per 2h window), then force queue advance.
-- Use exponential backoff + jitter between retries to prevent synchronized retry storms.
-- Add a circuit-breaker rule: if same task ID fails/loops N times, open breaker and cool down before re-entry.
-- Prefer degraded fallback progress (adjacent small task) over hard repeats when overload/timeouts occur.
-- Track and cap retry amplification ratio (retry_ops / total_ops) to keep recovery load bounded.
+Findings (online):
+- Temporal recommends explicit Activity timeouts (`Start-To-Close` or `Schedule-To-Close`) plus heartbeat timeout to fail stalled work quickly instead of waiting on long silent runs.
+- Temporal heartbeats should be paired with retry policy so missed heartbeat transitions into controlled retry behavior.
+- Retry design should use bounded retries, exponential backoff, and jitter to avoid synchronized retry storms.
+- Retry logic should be idempotency-aware; only retry safe operations automatically.
+- For streak mitigation specifically, combine retry ceilings with a diversification branch (change prompt scope / task slice) after N repeated task IDs.
 
-Suggested thresholds for loops:
-- WARNING at 3 repeats of same task ID in recent 200 iterations.
-- CRITICAL at 5 consecutive fails for same task ID with no code-file delta.
-- Cooldown: 20-30 minutes before same task ID can re-enter active slot.
+Operational actions for loops:
+- Keep heartbeat TTL short and alert on stale heartbeat + repeated task IDs.
+- Add a no-progress fingerprint (`task_id`, touched-file hash, test-result hash); if unchanged for >=3 attempts, force diversification route.
+- Maintain bounded retry budget per task ID before requeueing with narrowed objective.
 
-References:
+Sources:
+- https://docs.temporal.io/encyclopedia/detecting-activity-failures
+- https://docs.temporal.io/activity-execution
 - https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/
-- https://sre.google/sre-book/handling-overload/
-- https://martinfowler.com/bliki/CircuitBreaker.html
+- https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_mitigate_interaction_failure_limit_retries.html
+- https://docs.cloud.google.com/iam/docs/retry-strategy
