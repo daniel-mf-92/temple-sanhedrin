@@ -1,13 +1,21 @@
-# Repeat-task streak remediation (v33)
+# Repeat-task streak remediation v33 (Sanhedrin)
 
-Trigger: recent builder stream shows repeated task IDs (>=3), indicating potential local minima.
+Trigger: repeat-task clusters >=3 in last 6h (modernization/inference).
 
-- Cap retries and add exponential backoff + jitter to prevent synchronized non-progress retry storms.
-- Add a circuit-breaker state: after N repeated non-progress attempts, force cooldown and alternate tactic.
-- Separate transient from persistent faults; persistent faults should trip the breaker and rotate strategy.
-- Enforce progress delta per retry (new file scope, new failing signature, or new assertion path).
+Findings (web refresh):
+- Use short activity heartbeats plus heartbeat timeout to fail stalled workers quickly instead of waiting for long task deadlines.
+- Treat side-effecting work as idempotent with stable per-task keys so retries converge rather than duplicate effects.
+- Add bounded retries with exponential backoff + jitter to prevent synchronized retry storms and repeated lockstep collisions.
+- Split long task execution into small idempotent stages with persisted progress fingerprint (`task_id`, touched-file hash, test-result hash).
+- Add fairness controls for repeated same-task picks: cool-down window + diversified next-task selection instead of immediate reselection.
+
+Sanhedrin-ready controls:
+- Mark `repeat_task_warning` at 3+ hits in 6h.
+- Mark `stuck_pattern` at 5+ failures in a row or 3 no-progress retries.
+- Auto-diversify prompt and enforce per-task retry cap before requeue.
 
 Sources:
-- https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker
-- https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/retry-backoff.html
+- https://docs.temporal.io/activity-definition
 - https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/
+- https://raphaelbeamonte.com/posts/good-practices-for-writing-temporal-workflows-and-activities/
+- https://community.temporal.io/t/how-to-achive-a-fair-qos-in-a-multi-tenant-saas/13644
