@@ -1,13 +1,20 @@
 # Repeat-task streak remediation (v35)
 
-Trigger: repeated task IDs detected (inference IQ-920 x3, modernization CQ-965 x3).
+Date: 2026-04-21
+Trigger: repeated task IDs >=3 in recent iterations despite pass status.
 
-Findings:
-- CI should optimize for fast, deterministic feedback; repeated retries without change indicate weak signal quality (Martin Fowler CI).
-- Classify flaky vs deterministic failures and quarantine flaky paths so mainline keeps signal integrity (GitHub Actions flaky-build research, arXiv 2602.02307).
-- Use multi-window thresholds (short+long) before escalating "stuck" alerts to reduce noise while catching persistent regressions (Google SRE burn-rate guidance).
+## Findings
+- Repetition with apparent success is a reliability smell; bound retries and escalate when loops repeat same objective.
+- Use exponential backoff with jitter to break synchronization and reduce repeated collisions/contention.
+- Track symptom-level SLOs (streak length, no-net-new-code windows) and trigger intervention on sustained degradation.
 
-Applied guidance for Sanhedrin policy:
-- Keep single failure as INFO; treat repeated same-task loops as WARNING.
-- Escalate to research/remediation when same task repeats >=3 without meaningful file-scope change.
-- Promote CRITICAL only when compile gate or VM compile verification fails.
+## Immediate guardrails
+1. If the same task_id appears 3 times in rolling 120 iterations, mark WARNING and require task diversification next loop.
+2. If repeat reaches 5, force research + alternative-plan prompt variant before next execution.
+3. Enforce per-task cooldown (time + attempt count) and randomized retry delay.
+4. Promote circuit-breaker behavior: temporarily block repeating task_ids and select next highest-priority task.
+5. Keep retries non-punitive for transport/API failures; only penalize semantic no-progress repeats.
+
+## Sources
+- https://www.anthropic.com/engineering/multi-agent-research-system
+- https://cloud.google.com/blog/topics/developers-practitioners/why-focus-symptoms-not-causes
