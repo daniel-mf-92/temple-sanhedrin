@@ -2,3 +2,4 @@ bash: line 1: /Users/danielmatthews-ferrero/Documents/local-codebases/temple-san
 bash: line 1: /Users/danielmatthews-ferrero/Documents/local-codebases/temple-sanhedrin/scripts/codex-sanhedrin-loop.sh: No such file or directory
 Loop already running (PID 97647; lock exists: /Users/danielmatthews-ferrero/Documents/local-codebases/temple-sanhedrin/automation/.codex-loop.lock)
 Already on 'main'
+Loop already running (PID 41221; lock exists: /Users/danielmatthews-ferrero/Documents/local-codebases/temple-sanhedrin/automation/.codex-loop.lock)
