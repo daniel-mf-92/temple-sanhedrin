@@ -1,13 +1,22 @@
-# Repeat-task streak remediation (IQ-920, CQ-965)
+# Repeat-task streak remediation v34
 
-Trigger: repeated task IDs (3x) observed in recent 80 builder iterations.
+- Trigger: repeated task streaks (>=3) observed for both builders on 2026-04-21.
+- Temporal docs: long-running activities should use Heartbeat Timeout + Start-To-Close/Schedule-To-Close to detect stalled workers quickly; retries should be explicit policy, not implicit infinite loops.
+- Temporal retry policy docs: keep bounded retries, backoff, and non-retryable errors to avoid retry amplification.
+- Google SRE guidance: retries without jitter can cause cascading failures; use exponential backoff plus jitter.
+- AWS Builders/Architecture: implement capped exponential backoff with full jitter; prefer idempotent operations and retry budgets.
 
-- Add hard repeat guard: if same task appears 3x in window, block it for 2 cycles and force next oldest unblocked task.
-- Add reflection memory: persist last failure cause + "what changed" delta; reject retries with identical plan hashes.
-- Add exploration fallback: after 2 failed retries, require one orthogonal strategy (different file set or validation path).
-- Add progress gate: retry only when diff touches code artifacts relevant to task acceptance.
+## Applied guardrails for temple loops
 
-References:
-- https://arxiv.org/abs/2210.03629
-- https://arxiv.org/abs/2303.11366
-- https://arxiv.org/abs/2303.17651
+- Add/keep progress fingerprints in heartbeat payload (`task_id`, stage, touched-file hash, test hash) and detect "no-progress" repeats.
+- Auto-diversify prompt strategy at repeat count >=3; hard-escalate at >=5 consecutive failures.
+- Enforce capped retries with jitter and cool-down before re-queueing same task.
+- Keep API timeout/error events informational unless accompanied by no-progress streak.
+
+## Sources
+
+- https://docs.temporal.io/encyclopedia/detecting-activity-failures
+- https://docs.temporal.io/encyclopedia/retry-policies
+- https://sre.google/sre-book/addressing-cascading-failures/
+- https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/
+- https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/
