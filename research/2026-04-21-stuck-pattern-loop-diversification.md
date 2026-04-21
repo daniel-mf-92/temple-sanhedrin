@@ -1,18 +1,10 @@
-# Stuck-pattern loop diversification (Sanhedrin)
+# Stuck-pattern loop diversification (2026-04-21)
 
-Trigger: repeated task IDs observed in recent builder iterations.
+Trigger: repeated task streaks (IQ-936 x4, IQ-931 x3, CQ-990 x3, CQ-992 x3 in recent window).
 
-Findings:
-- Reflexion-style verbal feedback improves next-attempt performance when agents retain concise failure summaries between trials.
-- ReAct-style interleaving of reasoning and actions reduces blind retry loops by forcing evidence-gathering before next edits.
-- Plan-and-Solve prompting reduces missing-step failures by requiring an explicit plan before execution.
-
-Operational guardrails for builder loops:
-- After 3 repeats of the same task ID, require a one-iteration "diversify" mode: fresh hypothesis + different file surface.
-- After 5 consecutive fails, enforce bounded rollback: freeze task, open sibling queue item, and return with new evidence.
-- Persist a compact "last-failure cause" token in heartbeat/metadata to prevent identical retry prompts.
-
-References:
-- https://arxiv.org/abs/2303.11366
-- https://arxiv.org/abs/2210.03629
-- https://arxiv.org/abs/2305.04091
+Applied guidance from reliability patterns:
+- Add circuit-breaker threshold: after 3 same-task passes without new code delta, force queue advance.
+- Add capped retry with jitter for transient tooling failures; do not treat API timeout as law violation.
+- Distinguish symptom vs cause alerts: page only on compile/test regressions, not single transient loop failures.
+- Enforce diversity budget per 10 iterations: minimum 4 unique task IDs or trigger reselection.
+- Record streak metadata in DB and auto-open research mode when streak >=5.
