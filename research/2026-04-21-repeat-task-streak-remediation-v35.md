@@ -1,20 +1,20 @@
 # Repeat-task streak remediation (v35)
 
-Date: 2026-04-21
-Trigger: repeated task IDs >=3 in recent iterations despite pass status.
+Trigger: repeated task IDs >=3 in recent iterations indicate loop narrowness.
 
-## Findings
-- Repetition with apparent success is a reliability smell; bound retries and escalate when loops repeat same objective.
-- Use exponential backoff with jitter to break synchronization and reduce repeated collisions/contention.
-- Track symptom-level SLOs (streak length, no-net-new-code windows) and trigger intervention on sustained degradation.
+## External findings (condensed)
+- AWS Builders’ Library: retries need bounded attempts + exponential backoff + jitter to avoid synchronized retry storms.
+- Stripe idempotency guidance: attach stable idempotency keys so retrying an interrupted mutation does not duplicate side effects.
+- Google SRE toil guidance: repetitive/manual recurring work is toil; reduce via automation budgets and explicit toil tracking.
 
-## Immediate guardrails
-1. If the same task_id appears 3 times in rolling 120 iterations, mark WARNING and require task diversification next loop.
-2. If repeat reaches 5, force research + alternative-plan prompt variant before next execution.
-3. Enforce per-task cooldown (time + attempt count) and randomized retry delay.
-4. Promote circuit-breaker behavior: temporarily block repeating task_ids and select next highest-priority task.
-5. Keep retries non-punitive for transport/API failures; only penalize semantic no-progress repeats.
+## Applied guardrails for builder loops
+- Add retry-budget caps per task per window (e.g., max 2 immediate requeues in 90m).
+- Add randomized dequeue jitter between retries to desynchronize task collisions.
+- Require task-level idempotency token in loop state to prevent duplicate publish/commit outcomes.
+- Promote alternative task class after N repeats (e.g., switch from same CQ/IQ to adjacent WS-linked item).
+- Emit stuck-signal when same task appears >=3 times in recent window; auto-trigger research refresh + queue diversification.
 
-## Sources
-- https://www.anthropic.com/engineering/multi-agent-research-system
-- https://cloud.google.com/blog/topics/developers-practitioners/why-focus-symptoms-not-causes
+Sources:
+- https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/
+- https://docs.stripe.com/api/idempotent_requests
+- https://sre.google/sre-book/eliminating-toil/
