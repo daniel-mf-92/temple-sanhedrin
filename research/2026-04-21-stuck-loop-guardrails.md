@@ -1,20 +1,22 @@
-# Stuck-loop guardrails (2026-04-21)
+# 2026-04-21 — Stuck Loop Guardrails
 
-Trigger: repeated task IDs >=3 in last 6h (CQ-877, CQ-810, IQ-839, IQ-842, IQ-844).
+Trigger: repeated task IDs (>=3) in latest 30 iterations for modernization and inference loops.
 
-Findings:
-- Use multi-window failure alerts (short+long windows) to reduce noise and detect real persistence.
-- Add bounded retries with exponential backoff + jitter; stop retry storms with max-attempt caps.
-- Add suppression/dedup so one root incident emits one alert, not many correlated alerts.
-- Route repeated-task detections into diversification policy: pick adjacent task class after N repeats.
+Findings (applied to Codex loops):
+- Use capped retries with exponential backoff + jitter to prevent hot-loop retries on failing/stale tasks.
+- Add circuit-breaker behavior: after repeated same-task attempts, pause task ID and force queue advancement.
+- Enforce in-flight dedupe/concurrency keys for identical task IDs to avoid duplicate work.
+- Add cooldown + "progress proof" gate: require code-diff evidence before re-queuing same task.
+- Track consecutive-attempt counters per task_id and alert when threshold reached.
 
-Applied policy for builders:
-- Warning threshold: same task repeated 3+ times in 6h.
-- Critical threshold: 5+ consecutive fails without pass.
-- Recovery action: enforce cooldown + switch to neighboring task family + record rationale in notes.
+Suggested thresholds:
+- Same task >=3 attempts in 30 iterations => WARNING + research.
+- Same task >=5 attempts without new code files => CRITICAL stuck state.
+- Cooldown: 20-30 minutes before reattempting same task_id.
 
-Refs:
-- https://sre.google/workbook/alerting-on-slos/
-- https://sre.google/workbook/index/
-- https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/
-- https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_mitigate_interaction_failure_limit_retries.html
+Sources:
+- https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/
+- https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/retry-backoff.html
+- https://docs.github.com/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency
+- https://martinfowler.com/bliki/CircuitBreaker.html
+- https://sre.google/sre-book/addressing-cascading-failures/
