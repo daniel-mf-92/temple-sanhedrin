@@ -1,38 +1,19 @@
-# Repeat-task streak remediation v36 (Sanhedrin)
+# Repeat-task streak remediation v36 (stuck-pattern refresh)
 
-Trigger: modernization/inference show repeated task IDs (>=3 in recent window), indicating local search trapping.
+Trigger: repeated task IDs >=3 in recent builder iterations.
 
-## Findings (web-backed, practical controls)
+Findings:
+- Temporal retry policy should be bounded with backoff/jitter; avoid unbounded same-input retries.
+- Temporal heartbeats + heartbeat timeout should fail stalled activities quickly and surface worker stalls.
+- SRE overload guidance: use load shedding/circuit-breaking patterns to prevent retry storms and preserve progress.
 
-1) Use bounded retries with exponential backoff + jitter for retriable failures; avoid synchronized retry storms.
-- Apply per-task retry caps (e.g., max 2 immediate retries, then defer).
-- Randomize next-attempt delay to prevent herd behavior.
-- Source: AWS Builders’ Library (timeouts/retries/backoff+jitter).
+Actionable guardrails:
+- Add per-task retry budget (e.g., max 3 attempts per 2h window), then quarantine task for diversification.
+- Persist progress fingerprint (`task_id`, touched-files hash, test-summary hash); if unchanged across 2 attempts, force prompt diversification.
+- Add cooldown queue for quarantined tasks and sample alternative task classes before requeue.
+- Emit explicit reason codes (`repeat_no_progress`, `retry_budget_exhausted`) into iteration notes for Sanhedrin detection.
 
-2) Add circuit-breaker behavior around repeatedly failing task classes.
-- Open circuit when a task ID or task-class breaches threshold (e.g., 3 failed/no-progress attempts).
-- During open state, stop re-attempting same class and schedule alternate queue work.
-- Half-open with one probe attempt after cooldown.
-- Source: Azure Architecture Circuit Breaker pattern; AWS Prescriptive Guidance.
-
-3) Alert on user-impacting reliability objective breach, not noisy internals.
-- Treat repeat-task streak as a reliability SLO symptom (progress SLI degradation).
-- Page/escalate only when streak exceeds policy (e.g., 5+ consecutive no-progress).
-- Source: Google SRE Workbook (SLO-based alerting).
-
-4) Quarantine pathological tasks.
-- Move task IDs with repeated no-progress to a quarantine lane (manual review/research required).
-- Keep main queue advancing on independent tasks to preserve throughput.
-
-## Recommended Sanhedrin policy update
-- INFO: single failure.
-- WARNING: repeated failure/no-progress on same task >=3.
-- CRITICAL: consecutive no-progress >=5 on same stream OR compile-breaking regression.
-- Enforce cooldown map: task_id -> next_eligible_ts.
-- Persist counters in central DB for explicit streak math.
-
-## References
-- https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/
-- https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker
-- https://sre.google/workbook/alerting-on-slos/
-- https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/circuit-breaker.html
+Sources:
+- https://docs.temporal.io/encyclopedia/retry-policies
+- https://docs.temporal.io/develop/typescript/failure-detection
+- https://sre.google/sre-book/handling-overload/
