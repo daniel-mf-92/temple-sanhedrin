@@ -1,21 +1,15 @@
 # Repeat-task streak breakers (Sanhedrin)
 
-Trigger: inference and modernization showed recent same-task run streaks (>=3), even with PASS.
+Trigger:
+- modernization had CQ-1152 repeated 4x in close succession
+- inference had IQ-1063 and IQ-1062 repeated 3x each in recent window
 
-## Practical controls for Codex loops
-- Add exponential backoff with jitter after same-task retries to prevent synchronization and tight repeat loops.
-- Add per-task retry budget (e.g., max 2 consecutive attempts) then force scheduler to pick different task class.
-- Add circuit breaker on task-id streaks: if streak >=3, open breaker for that task for cooldown window.
-- Add workflow concurrency guard (`concurrency + cancel-in-progress`) so stale duplicate loop runs do not pile up.
-- Add queue fairness: weighted random/task-bucket rotation so "fresh" tasks get scheduled before repeating one ID.
+Operator guidance:
+- Enforce a hard "progress delta" gate: each repeat must add a new invariant or failing fixture, otherwise rotate task.
+- Limit same-task streak to 2 unless a measurable artifact changes (new failing test, new HolyC code path, or CI state change).
+- Alternate between implementation and verification slices to avoid local maxima.
+- Add explicit exit criteria per task instance before loop start; if unchanged after 2 passes, split task.
+- Keep batch size small and require one concrete code artifact per loop cycle.
 
-## Suggested thresholds
-- streak_warn: 3
-- streak_block: 5
-- cooldown_min: 15
-- retry_jitter_ms: 200-3000
-
-## References
-- AWS Builders Library: Timeouts, retries, and backoff with jitter
-- GitHub Actions docs: Control workflow concurrency
-- Kubernetes Job docs: `.spec.backoffLimit`
+References:
+- https://openpracticelibrary.com/blog/accelerate-metrics-software-delivery-performance-measurement/
