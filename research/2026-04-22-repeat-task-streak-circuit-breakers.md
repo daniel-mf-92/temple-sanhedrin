@@ -1,19 +1,14 @@
-# Repeat-task streak circuit breakers (Sanhedrin)
+# Sanhedrin research: repeat-task streak circuit breakers
 
-Trigger: repeated-task clusters detected in central DB (modernization CQ-1162 x4, inference IQ-1070 x3 in latest 12 rows).
+Date: 2026-04-22
+Trigger: modernization repeated CQ-1191/CQ-1197/CQ-1198 and inference repeated IQ-1092/IQ-1094 (3+ appearances in recent window).
 
-## Practical controls to apply in loop prompts/automation
-- Add hard cap on same `task_id` (max 2 consecutive attempts), then force task rotation.
-- Introduce retry budgets with exponential backoff + jitter for transient infra/API failures.
-- Route repeated failures to a quarantine lane (dead-letter style) for offline triage, not immediate re-run.
-- Track dequeue/retry counters per task and escalate severity only when threshold breached.
-- Distinguish transient failures from deterministic code failures before re-queueing.
+Findings:
+- Retry loops need bounded retry count plus exponential backoff with jitter to avoid synchronized retry storms and false progress.
+- Cascading-failure guidance recommends dropping or deferring retried work when load/error signals rise, instead of immediate repeated retries.
+- CI reruns should target failed jobs only and be used for triage, not as a substitute for root-cause isolation.
 
-## Why this maps to observed weather
-- Current loops show pass-heavy execution, but local clustering by task indicates optimization myopia risk.
-- Circuit-breaker + DLQ-style handling reduces thrash while preserving throughput on healthy tasks.
-
-## References
-- https://docs.cloud.google.com/tasks/docs/configuring-queues
-- https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html
-- https://learn.microsoft.com/en-us/dotnet/api/azure.storage.queues.models.queuemessage.dequeuecount?view=azure-dotnet
+Action shape for builder loops:
+- Hard cap identical `task_id` retries to 2, then force task rotation.
+- Require progress proof (new executable/code artifact or failing test delta) before retrying same `task_id`.
+- Add cooldown window before re-queueing identical `task_id`.
