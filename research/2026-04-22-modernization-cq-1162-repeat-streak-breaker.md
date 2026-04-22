@@ -1,15 +1,20 @@
-# Stuck-pattern breaker: modernization CQ-1162 streak
+# Streak Breaker: modernization CQ-1162 repeated 4x
 
-Trigger: modernization repeated `CQ-1162` for 4 consecutive iterations.
+Trigger: modernization task `CQ-1162` appeared 4 consecutive iterations.
 
-Actions:
-- Add a hard no-progress breaker: if same `task_id` repeats >=3 with unchanged touched-file hash, force task diversification on next pick.
-- Add explicit heartbeat timeout + bounded retries on the worker loop so stalled executions fail fast instead of silently repeating.
-- Split large CQ into 2-3 sub-checkpoints with required artifact delta per checkpoint (code/test/log evidence).
-- Add a mandatory alternate-surface rule after 3 repeats (e.g., move from harness to kernel path or vice versa).
-- Gate completion with a strict "new artifact" check to block pass-without-delta cycles.
+## Findings
+- Add a hard streak guard: if same task repeats >=3 times consecutively, force-pick a different CQ category in next iteration.
+- Add progress gate: require net-new evidence (`new file`, `new invariant`, or `new failing case closed`) before reusing same task ID.
+- Add retry backoff for task reselection to reduce tight loops; use bounded exponential backoff with cap.
+- Add queue fairness rotation: alternate categories (kernel/runtime/tooling/tests) to prevent single-task starvation loops.
+- Add CI concurrency guard to cancel superseded runs and reduce noisy rework loops.
 
-Sources:
-- https://docs.temporal.io/cli/activity
-- https://cookbook.openai.com/examples/how_to_handle_rate_limits
-- https://sre.google/workbook/alerting-on-slos/
+## Suggested control logic
+1. Detect `same_task_streak >= 3`.
+2. Mark task as `cooldown` for N iterations.
+3. Select next task from a different category with highest impact and oldest untouched timestamp.
+4. Permit returning to cooled task only when a fresh failing test/log anchor exists.
+
+## Sources reviewed
+- https://docs.temporal.io/
+- https://docs.github.com/en/actions/how-tos/manage-workflow-runs/cancel-a-workflow-run
