@@ -10,7 +10,7 @@ Findings (actionable):
 - Track repeat-streak metric in loop telemetry and hard-fail planning stage when streak >=4 without net-new evidence.
 
 Sources:
-- Google SRE workbook (multi-window burn-rate alerting)
-- Google Cloud SLO burn-rate alerting guidance
-- Atlassian Kanban WIP limits guidance
-- Grafana write-up on multi-window/multi-burn-rate implementation
+- https://sre.google/workbook/alerting-on-slos/
+- https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/alerting-on-budget-burn-rate
+- https://www.atlassian.com/agile/kanban/wip-limits
+- https://grafana.com/blog/2025/02/28/how-to-implement-multi-window-multi-burn-rate-alerts-with-grafana-cloud/
