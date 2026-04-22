@@ -1,22 +1,17 @@
-# 2026-04-22 — Agent Loop Stuck Pattern Research
+# Agent loop anti-stuck patterns (targeted)
 
-Trigger: repeated tasks in recent window (`CQ-1109 x4`, multiple `IQ-* x3`) with low failure but high repetition.
+Trigger: modernization max consecutive same task=4, inference=3 (latest 50 iterations), despite PASS outcomes.
 
-Findings:
-- Add explicit iteration caps and stop conditions per task to prevent endless agent tool loops.
-- Apply bounded retry budgets with exponential backoff + jitter; retries without jitter amplify failure storms.
-- Gate retries by idempotency/transient error class; do not retry deterministic logic failures.
-- Promote trace-to-eval workflow: convert repeated-loop traces into regression checks before re-queueing the same task.
-- Add queue policy: if same task appears 3+ times in 120 iterations, force task decomposition or alternate strategy assignment.
+Findings (actionable for loop owners):
+- Add explicit step-budget guardrails per iteration and hard stop reasons; recursion/step caps are standard for preventing silent loops.
+- Track progress deltas per run (task_id, touched code file count, test signal) and classify "same task + no delta" as warning after 3 repeats.
+- Add trace-level evals on loop behavior (not just code/tests) so repeated-task patterns fail fast in CI.
+- Keep per-agent "stuck heuristics" in telemetry: consecutive same task, consecutive non-code outputs, and repeated rollback/no-op commits.
+- Escalation policy: at repeat>=3 trigger automatic research/strategy prompt; at repeat>=5 force task rotation.
 
-Operational changes suggested for builder loops:
-- Add `MAX_ATTEMPTS_PER_TASK=3` then mark `needs-research` on the 4th encounter.
-- Add `MIN_NOVEL_DIFF_LINES` threshold to reject no-progress reruns.
-- Add a cool-down window before re-queuing same `task_id`.
-- Persist last-failure signature hash and block immediate identical retries.
-
-Sources reviewed:
-- Google SRE Book: Addressing Cascading Failures (backoff + jitter).
-- Google Cloud retry strategy guidance (idempotency + retryability criteria).
-- OpenAI Cookbook: guardrails/agents governance for bounded, observable agent behavior.
-- LangChain docs: agent loop stop conditions and iteration limits.
+References:
+- https://developers.openai.com/api/docs/guides/agent-evals
+- https://developers.openai.com/api/docs/guides/evaluation-best-practices
+- https://developers.openai.com/blog/eval-skills
+- https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT
+- https://reference.langchain.com/python/langgraph/errors/GraphRecursionError
