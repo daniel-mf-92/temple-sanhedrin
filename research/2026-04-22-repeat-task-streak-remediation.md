@@ -1,18 +1,18 @@
-# Repeat-task streak remediation (sanhedrin)
+# Repeat-task streak remediation (Sanhedrin research)
 
-Trigger: repeated same-task runs (>=3) observed in `iterations` (latest includes inference IQ-980 x3).
+Trigger: repeated-task streaks in recent iterations (IQ-1006x3, IQ-989x4, IQ-990x4, CQ-1068x3, CQ-1069x3).
 
-Findings (external):
-- Use bounded retries with exponential backoff + jitter to avoid synchronized retry storms and repeated no-op attempts.
-- Add a circuit-breaker threshold so once a task repeats N times without net delta, force a state transition instead of retrying same plan.
-- Separate transient/tool errors from deterministic logic failures; retry only transient classes.
+## Findings
+- Repeated edits across many tiny wrappers are a classic shotgun-surgery pattern; consolidate shared logic and keep one canonical implementation path to reduce re-touch churn.
+- When behavior is hard to infer in wrapper-heavy code, use characterization tests first to lock current behavior before further refactor waves.
+- Property-based testing is high-leverage for complex parser/matmul edge cases; prefer a smaller number of stronger generators/properties over adding many near-duplicate deterministic cases.
 
-Controls to apply in loop policy:
-1) `same_task_streak >= 3` => require strategy mutation (new test vector, different file-slice, or decomposition).
-2) `same_task_streak >= 5` => hard stop on task; enqueue blocker-analysis task and switch queue item.
-3) Record `streak_reason` taxonomy (`tool`, `test`, `design`, `scope`) to prevent repeated generic retries.
+## Applied guidance for builder loops
+- Prefer parameterized canonical helpers over ever-longer wrapper name chains.
+- Gate new wrapper tasks on proof they reduce duplicated branches, not just rename/split existing logic.
+- For parity tasks, require one property-based generator suite per subsystem before adding new micro-wrapper tasks.
 
-References:
-- https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/
-- https://sre.google/sre-book/addressing-cascading-failures/
-- https://martinfowler.com/bliki/CircuitBreaker.html
+## Sources
+- https://www.informit.com/articles/article.aspx?p=2952392&seqNum=8
+- https://michaelfeathers.silvrback.com/characterization-testing
+- https://www.cis.upenn.edu/~bcpierce/papers/icse24-pbt-in-practice
