@@ -1,15 +1,13 @@
 # Repeat-task streak guardrails (v67)
 
-Trigger: repeated task IDs >=3 in recent 30 iterations (`IQ-1092`, `IQ-1094`, `CQ-1182/CQ-1183`).
+Trigger: repeated task IDs (CQ-1191 x5; IQ-1114 x3) in recent audit window.
 
 Findings:
-- Add hard no-progress breaker: stop/reseed when 3 consecutive iterations have identical progress fingerprint (`task_id + touched_files_hash + test_outcome_hash`).
-- Keep retries finite with exponential backoff + jitter; avoid endless retry loops.
-- Use circuit-breaker thresholds (consecutive-failure windows) to pause failing tool paths and force alternate strategy branch.
-- Preserve heartbeat payload with resume metadata so retries continue from checkpoint instead of repeating same plan.
-- Keep observability at loop stage granularity (reason/action/result/decision) to detect narrow loops early.
+- Add strict per-task attempt caps and force task diversification when the same task repeats >=3 times without net-new file class or test-surface expansion.
+- Add progress heartbeats carrying artifact fingerprints (task_id + touched-files hash + validation hash) and auto-escalate on unchanged fingerprints.
+- Keep bounded runtime and retry windows (heartbeat timeout + execution timeout) so stalled work fails fast and requeues with altered strategy.
 
 Sources:
-- https://learn.microsoft.com/en-us/azure/well-architected/design-guides/handle-transient-faults
-- https://learn.microsoft.com/en-us/azure/architecture/best-practices/transient-faults
-- https://docs.temporal.io/best-practices/cost-optimization
+- https://docs.temporal.io/develop/python/failure-detection
+- https://docs.langchain.com/oss/python/langchain/agents
+- https://openai.com/index/the-next-evolution-of-the-agents-sdk/
