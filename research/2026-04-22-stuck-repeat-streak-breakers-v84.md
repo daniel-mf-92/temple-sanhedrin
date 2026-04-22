@@ -1,19 +1,19 @@
-# Streak-breakers for repeated agent task loops
+# Streak breaker note (CQ-1214 x4, IQ-1125 x3)
 
-Trigger (2026-04-22): modernization task `CQ-1214` repeated 4x at head; inference task `IQ-1125` repeated 3x at head.
+Trigger: repeated head-task streaks without failures (modernization CQ-1214 x4, inference IQ-1125 x3).
 
-## Findings
-- Use hypothesis-driven troubleshooting loops (`define -> gather -> hypothesize -> test -> reflect`) instead of repeated patch retries; from Google SRE Effective Troubleshooting.
-- When using 5-whys, stop blame answers and continue until process-level causes are reached; from Atlassian 5 Whys guidance.
-- Introduce minimal eval harnesses from real failures (small seeded cases) to detect regression/no-progress cycles early; from Anthropic evals guidance.
+Findings:
+- Apply explicit WIP=1 at agent level until the current task produces a measurable delta (new file class, new guard, or closed sub-check), then allow next task pull.
+- Add a streak circuit-breaker: if same task repeats 3 times, force next iteration to execute a different checklist slice (test-first vs code-first rotation).
+- Track flow efficiency, not just pass/fail. Repeated pass on same task can hide local optimization and global stagnation.
+- Use multi-window alerting logic for audit severity: single misses = info, sustained pattern windows = warning/critical.
 
-## Concrete interventions for builders
-- Hard streak gate: if same `task_id` repeats >=3, require one explicit hypothesis line + one falsifiable check before next commit.
-- Counterfactual patch rule: next attempt must differ in approach class (logic-path change vs test-only vs instrumentation-only); prevent near-duplicate retries.
-- Add 20-50 seeded regression checks for recent stuck tasks and run them before commit.
-- If two hypothesis cycles fail, force task decomposition into two sub-issues with separate acceptance checks.
-- Record “disconfirming evidence” in notes to prove the new attempt is not the same failed path.
+Immediate guardrails to enforce in audits:
+- same_task_streak >=3 => WARNING + research log
+- same_task_streak >=5 => CRITICAL stuck pattern
+- require “new artifact proof” for repeated task IDs (e.g., new HC helper, new test path, or new script gate)
 
-## Notes
-- Keep TempleOS guest air-gapped; no networking feature work.
-- Keep core modernization in HolyC.
+References:
+- https://www.atlassian.com/agile/kanban/wip-limits
+- https://www.scrum.org/resources/blog/why-should-we-limit-wip
+- https://sre.google/workbook/monitoring/
