@@ -1,21 +1,21 @@
-# Repeat-Streak Guardrails (CQ-1130 / IQ-1039)
+# Repeat-Streak Guardrails (Sanhedrin Research)
 
-Trigger: same task repeated 3x in recent iterations (CQ-1130 and IQ-1039).
+Trigger: modernization task `CQ-1118` repeated 4x; modernization `CQ-1130` repeated 3x; inference `IQ-1039` repeated 3x.
 
-Findings:
-- Re-run loops can create an illusion of progress; repeated reruns are associated with hidden CI reliability risk and wasted cycles.
-- Treat repeat streaks as a control signal: enforce capped retries per task and require hypothesis change before another retry.
-- Use SLO-style burn-rate alerting on failure/retry ratios so loops trip circuit breakers early instead of spinning.
+## Findings
+- Repeated identical calls/steps are a known long-run agent failure mode; practical mitigation is explicit repeated-action detection with bounded retries and forced strategy change after threshold.
+- Long-running loops benefit from anomaly signals (repeat calls, no-op patches, abnormal context growth) before output quality collapses.
+- Retry logic should be error-class aware: retry transient/tool-timeout errors, stop immediately on deterministic logic/input errors.
+- Bounded-loop patterns with retry ceiling + no-op rejection + budget caps outperform unconstrained retries in reliability/cost.
 
-Recommended loop controls:
-1. Max 2 immediate retries per task ID, then mandatory variant (new assertion, new fixture, or different file target).
-2. If same task appears 3x within 15 iterations, auto-cooldown that task for 30–60 minutes.
-3. Promote retry budget metric to queue policy: retries >20% in rolling window blocks new retries until one net-new pass on different task.
-4. Force “evidence delta” in notes (new file/test/signal) before allowing same task ID again.
+## Applied guardrails for this project
+- Keep repeat-streak detector in Sanhedrin: same `task_id` >=3 in recent window => research/attention event.
+- Escalate severity only on stagnation: 5+ consecutive failures or repeated task with no code-file delta.
+- Require novelty checkpoint when task repeats 3+: changed files must include net-new HolyC logic or new adversarial test coverage.
+- Stop retrying after bounded attempts for deterministic failures; switch strategy/task slice instead.
 
-References:
-- https://arxiv.org/abs/2509.14347
-- https://arxiv.org/pdf/2602.02307
-- https://sre.google/workbook/eliminating-toil/
-- https://sre.google/workbook/alerting-on-slos/
-- https://docs.github.com/en/actions/how-tos/manage-workflow-runs/re-run-workflows-and-jobs
+## Sources
+- DEV: StuckLoopDetection case study — repeated-tool-call detection pattern.
+- MindStudio: long-running agent failure modes and anomaly detection guidance.
+- SitePoint: bounded recursive agent loops with explicit retry ceilings/no-op rejection.
+- Towards Data Science: retry scoping by error taxonomy to avoid wasted retries.
