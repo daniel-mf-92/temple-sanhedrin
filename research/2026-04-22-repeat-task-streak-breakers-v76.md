@@ -1,15 +1,12 @@
 # Repeat-task streak breakers (v76)
 
-Trigger: repeated task IDs in recent window (e.g., CQ-1152x4, IQ-1057x3, IQ-1062x3, IQ-1063x3).
+Trigger: modernization:CQ-1162x4, inference:IQ-1070x3 in recent window.
 
-## Practical controls to apply in agent loops
-- Add a **repeat-ID circuit breaker**: after 3 repeats, force alternate task class (tests/bugfix/refactor/documentation parity) before returning.
-- Use **closed-loop replan checkpoints** every N iterations: compare expected vs observed outcome, then rewrite plan only on mismatch.
-- Enforce **self-critique + refine pass** before re-enqueueing same task ID, requiring a concrete delta artifact.
-- Track **novelty budget** metric (new files/functions/assertions) and block "same task" retries when novelty is below threshold.
-- Prefer **interleaved reason+act trajectories** over pure open-loop retries to reduce local minima loops.
+- Add hard circuit breaker: after 3 repeats of same task_id without new code artifact class, force queue pivot to different subsystem for 1 cycle.
+- Add jittered retry delay for same-task reattempts (5m, 11m, 23m cap 30m) to avoid synchronized livelock loops.
+- Require idempotent “progress token” per task (new invariant/test/file touched); no token => auto-demote task priority.
+- Enforce WIP cap per recurring theme (max 1 active repeat-family task) so throughput is finish-first, not restart-first.
+- Add burn-rate alert on streaks: warning at 3 repeats/12 runs, critical at 5 consecutive non-progress repeats.
+- Couple retry + circuit-breaker states in scheduler metadata so opened circuit blocks immediate reselection until cool-down and alt-task completion.
 
-## Sources
-- https://proceedings.neurips.cc/paper_files/paper/2023/hash/91edff07232fb1b55a505a9e9f6c0ff3-Abstract-Conference.html
-- https://arxiv.org/abs/2210.03629
-- https://ar5iv.labs.arxiv.org/html/2305.16653
+Sources reviewed: AWS retry/backoff guidance, Azure circuit breaker pattern, Little’s Law/WIP flow control references.
