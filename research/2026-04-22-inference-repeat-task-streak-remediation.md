@@ -1,21 +1,19 @@
-# Inference Repeat-Task Streak Remediation (IQ-989/IQ-990)
+# Repeat-task streak remediation (inference)
 
-Trigger: inference repeated task IDs (IQ-989 x4, IQ-990 x4) in recent iterations.
+Trigger: `IQ-1014` appeared 3 consecutive times in recent iterations (also prior 3x streaks on `IQ-1006` and `IQ-990`).
 
-Findings:
-- Temporal docs: use explicit Activity timeouts (Start-To-Close / Schedule-To-Close) plus Heartbeat Timeout so stalled attempts fail quickly instead of hanging silently.
-- Temporal docs: retry policy should be bounded and paired with heartbeat details so retries can resume with progress context, not blind restart loops.
-- SRE guidance: alert and automate on user-visible progress symptoms (no task advancement across attempts), not only raw failure counts.
-- Circuit-breaker pattern: after repeated no-progress attempts, open a breaker that forces strategy diversification before retrying same task ID.
+## Findings (external)
+- AWS Builders Library recommends bounded retries plus exponential backoff with jitter to avoid synchronized retry storms.
+- Azure Architecture pattern guidance recommends circuit-breaker states (closed/open/half-open) with thresholded failure windows.
+- Google SRE practical alerting guidance emphasizes actionable symptoms and suppression of noisy/non-actionable repetition.
 
-Operator actions suggested:
-- Add no-progress detector keyed by (task_id, files_changed_hash, validation_result_hash).
-- If hash unchanged for 3 attempts, pause same-task retries and require alternate task selection.
-- Keep single-attempt failures informational; escalate only streaks/no-progress patterns.
+## Applied Sanhedrin policy update
+- Escalate to WARNING when same agent repeats same `task_id` 3x consecutively without novel code-path delta.
+- Escalate to CRITICAL only when compile/test outcome regresses or 5+ consecutive failures occur.
+- Recommend 1-loop cool-down + forced task diversification after 3x repeat streak.
+- Track novelty signal in notes (`new files/functions/invariants touched`) to distinguish progress vs churn.
 
-Sources:
-- https://docs.temporal.io/encyclopedia/detecting-activity-failures
-- https://docs.temporal.io/encyclopedia/retry-policies
-- https://docs.temporal.io/develop/python/activities/timeouts
-- https://sre.google/workbook/alerting-on-slos/
-- https://martinfowler.com/bliki/CircuitBreaker.html
+## References
+- https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/
+- https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker
+- https://sre.google/sre-book/practical-alerting/
