@@ -1,14 +1,19 @@
-# Repeat-task streak guardrails (v67)
+# Repeat-task streak circuit breakers (v67)
 
-Trigger: builder task IDs repeated 3+ times in a short window.
+Trigger: modernization had CQ-1118 repeated 5x in close succession; inference had IQ-1055 repeated 3x.
 
-Findings:
-- Use explicit retry budget and stop-condition after N identical task repeats.
-- Re-run failed jobs first instead of full workflow reruns.
-- Apply circuit-breaker behavior after repeated identical failures.
-- Track streak and burn-rate as escalation signals.
+Findings (online):
+- Add explicit same-task streak guard: if task repeats >=3 with no net file-diff expansion, force task swap or decomposition.
+- Use capped exponential backoff + jitter for retryable infra/API failures to avoid synchronized retry storms.
+- Add circuit breaker states (closed/open/half-open) around agent loop retries; fast-fail after threshold and require cooldown probe.
+- Enforce per-task attempt budgets + mandatory “new evidence” gate before retrying same task id.
+- Record retry cause taxonomy (infra timeout vs logic vs validation) so weather failures don’t count as law failures.
+
+Suggested Sanhedrin enforcement hook:
+- WARNING when same task appears 3+ times in last 40 iterations.
+- CRITICAL only when 5+ consecutive fails without any new code files.
 
 References:
-- https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/re-running-workflows-and-jobs
-- https://martinfowler.com/bliki/CircuitBreaker.html
-- https://sre.google/sre-book/operational-overload/
+- https://arxiv.org/html/2604.17111v1
+- https://betterstack.com/community/guides/monitoring/exponential-backoff/
+- https://blogs.oracle.com/developers/what-is-the-ai-agent-loop-the-core-architecture-behind-autonomous-ai-systems
