@@ -2,3 +2,4 @@ Loop already running (PID 42103; lock exists: /Users/danielmatthews-ferrero/Docu
 Already on 'main'
 Your branch is ahead of 'origin/main' by 1 commit.
   (use "git push" to publish your local commits)
+Loop already running (PID 36770; lock exists: /Users/danielmatthews-ferrero/Documents/local-codebases/temple-sanhedrin/automation/.codex-loop.lock)

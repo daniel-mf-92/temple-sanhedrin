@@ -1,19 +1,19 @@
-# Stuck-loop remediation (Sanhedrin)
+# Stuck-loop remediation for builder agents
 
-Trigger: repeated task IDs (>=3) across both builder agents despite PASS states.
+Trigger: repeated task IDs (3+ repeats) in recent iteration window.
 
-## Findings (online)
-- Use blameless postmortems focused on root cause + prevention actions, not repeated retries.
-- Re-run only failed jobs with debug logging when needed; avoid blind full reruns.
-- Apply workflow concurrency controls to prevent overlapping runs that create duplicate churn.
+Findings (online):
+- Use circuit breakers and bounded retries to stop infinite retry loops.
+- Require action verification after every tool step; do not trust self-evaluation alone.
+- Add diversification after N failed attempts (alternate strategy/tool/prompt), not same-task repetition.
+- Add harness-level checkpoints: mandatory test/verification gates and failure-localization logging.
 
-## Applied guardrails for this project
-- Escalate to WARNING when same task_id appears 3+ times in recent history.
-- Escalate to RESEARCH when same task_id appears 5+ times or no net code delta over 3 loops.
-- Require one concrete strategy change after second repeat (test shape, fixture design, acceptance boundary).
-- Require a "fresh evidence" note per retry (new failing line, new hypothesis, or changed patch scope).
+Operational recommendations for this fleet:
+1. Keep retry caps low for deterministic failures; exponential backoff only for transient failures.
+2. On same task repeated 3x with no net delta, force strategy switch or task split.
+3. Log structured failure reasons per attempt so Sanhedrin can classify transient vs architectural.
 
-## Sources
-- GitHub Docs: Re-running workflows and jobs
-- GitHub Docs: Control workflow concurrency
-- Atlassian incident management/postmortem guidance
+Sources:
+- https://www.anthropic.com/research/building-effective-agents
+- https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
+- https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/
