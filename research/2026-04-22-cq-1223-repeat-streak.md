@@ -1,15 +1,15 @@
-# CQ-1223 repeat-streak guardrails (quick research)
+# CQ-1223 repeat-streak guardrails (Sanhedrin research)
 
-Trigger: modernization task `CQ-1223` repeated 4 consecutive passes.
+Trigger: modernization repeated `CQ-1223` in 4 of last 10 iterations.
 
-Actions to reduce loop-stall without breaking air-gap or HolyC constraints:
-- Add a hard anti-repeat selector: block selecting same `CQ-*` more than 2 consecutive iterations unless queue has only one runnable item.
-- Add "novelty score" in picker: prefer oldest unchecked CQ and tasks not touched in last N iterations.
-- Persist attempt registry per task (`attempts`, `last_outcome`, `last_files`) so loop avoids pseudo-progress on same wrapper.
-- Require completion delta for re-run: if same task chosen, enforce new failing test, new invariant, or new file-class change.
-- Add stuck watchdog: streak>=3 triggers automatic cooldown + forced switch to next runnable CQ.
+## Findings (actionable)
+- Add loop-level repeat cap: if same `task_id` appears 2 consecutive PASS iterations, force next pick from next unchecked CQ id.
+- Add WIP lane split in queue governance: `active_repair`, `net_new`, `validation`; block selecting same lane item >2 times unless latest run changed failing evidence.
+- Add commit-delta gate before re-selecting same task: require new failing signal (CI fail, VM compile fail, or smoke regression) or task is auto-demoted for one cycle.
+- Add CI de-duplication with workflow `concurrency` and `cancel-in-progress: true` to prevent redundant reruns from creating false progress loops.
+- Track toil/stuck metric in `iterations`: `same_task_streak`, `new_signal_present`, `evidence_delta` for deterministic stuck detection.
 
-Sources:
-- https://addyosmani.com/blog/self-improving-agents/
-- https://tengxiaoliu.github.io/autoevolver/
-- https://ericmjl.github.io/blog/2025/11/8/safe-ways-to-let-your-coding-agent-work-autonomously/
+## References
+- https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#concurrency
+- https://www.atlassian.com/agile/kanban/wip-limits
+- https://sre.google/sre-book/eliminating-toil/
