@@ -43,6 +43,18 @@ If inference agent has 0 .HC files in last 5 commits → LAW 5 WARNING.
 - Law 4: `grep -r "F32\|F64\|float\|double" ~/Documents/local-codebases/holyc-inference/src/ 2>/dev/null`
 - Law 6: `grep -c "^\- \[ \] CQ-" <templeos>/MODERNIZATION/MASTER_TASKS.md` (must be >=25)
 
+
+### 4b. Secure-local profile and GPU safety checks (CRITICAL)
+- Verify profile invariants are documented and enforced in both repos:
+```
+rg -n "secure-local|dev-local|quarantine|Book of Truth|IOMMU|GPU" ~/Documents/local-codebases/TempleOS/MODERNIZATION/MASTER_TASKS.md ~/Documents/local-codebases/TempleOS/MODERNIZATION/LOOP_PROMPT.md ~/Documents/local-codebases/holyc-inference/MASTER_TASKS.md ~/Documents/local-codebases/holyc-inference/LOOP_PROMPT.md
+```
+- Flag CRITICAL if any of these are true:
+  - default profile is not `secure-local`
+  - GPU tasks bypass IOMMU or Book-of-Truth audit hooks
+  - trusted model load path can bypass quarantine/hash verification
+  - any network-enable path appears in inference/runtime plans
+
 ### 5. Log audit to DB (NOT markdown)
 ```
 sqlite3 ~/Documents/local-codebases/temple-central.db "INSERT INTO iterations (agent,task_id,status,notes) VALUES ('sanhedrin','AUDIT','pass','Both alive. Mod: N .HC files. Inf: M .HC files. No violations.');"
@@ -63,6 +75,7 @@ If an agent appears stuck (same task 3+ times) or making bad architecture choice
 - NEVER modify files in TempleOS or holyc-inference repos. Read only.
 - NEVER kill running Codex processes. Only restart dead loops.
 - Minimal output. DB entries, not markdown novels.
+- Treat secure-local policy drift and GPU isolation bypass as CRITICAL violations.
 
 ### 8. Monitor CI and email reports
 Check GitHub Actions status for both repos:
