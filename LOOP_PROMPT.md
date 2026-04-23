@@ -55,6 +55,20 @@ rg -n "secure-local|dev-local|quarantine|Book of Truth|IOMMU|GPU" ~/Documents/lo
   - trusted model load path can bypass quarantine/hash verification
   - any network-enable path appears in inference/runtime plans
 
+### 4c. Trinity policy parity check (CRITICAL)
+- Verify policy parity signatures across the three controlling docs:
+```
+for f in \
+  ~/Documents/local-codebases/TempleOS/MODERNIZATION/MASTER_TASKS.md \
+  ~/Documents/local-codebases/holyc-inference/MASTER_TASKS.md \
+  ~/Documents/local-codebases/temple-sanhedrin/LOOP_PROMPT.md; do
+  echo "== $f =="
+  rg -n "secure-local|dev-local|quarantine|IOMMU|Book of Truth|GPU|policy drift" "$f"
+done
+```
+- Flag CRITICAL if one repo changes profile/GPU invariants and the other two do not reflect it.
+- Flag WARNING if GPU roadmap grows in one repo without queueable implementation tasks in the paired repo.
+
 ### 5. Log audit to DB (NOT markdown)
 ```
 sqlite3 ~/Documents/local-codebases/temple-central.db "INSERT INTO iterations (agent,task_id,status,notes) VALUES ('sanhedrin','AUDIT','pass','Both alive. Mod: N .HC files. Inf: M .HC files. No violations.');"
@@ -76,6 +90,7 @@ If an agent appears stuck (same task 3+ times) or making bad architecture choice
 - NEVER kill running Codex processes. Only restart dead loops.
 - Minimal output. DB entries, not markdown novels.
 - Treat secure-local policy drift and GPU isolation bypass as CRITICAL violations.
+- Treat Trinity policy parity mismatches as CRITICAL until resolved in all three repos.
 
 ### 8. Monitor CI and email reports
 Check GitHub Actions status for both repos:
