@@ -69,6 +69,19 @@ done
 - Flag CRITICAL if one repo changes profile/GPU invariants and the other two do not reflect it.
 - Flag WARNING if GPU roadmap grows in one repo without queueable implementation tasks in the paired repo.
 
+### 4d. Sovereign-throughput architecture checks (CRITICAL)
+- Verify all Trinity control docs preserve split-plane trust model + performance gates:
+```
+rg -n "control plane|worker plane|attestation|policy digest|continuous batching|prefix cache|speculative" \
+  ~/Documents/local-codebases/TempleOS/MODERNIZATION/MASTER_TASKS.md \
+  ~/Documents/local-codebases/TempleOS/MODERNIZATION/LOOP_PROMPT.md \
+  ~/Documents/local-codebases/holyc-inference/MASTER_TASKS.md \
+  ~/Documents/local-codebases/holyc-inference/LOOP_PROMPT.md
+```
+- Flag CRITICAL if trust decisions (quarantine promotion, key release, attestation verification) are delegated solely to inference worker docs.
+- Flag CRITICAL if trusted-load path exists without attestation + policy digest parity language.
+- Flag WARNING if throughput goals exist without secure-on benchmark criteria (`secure-local` with audit hooks).
+
 ### 5. Log audit to DB (NOT markdown)
 ```
 sqlite3 ~/Documents/local-codebases/temple-central.db "INSERT INTO iterations (agent,task_id,status,notes) VALUES ('sanhedrin','AUDIT','pass','Both alive. Mod: N .HC files. Inf: M .HC files. No violations.');"
@@ -91,6 +104,7 @@ If an agent appears stuck (same task 3+ times) or making bad architecture choice
 - Minimal output. DB entries, not markdown novels.
 - Treat secure-local policy drift and GPU isolation bypass as CRITICAL violations.
 - Treat Trinity policy parity mismatches as CRITICAL until resolved in all three repos.
+- Treat missing attestation/policy-digest gates on trusted paths as CRITICAL.
 
 ### 8. Monitor CI and email reports
 Check GitHub Actions status for both repos:
