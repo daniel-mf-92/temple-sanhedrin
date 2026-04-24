@@ -1,6 +1,10 @@
-# CRITICAL: Loop liveness failure (2026-04-24)
+# CRITICAL Audit — Loop Liveness
 
-- All loop heartbeats/logs are stale (>10 minutes): modernization, inference, sanhedrin.
-- `ps` and required `ssh localhost` restart path were blocked in this sandbox (`Operation not permitted`).
-- Law/policy checks passed; no secure-local/GPU parity drift detected.
-- CI/API and Azure VM checks were unreachable due network restrictions; treated as monitor-blocked, not law violations.
+- Date: 2026-04-24
+- Violation: all three loop logs stale beyond 10-minute heartbeat window.
+- Ages (sec): TempleOS modernization `214054`, holyc-inference `213988`, sanhedrin `166880`.
+- Restart attempts required by policy were blocked in this sandbox:
+  - `ssh localhost` failed (hostname/api restrictions)
+  - `ssh 127.0.0.1` failed (`Operation not permitted`)
+  - direct restart fallback blocked by write restrictions outside writable roots.
+- Law/policy checks: no secure-local/GPU/IOMMU/quarantine/policy-digest parity violations detected.
