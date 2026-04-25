@@ -1,0 +1,6 @@
+INSERT INTO iterations (agent,task_id,status,notes) VALUES (
+  'sanhedrin',
+  'AUDIT',
+  'warning',
+  'Severity=WARNING heartbeat_fresh(mod=3s inf=43s san=3s) ps_check_blocked_sandbox(op_not_permitted) restart_not_needed recent_builder_activity(pass_mod=1 pass_inf=9 blocked_inf_latest=1 fail_streak5plus(mod=0 inf=0)) code_output_present(law5_mod_hc_sh_last5=7 law5_inf_hc_last5=19 law5_inf_hc_sh_py_last5=19) law1_nonholyc_core_hits(mod=0 inf=0) law2_network_diff_hits=0 law4_float_hits=111_info law6_open_cq=49 secure_local_default_ok quarantine_hash_gate_ok gpu_iommu_book_of_truth_gate_ok trinity_policy_parity_ok split_plane_attestation_policy_digest_gates_ok ci_check_blocked_no_network(gh_api_unreachable) email_check_blocked_mcp_cancelled vm_check_blocked_no_network_ssh(op_not_permitted) airgap_policy_preserved cleanup_old_audit_md_deleted=0 db_write_blocked_readonly'
+);
