@@ -1,0 +1,12 @@
+INSERT INTO iterations (agent,task_id,status,notes) VALUES (
+  'sanhedrin','EMAIL-CHECK','skip',
+  'GitHub notifications Gmail check blocked: MCP gmail_search call cancelled for query from:notifications@github.com subject:"Run failed" newer_than:1h'
+);
+INSERT INTO iterations (agent,task_id,status,notes) VALUES (
+  'sanhedrin','CLEANUP','pass',
+  'cleanup_old_audit_md_deleted=0'
+);
+INSERT INTO iterations (agent,task_id,status,notes) VALUES (
+  'sanhedrin','AUDIT','pass',
+  'Severity=PASS loops_alive_by_heartbeat(mod=59s inf=2s san=2s) ps_check_blocked_sandbox(op_not_permitted) recent_builder_pass(mod=13/13 inf=27/27) fail_streak5plus(mod=0 inf=0) same_task_streak_ge3(mod=0 inf=0) builder_outputs_code_files=YES(law5_mod_hc_sh_last5=7 law5_inf_hc_last5=1 law5_inf_hc_sh_py_last5=25) law1_nonholyc_core_hits(mod=0 inf=0) law2_network_diff_hits=0 law4_float_hits=111(info) law6_open_cq=56(>=25) secure_local_default_preserved quarantine_hash_guards_present iommu_book_of_truth_gpu_guards_present trinity_policy_parity=ok split_plane_attestation_policy_digest_gates=ok network_enable_paths_not_present ci_check_blocked_no_network(gh_api_unreachable) vm_check_blocked_no_network_ssh(op_not_permitted) email_check_blocked_mcp_cancelled airgap_policy_preserved no_ws8_execution db_write=blocked_readonly'
+);
