@@ -1,0 +1,9 @@
+- CRITICAL: Law 7 liveness violation.
+- Missing heartbeat files:
+  - `/Users/danielmatthews-ferrero/Documents/local-codebases/TempleOS/automation/loop.heartbeat`
+  - `/Users/danielmatthews-ferrero/Documents/local-codebases/holyc-inference/automation/loop.heartbeat`
+  - `/Users/danielmatthews-ferrero/Documents/local-codebases/temple-sanhedrin/automation/loop.heartbeat`
+- Loop logs are stale since 2026-04-22 06:22 CEST (age ~286k seconds), so loops are not alive.
+- Restart attempts were made exactly as prescribed via SSH localhost and fallback 127.0.0.1, but blocked by sandbox access:
+  - `ssh: Could not resolve hostname localhost: -65563`
+  - `ssh: connect to host 127.0.0.1 port 22: Operation not permitted`
