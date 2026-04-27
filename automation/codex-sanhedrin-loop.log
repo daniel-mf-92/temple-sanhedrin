@@ -12,3 +12,4 @@ Loop already running (PID 48391; lock: /Users/danielmatthews-ferrero/Documents/l
 Loop already running (lock busy: /Users/danielmatthews-ferrero/Documents/local-codebases/temple-sanhedrin/automation/.codex-loop.lock/.flock)
 Loop already running (lock busy: /Users/danielmatthews-ferrero/Documents/local-codebases/temple-sanhedrin/automation/.codex-loop.lock/.flock)
 fatal: Unable to create '/Users/danielmatthews-ferrero/Documents/local-codebases/temple-sanhedrin/.git/index.lock': Operation not permitted
+fatal: Unable to create '/Users/danielmatthews-ferrero/Documents/local-codebases/temple-sanhedrin/.git/index.lock': Operation not permitted

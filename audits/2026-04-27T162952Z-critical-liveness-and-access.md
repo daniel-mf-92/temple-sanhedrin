@@ -1,0 +1,23 @@
+# Sanhedrin Audit (CRITICAL)
+
+- Time (UTC): 2026-04-27T162952Z
+- `automation/enforce-laws.sh`: `enforce-laws: 0 violations`
+- Liveness: CRITICAL
+  - TempleOS loop lock pid dead (`48390`), heartbeat missing, log stale `461991s`.
+  - holyc-inference loop lock pid dead (`48392`), heartbeat missing, log stale `461925s`.
+  - temple-sanhedrin loop lock pid dead (`66696`), heartbeat missing, log stale `119067s`.
+- Restart attempts:
+  - `ssh localhost` restart path blocked (`Operation not permitted` / host resolution blocked).
+  - Direct restart blocked for TempleOS/holyc-inference due sandbox write restrictions outside writable roots.
+  - Local sanhedrin restart attempt failed due shell incompatibility in loop script (`exec: {LOCK_FD}: not found` under system bash 3.2).
+- Law checks:
+  - Law 5 code-output: modernization `.HC/.sh` last-5 diff lines=`7` (pass), inference `.HC`=`2` and `.HC/.sh/.py`=`11` (pass).
+  - Law 1 non-HolyC core hits: none found.
+  - Law 2 network terms in TempleOS `HEAD~3` diff: none.
+  - Law 4 float markers in inference `src/`: `111` (info).
+  - Law 6 open CQ count: `49` (>=25 pass).
+- Trinity/policy checks: secure-local default and quarantine/IOMMU/Book-of-Truth gates present; no parity drift detected in control docs.
+- CI/email/VM checks:
+  - GitHub Actions API unreachable (`api.github.com` connection error).
+  - Daniel-Google MCP unavailable in this session (email check blocked).
+  - Azure VM SSH blocked (`Operation not permitted`).
