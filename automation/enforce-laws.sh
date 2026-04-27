@@ -53,6 +53,14 @@ for repo in "${REPOS[@]}"; do
     if [[ "$sha_msg" == chore\(codex\):\ checkpoint* ]]; then
       continue
     fi
+    # Skip sanhedrin self-actions (RM/revert commits)
+    if [[ "$sha_msg" == sanhedrin:\ * ]]; then
+      continue
+    fi
+    # Skip shas already escalated to humans (LAW-6 conflict, etc.) — no point re-detecting
+    if grep -qF "sha=$sha" "$AUDITS_DIR/blockers-escalated.log" 2>/dev/null; then
+      continue
+    fi
     # Skip commits already reverted by sanhedrin (regex, not -F: needs to match .* in pattern)
     if git log "$branch" --format=%s -n 30 | grep -qE "^revert: sanhedrin enforcement.*$sha"; then
       continue
@@ -112,9 +120,11 @@ for repo in "${REPOS[@]}"; do
         git push origin "$branch" >/dev/null 2>&1 || log_action "PUSH-FAIL" "$repo" "$sha" "LAW-6" "push failed"
         log_action "REVERT" "$repo" "$sha" "LAW-6-self-queue" "added=$added_queue"
       else
-        # Conflict — abort, escalate to human
+        # Conflict — abort, escalate to human (dedup: skip if sha already escalated)
         git revert --abort >/dev/null 2>&1 || true
-        echo "$(ts) LAW-6 revert conflict: $(basename "$repo") sha=$sha — manual cleanup needed" >> "$AUDITS_DIR/blockers-escalated.log"
+        if ! grep -qF "sha=$sha" "$AUDITS_DIR/blockers-escalated.log" 2>/dev/null; then
+          echo "$(ts) LAW-6 revert conflict: $(basename "$repo") sha=$sha — manual cleanup needed" >> "$AUDITS_DIR/blockers-escalated.log"
+        fi
         log_action "REVERT-CONFLICT" "$repo" "$sha" "LAW-6-self-queue" "escalated"
       fi
       continue
