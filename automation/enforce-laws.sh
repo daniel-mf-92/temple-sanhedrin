@@ -49,6 +49,10 @@ for repo in "${REPOS[@]}"; do
     if [[ "$sha_msg" == revert:\ sanhedrin\ enforcement* ]]; then
       continue
     fi
+    # Skip auto-checkpoint commits (host loop snapshots, not creative work)
+    if [[ "$sha_msg" == chore\(codex\):\ checkpoint* ]]; then
+      continue
+    fi
     # Skip commits already reverted by sanhedrin (regex, not -F: needs to match .* in pattern)
     if git log "$branch" --format=%s -n 30 | grep -qE "^revert: sanhedrin enforcement.*$sha"; then
       continue
@@ -59,6 +63,10 @@ for repo in "${REPOS[@]}"; do
     # LAW 4: Identifier compounding (filename or function-name lengths)
     bad_files=$(git diff-tree --no-commit-id --name-only -r "$sha" 2>/dev/null | while read f; do
       [[ -z "$f" ]] && continue
+      # Skip generated artifacts — the source is the violation, not the build output
+      case "$f" in
+        *__pycache__*|*.pyc|*.bak|*.deprecated.bak) continue ;;
+      esac
       base=$(basename "$f")
       name="${base%.*}"
       if (( ${#name} > 40 )); then echo "$f"; continue; fi
@@ -80,7 +88,7 @@ for repo in "${REPOS[@]}"; do
     fi
 
     # LAW 6: Self-generated CQ/IQ items — commit added new "- [ ] CQ-" or "- [ ] IQ-" lines
-    added_queue=$(git show "$sha" -- '*MASTER_TASKS.md' 2>/dev/null | grep -E "^\+- \[ \] (CQ|IQ)-" | wc -l | tr -d ' ')
+    added_queue=$(git show "$sha" -- '*MASTER_TASKS.md' 2>/dev/null | { grep -cE "^\+- \[ \] (CQ|IQ)-" || true; } | tr -d ' ')
     if (( added_queue > 0 )); then
       log_action "DETECT" "$repo" "$sha" "LAW-6-self-queue" "added=$added_queue"
       violations_found=$((violations_found+1))
@@ -99,7 +107,7 @@ for repo in "${REPOS[@]}"; do
     blocker_pattern="readonly database"
     recent_finals=$(ls -t "$logs_dir"/*.final.txt 2>/dev/null | head -5 || true)
     if [[ -n "$recent_finals" ]]; then
-      blocker_count=$(echo "$recent_finals" | xargs grep -l "$blocker_pattern" 2>/dev/null | wc -l | tr -d ' ')
+      blocker_count=$(echo "$recent_finals" | { xargs grep -l "$blocker_pattern" 2>/dev/null || true; } | wc -l | tr -d ' ')
       if (( blocker_count >= 3 )); then
         log_action "DETECT" "$repo" "(N/A)" "LAW-7-repeated-blocker" "pattern=$blocker_pattern count=$blocker_count"
         violations_found=$((violations_found+1))

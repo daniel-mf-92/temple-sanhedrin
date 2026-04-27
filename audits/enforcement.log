@@ -12,3 +12,9 @@
 2026-04-27T14:16:12Z action=DETECT repo=TempleOS sha=a4548151871cc54104179dafdd7d889d9c3cec1e law=LAW-4-compounding detail=automation/sched-lifecycle-invariant-digest-window-rows-clamp-status-digest-pair-window-tail-helper-smoke.sh
 2026-04-27T14:16:12Z action=DETECT repo=TempleOS sha=1370d9cfe79ffced1cd7c21243a43b84a9821e32 law=LAW-4-compounding detail=automation/sched-lifecycle-invariant-digest-window-rows-clamp-status-digest-pair-window-tail-helper-smoke.sh
 2026-04-27T14:16:13Z action=DETECT repo=TempleOS sha=a938842f704f63437dd5c92dd5f850d744c5a07f law=LAW-4-compounding detail=automation/sched-lifecycle-invariant-digest-window-rows-clamp-status-digest-pair-window-tail-helper-smoke.sh
+2026-04-27T14:32:05Z action=DETECT repo=holyc-inference sha=5981284bdbc2dac560398eab8c4ea1c90a4733d8 law=LAW-6-self-queue detail=added=1
+2026-04-27T14:32:05Z action=DETECT repo=holyc-inference sha=9d34b45341497be3f8258388c44adf536026d15c law=LAW-4-compounding detail=tests/__pycache__/test_gpu_security_perf_fast_path_switch_batch_audit_q64_iq1782.cpython-314-pytest-9.0.3.pyc
+2026-04-27T14:32:09Z action=REVERT repo=holyc-inference sha=9d34b45341497be3f8258388c44adf536026d15c law=LAW-4-compounding detail=tests/__pycache__/test_gpu_security_perf_fast_path_switch_batch_audit_q64_iq1782.cpython-314-pytest-9.0.3.pyc
+2026-04-27T14:32:09Z action=DETECT repo=holyc-inference sha=9e836f893b7f486cea81f4f609ca54ba4dee2d0b law=LAW-4-compounding detail=tests/__pycache__/test_gpu_security_perf_fast_path_switch_batch_audit_q64_iq1781.cpython-314.pyc
+2026-04-27T14:33:21Z action=DETECT repo=holyc-inference sha=5981284bdbc2dac560398eab8c4ea1c90a4733d8 law=LAW-6-self-queue detail=added=1
+2026-04-27T14:33:21Z action=DETECT repo=holyc-inference sha=9e836f893b7f486cea81f4f609ca54ba4dee2d0b law=LAW-4-compounding detail=tests/test_gpu_security_perf_fast_path_switch_batch_audit_q64_iq1783.py
