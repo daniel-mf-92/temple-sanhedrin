@@ -37,15 +37,20 @@ for repo in "${REPOS[@]}"; do
   cd "$repo"
 
   # Find the active codex branch
-  branch=$(git branch -a 2>/dev/null | grep -E "codex/(modernization|inference)-loop" | head -1 | sed 's/^[* ] //; s|^remotes/origin/||') || true
+  branch=$(git branch -a 2>/dev/null | grep -E "codex/(modernization|inference)-loop|(^\* main$|^  main$|remotes/origin/main$)" | head -1 | sed 's/^[* ] //; s|^remotes/origin/||') || true
   [[ -z "$branch" ]] && continue
 
   # Inspect last 5 commits
   for sha in $(git log "$branch" --format=%H -n 5 2>/dev/null); do
     commit_epoch=$(git log -1 --format=%ct "$sha")
     if (( commit_epoch < SINCE_EPOCH )); then continue; fi
-    # Skip already-reverted commits
-    if git log "$branch" --format=%s -n 30 | grep -qF "revert: sanhedrin enforcement.*$sha"; then
+    # Skip sanhedrin's own revert commits (prevents oscillation)
+    sha_msg=$(git log -1 --format=%s "$sha")
+    if [[ "$sha_msg" == revert:\ sanhedrin\ enforcement* ]]; then
+      continue
+    fi
+    # Skip commits already reverted by sanhedrin (regex, not -F: needs to match .* in pattern)
+    if git log "$branch" --format=%s -n 30 | grep -qE "^revert: sanhedrin enforcement.*$sha"; then
       continue
     fi
 
