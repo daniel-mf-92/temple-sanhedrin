@@ -6,3 +6,4 @@
 2026-04-27T15:23:49Z | Retroactive historical commit audit across next older 8 TempleOS and 8 holyc-inference commits; 51 findings
 2026-04-27T15:36:03Z | Retroactive historical commit audit across next older 8 TempleOS and 8 holyc-inference commits; 53 findings
 2026-04-27T15:47:16Z | Retroactive commit audit across latest 2 TempleOS and 3 holyc-inference commits; 8 findings
+2026-04-27T16:08:00Z | Cross-repo token Book-of-Truth invariant audit across TempleOS and holyc-inference; 2 findings
