@@ -42,3 +42,4 @@
 2026-04-28T00:47:57+02:00 | Retroactive audit of 24 latest TempleOS/holyc-inference commits; 9 findings across 24 reports
 2026-04-27T22:56:59Z | Cross-repo north-star handoff contract drift audit across TempleOS and holyc-inference; 4 findings
 2026-04-27T23:04:40Z | Deep LAWS.md numbering/enforcement ambiguity research with local issue register; 6 findings
+2026-04-27T23:14:24Z | Law 8 TSC/MSR hardware-proximity compliance backfill across TempleOS Book-of-Truth history/current source; 4 findings
