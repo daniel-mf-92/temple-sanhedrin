@@ -1,0 +1,2 @@
+2026-04-27T13:59:20Z action=DETECT repo=TempleOS sha=a938842f704f63437dd5c92dd5f850d744c5a07f law=LAW-4-compounding detail=automation/sched-lifecycle-invariant-digest-window-rows-clamp-status-digest-pair-window-tail-helper-smoke.sh
+2026-04-27T13:59:26Z action=REVERT repo=TempleOS sha=a938842f704f63437dd5c92dd5f850d744c5a07f law=LAW-4-compounding detail=automation/sched-lifecycle-invariant-digest-window-rows-clamp-status-digest-pair-window-tail-helper-smoke.sh

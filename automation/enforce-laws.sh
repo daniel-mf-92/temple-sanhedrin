@@ -92,7 +92,7 @@ for repo in "${REPOS[@]}"; do
   logs_dir="$repo/automation/logs"
   if [[ -d "$logs_dir" ]]; then
     blocker_pattern="readonly database"
-    recent_finals=$(ls -t "$logs_dir"/*.final.txt 2>/dev/null | head -5)
+    recent_finals=$(ls -t "$logs_dir"/*.final.txt 2>/dev/null | head -5 || true)
     if [[ -n "$recent_finals" ]]; then
       blocker_count=$(echo "$recent_finals" | xargs grep -l "$blocker_pattern" 2>/dev/null | wc -l | tr -d ' ')
       if (( blocker_count >= 3 )); then
