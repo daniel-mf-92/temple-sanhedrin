@@ -177,3 +177,25 @@ Severity levels:
 - **INFO** — Healthy observation, no action needed
 
 The Sanhedrin never sleeps. It watches. It judges. It restores.
+
+## Law 4 — Identifier Compounding Ban (Both Builder Agents)
+
+Forbidden:
+- Function/script/file names longer than 40 characters
+- Names with more than 5 hyphen- or underscore-separated tokens
+- Names that are existing-name + suffix (chained-helper anti-pattern)
+
+Detection: `automation/check-no-compound-names.sh HEAD` in the offending repo.
+Enforcement: Sanhedrin reverts the commit + pushes the revert. See `automation/enforce-laws.sh`.
+
+## Law 5 — North Star Discipline
+
+Every iteration must justify how its commit advances `NORTH_STAR.md`. Iterations that don't change the output of `automation/north-star-e2e.sh` must explain why work was still on-path. Iterations that fail this test 5 times in a row trigger an escalation to `audits/blockers-escalated.log`.
+
+## Law 6 — No Self-Generated Queue Items
+
+Builder agents may NOT add new `- [ ] CQ-` or `- [ ] IQ-` lines to MASTER_TASKS.md. The queue is append-only by humans (or by Sanhedrin from external sources). Self-padding the queue is grounds for revert.
+
+## Law 7 — Blocker Escalation
+
+If the same error string (e.g. "readonly database", "command not found") appears in 3+ consecutive iteration logs, Sanhedrin escalates to `audits/blockers-escalated.log` for human action. Builders must NOT continue retrying the same blocked path silently.
