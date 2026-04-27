@@ -188,3 +188,10 @@ Sanhedrin will revert your commits if you violate rules 1, 4, or repeat the same
 - ❌ If queue is empty and North Star is RED — exit 0 with "queue empty" message (legitimate)
 
 The treadmill is over. Slow down. Build real things.
+
+
+## SANHEDRIN ENFORCEMENT — run every iteration
+
+Run `bash automation/enforce-laws.sh` at the START of every iteration. It scans the last 5 commits in TempleOS and holyc-inference repos (only commits after the cutoff in `audits/.enforce-since`) and reverts violators of Laws 4-7. Capture its output in your final message.
+
+Do NOT alter the cutoff file — it prevents retroactive reverts of pre-reform history.

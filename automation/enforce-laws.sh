@@ -23,6 +23,13 @@ log_action() {
   echo "$(ts) action=$action repo=$(basename "$repo") sha=$sha law=$law detail=$detail" >> "$ENFORCE_LOG"
 }
 
+
+CUTOFF_FILE="$SANHEDRIN_DIR/audits/.enforce-since"
+if [[ -f "$CUTOFF_FILE" ]]; then
+  SINCE_TS=$(grep -oE "SINCE_TS=[^ ]+" "$CUTOFF_FILE" | head -1 | sed "s/SINCE_TS=//")
+fi
+SINCE_EPOCH=$(date -j -u -f "%Y-%m-%dT%H:%M:%SZ" "${SINCE_TS:-1970-01-01T00:00:00Z}" "+%s" 2>/dev/null || echo 0)
+
 violations_found=0
 
 for repo in "${REPOS[@]}"; do
@@ -35,6 +42,8 @@ for repo in "${REPOS[@]}"; do
 
   # Inspect last 5 commits
   for sha in $(git log "$branch" --format=%H -n 5 2>/dev/null); do
+    commit_epoch=$(git log -1 --format=%ct "$sha")
+    if (( commit_epoch < SINCE_EPOCH )); then continue; fi
     # Skip already-reverted commits
     if git log "$branch" --format=%s -n 30 | grep -qF "revert: sanhedrin enforcement.*$sha"; then
       continue
