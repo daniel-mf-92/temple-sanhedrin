@@ -2,3 +2,4 @@
 2026-04-27T13:33:44Z | Historical temple-central.db long-window agent behaviour trend audit; 6 findings
 2026-04-27T14:13:38Z | Retroactive commit audit across 8 TempleOS and 8 holyc-inference commits; 31 findings
 2026-04-27T14:57:36Z | Law 4 identifier-compounding compliance backfill across 4,306 pre-rule commits plus post-rule snapshot; 8 findings
+2026-04-27T15:10:19Z | Retroactive commit audit across 8 TempleOS and 8 holyc-inference commits; 27 findings
