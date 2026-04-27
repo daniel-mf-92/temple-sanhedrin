@@ -31,3 +31,4 @@
 2026-04-27T20:12:15Z | Retroactive commit audit of latest unaudited TempleOS commit 1d3d740; 0 findings
 2026-04-27T20:21:12Z | Retroactive commit audit across 3 TempleOS and 3 holyc-inference latest unaudited commits; 2 critical findings
 2026-04-27T20:33:20Z | Retroactive commit audit of latest unaudited TempleOS commit 5810b24; 0 findings
+2026-04-27T20:47:22Z | Cross-repo token Book-of-Truth control-plane drift audit across TempleOS and holyc-inference; 4 findings
