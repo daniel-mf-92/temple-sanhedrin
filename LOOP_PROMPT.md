@@ -124,3 +124,74 @@ Also check email (via Daniel-Google MCP) for GitHub Actions failure notification
 The Azure test VM (52.157.85.234) runs QEMU with TempleOS every 15 min.
 Check its results: ssh azureuser@52.157.85.234 'sqlite3 /home/azureuser/test-results.db "SELECT * FROM tests ORDER BY ts DESC LIMIT 5;"'
 If compile tests are failing: flag as CRITICAL and research the error.
+
+
+---
+
+# OVERRIDE — value-not-noise reforms (2026-04-27)
+
+The following supersedes any conflicting instruction earlier in this prompt. Read this section LAST and let it WIN.
+
+## 1. Queue floor abolished
+
+- **Do NOT generate new CQ-/IQ- items.** The queue is now append-only by humans.
+- If the queue has zero unchecked items: **exit cleanly with the message `queue empty — North Star not hit, awaiting human input` and status 0.** Do not invent work.
+- The script `automation/sched-lifecycle-invariant-window-code-cq-depth-check.sh` and any `--min N` queue-depth check is **deprecated**. Do NOT run it. Do NOT cite "queue depth" as validation. The depth check now exits 1 with a notice if invoked.
+
+## 2. North Star is the ONLY truth
+
+Read `NORTH_STAR.md` (or `MODERNIZATION/NORTH_STAR.md`) at start of every iteration. Every CQ/IQ item must advance the North Star pipeline. If it does not, **skip it and pick the next item.** If no remaining items advance the North Star, exit (per rule 1).
+
+## 3. RED end-to-end test is mandatory
+
+Run `bash automation/north-star-e2e.sh` at the END of every iteration. Capture stdout/stderr in your final message. The test will fail (RED) until North Star is hit. Iterations that do not change the test output must explain why the work was still on-path.
+
+## 4. Identifier compounding is BANNED
+
+Forbidden:
+- New function/script/file names longer than 40 characters
+- New names with more than 5 hyphen- or underscore-separated tokens
+- New names that are existing-name + suffix (e.g. existing `FooBarTrend` + new `FooBarTrendDigest`)
+
+Run `bash automation/check-no-compound-names.sh HEAD` before committing. If it fails, REVISE the name. Don't ship.
+
+## 5. Logging — JSONL not SQLite
+
+The central SQLite DB is sandbox-readonly to codex. Stop trying to write to it. Instead append one JSON line to `automation/logs/iterations.jsonl` (this path IS writable):
+
+```bash
+printf '%s\n' "$(jq -nc \
+  --arg agent "modernization" \
+  --arg task_id "CQ-XXX" \
+  --arg status "pass" \
+  --arg files "path/to/file.HC" \
+  --arg notes "brief note" \
+  --arg ts "$(date -u +%FT%TZ)" \
+  '{ts:$ts,agent:$agent,task_id:$task_id,status:$status,files:$files,notes:$notes}')" \
+  >> automation/logs/iterations.jsonl
+```
+
+A host-side ingester syncs JSONL → DB. **Do not retry the SQLite write.** If you see "readonly database" once, log it once and move on — repeated occurrences are a violation.
+
+## 6. Sanhedrin has teeth
+
+Sanhedrin will revert your commits if you violate rules 1, 4, or repeat the same blocker error >3 iterations. If you see a `revert: sanhedrin enforcement` commit, READ IT, fix the underlying issue, and don't repeat the violation pattern.
+
+## 7. Definition of a successful iteration (UPDATED)
+
+- ✅ Picked an existing item that advances North Star
+- ✅ Implemented it (real code, not name-compounded wrapper)
+- ✅ `automation/check-no-compound-names.sh HEAD` passes
+- ✅ `automation/north-star-e2e.sh` ran and result is captured (PASS or RED-but-progress-toward-PASS)
+- ✅ Logged to `automation/logs/iterations.jsonl`
+- ✅ Marked item done in MASTER_TASKS.md (no new items appended)
+- ❌ If queue is empty and North Star is RED — exit 0 with "queue empty" message (legitimate)
+
+The treadmill is over. Slow down. Build real things.
+
+
+## SANHEDRIN ENFORCEMENT — run every iteration
+
+Run `bash automation/enforce-laws.sh` at the START of every iteration. It scans the last 5 commits in TempleOS and holyc-inference repos (only commits after the cutoff in `audits/.enforce-since`) and reverts violators of Laws 4-7. Capture its output in your final message.
+
+Do NOT alter the cutoff file — it prevents retroactive reverts of pre-reform history.

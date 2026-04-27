@@ -177,3 +177,16 @@ Severity levels:
 - **INFO** — Healthy observation, no action needed
 
 The Sanhedrin never sleeps. It watches. It judges. It restores.
+
+## Law 4 — Identifier Compounding Ban (Both Builder Agents)
+Forbidden: names >40 chars, >5 hyphen tokens, or existing-name+suffix.
+Detection: automation/check-no-compound-names.sh HEAD. Enforcement: automation/enforce-laws.sh.
+
+## Law 5 — North Star Discipline
+Every iteration must advance NORTH_STAR.md. Failures escalate after 5 consecutive.
+
+## Law 6 — No Self-Generated Queue Items
+Builder agents may NOT add new CQ-/IQ- lines. Queue is human-append-only. Self-padding triggers revert.
+
+## Law 7 — Blocker Escalation
+Same error in 3+ consecutive iterations escalates to audits/blockers-escalated.log.

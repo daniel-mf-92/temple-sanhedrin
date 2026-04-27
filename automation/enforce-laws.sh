@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+# enforce-laws.sh — Sanhedrin enforcement. Detects violations + reverts.
+# Runs across TempleOS + holyc-inference. Requires git push permissions.
+
+set -euo pipefail
+
+SANHEDRIN_DIR="${SANHEDRIN_DIR:-$HOME/Documents/local-codebases/temple-sanhedrin}"
+AUDITS_DIR="$SANHEDRIN_DIR/audits"
+ENFORCE_LOG="$AUDITS_DIR/enforcement.log"
+mkdir -p "$AUDITS_DIR"
+touch "$ENFORCE_LOG"
+
+# Repos under enforcement
+declare -a REPOS=(
+  "$HOME/Documents/local-codebases/TempleOS"
+  "$HOME/Documents/local-codebases/holyc-inference"
+)
+
+ts() { date -u +%FT%TZ; }
+
+log_action() {
+  local action="$1" repo="$2" sha="$3" law="$4" detail="$5"
+  echo "$(ts) action=$action repo=$(basename "$repo") sha=$sha law=$law detail=$detail" >> "$ENFORCE_LOG"
+}
+
+
+CUTOFF_FILE="$SANHEDRIN_DIR/audits/.enforce-since"
+if [[ -f "$CUTOFF_FILE" ]]; then
+  SINCE_TS=$(grep -oE "SINCE_TS=[^ ]+" "$CUTOFF_FILE" | head -1 | sed "s/SINCE_TS=//")
+fi
+SINCE_EPOCH=$(date -j -u -f "%Y-%m-%dT%H:%M:%SZ" "${SINCE_TS:-1970-01-01T00:00:00Z}" "+%s" 2>/dev/null || echo 0)
+
+violations_found=0
+
+for repo in "${REPOS[@]}"; do
+  [[ ! -d "$repo/.git" ]] && continue
+  cd "$repo"
+
+  # Find the active codex branch
+  branch=$(git branch -a 2>/dev/null | grep -E "codex/(modernization|inference)-loop" | head -1 | sed 's/^[* ] //; s|^remotes/origin/||') || true
+  [[ -z "$branch" ]] && continue
+
+  # Inspect last 5 commits
+  for sha in $(git log "$branch" --format=%H -n 5 2>/dev/null); do
+    commit_epoch=$(git log -1 --format=%ct "$sha")
+    if (( commit_epoch < SINCE_EPOCH )); then continue; fi
+    # Skip already-reverted commits
+    if git log "$branch" --format=%s -n 30 | grep -qF "revert: sanhedrin enforcement.*$sha"; then
+      continue
+    fi
+
+    msg=$(git log -1 --format=%s "$sha")
+
+    # LAW 4: Identifier compounding (filename or function-name lengths)
+    bad_files=$(git diff-tree --no-commit-id --name-only -r "$sha" 2>/dev/null | while read f; do
+      [[ -z "$f" ]] && continue
+      base=$(basename "$f")
+      name="${base%.*}"
+      if (( ${#name} > 40 )); then echo "$f"; continue; fi
+      tokens=$(echo "$name" | tr '_-' '\n' | wc -l | tr -d ' ')
+      if (( tokens > 5 )); then echo "$f"; continue; fi
+    done)
+
+    if [[ -n "$bad_files" ]]; then
+      first_bad=$(echo "$bad_files" | head -1)
+      log_action "DETECT" "$repo" "$sha" "LAW-4-compounding" "$first_bad"
+      violations_found=$((violations_found+1))
+      # Revert (no-commit, then commit + push)
+      if git revert --no-edit --no-commit "$sha" 2>/dev/null; then
+        git commit -m "revert: sanhedrin enforcement (LAW-4 compounding) of $sha" 2>/dev/null || true
+        git push origin "$branch" 2>/dev/null || log_action "PUSH-FAIL" "$repo" "$sha" "LAW-4" "push failed"
+        log_action "REVERT" "$repo" "$sha" "LAW-4-compounding" "$first_bad"
+      fi
+      continue
+    fi
+
+    # LAW 6: Self-generated CQ/IQ items — commit added new "- [ ] CQ-" or "- [ ] IQ-" lines
+    added_queue=$(git show "$sha" -- '*MASTER_TASKS.md' 2>/dev/null | grep -E "^\+- \[ \] (CQ|IQ)-" | wc -l | tr -d ' ')
+    if (( added_queue > 0 )); then
+      log_action "DETECT" "$repo" "$sha" "LAW-6-self-queue" "added=$added_queue"
+      violations_found=$((violations_found+1))
+      if git revert --no-edit --no-commit "$sha" 2>/dev/null; then
+        git commit -m "revert: sanhedrin enforcement (LAW-6 self-generated queue items) of $sha" 2>/dev/null || true
+        git push origin "$branch" 2>/dev/null || log_action "PUSH-FAIL" "$repo" "$sha" "LAW-6" "push failed"
+        log_action "REVERT" "$repo" "$sha" "LAW-6-self-queue" "added=$added_queue"
+      fi
+      continue
+    fi
+  done
+
+  # LAW 7: Repeated blocker — same error string in last 5 final messages
+  logs_dir="$repo/automation/logs"
+  if [[ -d "$logs_dir" ]]; then
+    blocker_pattern="readonly database"
+    recent_finals=$(ls -t "$logs_dir"/*.final.txt 2>/dev/null | head -5)
+    if [[ -n "$recent_finals" ]]; then
+      blocker_count=$(echo "$recent_finals" | xargs grep -l "$blocker_pattern" 2>/dev/null | wc -l | tr -d ' ')
+      if (( blocker_count >= 3 )); then
+        log_action "DETECT" "$repo" "(N/A)" "LAW-7-repeated-blocker" "pattern=$blocker_pattern count=$blocker_count"
+        violations_found=$((violations_found+1))
+        # Don't revert — escalate to human-visible file
+        echo "$(ts) repeated blocker '$blocker_pattern' in $(basename "$repo") — needs human action" >> "$AUDITS_DIR/blockers-escalated.log"
+      fi
+    fi
+  fi
+done
+
+if (( violations_found == 0 )); then
+  log_action "CLEAN" "all" "-" "-" "no violations detected"
+fi
+
+echo "enforce-laws: $violations_found violations"
+exit 0
