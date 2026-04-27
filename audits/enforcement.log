@@ -18,3 +18,9 @@
 2026-04-27T14:32:09Z action=DETECT repo=holyc-inference sha=9e836f893b7f486cea81f4f609ca54ba4dee2d0b law=LAW-4-compounding detail=tests/__pycache__/test_gpu_security_perf_fast_path_switch_batch_audit_q64_iq1781.cpython-314.pyc
 2026-04-27T14:33:21Z action=DETECT repo=holyc-inference sha=5981284bdbc2dac560398eab8c4ea1c90a4733d8 law=LAW-6-self-queue detail=added=1
 2026-04-27T14:33:21Z action=DETECT repo=holyc-inference sha=9e836f893b7f486cea81f4f609ca54ba4dee2d0b law=LAW-4-compounding detail=tests/test_gpu_security_perf_fast_path_switch_batch_audit_q64_iq1783.py
+2026-04-27T14:34:13Z action=DETECT repo=holyc-inference sha=5981284bdbc2dac560398eab8c4ea1c90a4733d8 law=LAW-6-self-queue detail=added=1
+2026-04-27T14:34:16Z action=DETECT repo=holyc-inference sha=9e836f893b7f486cea81f4f609ca54ba4dee2d0b law=LAW-4-compounding detail=tests/test_gpu_security_perf_fast_path_switch_batch_audit_q64_iq1783.py
+2026-04-27T14:35:28Z action=DETECT repo=holyc-inference sha=5981284bdbc2dac560398eab8c4ea1c90a4733d8 law=LAW-6-self-queue detail=added=1
+2026-04-27T14:35:28Z action=REVERT-CONFLICT repo=holyc-inference sha=5981284bdbc2dac560398eab8c4ea1c90a4733d8 law=LAW-6-self-queue detail=escalated
+2026-04-27T14:35:28Z action=DETECT repo=holyc-inference sha=9e836f893b7f486cea81f4f609ca54ba4dee2d0b law=LAW-4-compounding detail=tests/test_gpu_security_perf_fast_path_switch_batch_audit_q64_iq1783.py
+2026-04-27T14:35:33Z action=RM repo=holyc-inference sha=9e836f893b7f486cea81f4f609ca54ba4dee2d0b law=LAW-4-compounding detail=tests/test_gpu_security_perf_fast_path_switch_batch_audit_q64_iq1783.py

@@ -78,11 +78,26 @@ for repo in "${REPOS[@]}"; do
       first_bad=$(echo "$bad_files" | head -1)
       log_action "DETECT" "$repo" "$sha" "LAW-4-compounding" "$first_bad"
       violations_found=$((violations_found+1))
-      # Revert (no-commit, then commit + push)
-      if git revert --no-edit --no-commit "$sha" 2>/dev/null; then
-        git commit -m "revert: sanhedrin enforcement (LAW-4 compounding) of $sha" 2>/dev/null || true
-        git push origin "$branch" 2>/dev/null || log_action "PUSH-FAIL" "$repo" "$sha" "LAW-4" "push failed"
-        log_action "REVERT" "$repo" "$sha" "LAW-4-compounding" "$first_bad"
+      # Targeted removal: git rm each bad file (preserves rest of commit).
+      # Skip if file already absent (prior enforce-laws run handled it).
+      removed_any=0
+      while IFS= read -r bf; do
+        [[ -z "$bf" ]] && continue
+        if [[ -e "$bf" ]] || git ls-files --error-unmatch "$bf" >/dev/null 2>&1; then
+          if git rm -f "$bf" >/dev/null 2>&1; then
+            removed_any=1
+          fi
+        fi
+      done <<< "$bad_files"
+      if (( removed_any == 1 )); then
+        if git commit -m "sanhedrin: remove LAW-4 compounding violator(s) introduced in $sha" >/dev/null 2>&1; then
+          git push origin "$branch" >/dev/null 2>&1 || log_action "PUSH-FAIL" "$repo" "$sha" "LAW-4" "push failed"
+          log_action "RM" "$repo" "$sha" "LAW-4-compounding" "$first_bad"
+        else
+          log_action "RM-COMMIT-FAIL" "$repo" "$sha" "LAW-4-compounding" "$first_bad"
+        fi
+      else
+        log_action "ALREADY-CLEAN" "$repo" "$sha" "LAW-4-compounding" "$first_bad"
       fi
       continue
     fi
@@ -92,10 +107,15 @@ for repo in "${REPOS[@]}"; do
     if (( added_queue > 0 )); then
       log_action "DETECT" "$repo" "$sha" "LAW-6-self-queue" "added=$added_queue"
       violations_found=$((violations_found+1))
-      if git revert --no-edit --no-commit "$sha" 2>/dev/null; then
-        git commit -m "revert: sanhedrin enforcement (LAW-6 self-generated queue items) of $sha" 2>/dev/null || true
-        git push origin "$branch" 2>/dev/null || log_action "PUSH-FAIL" "$repo" "$sha" "LAW-6" "push failed"
+      if git revert --no-edit --no-commit "$sha" >/dev/null 2>&1; then
+        git commit -m "revert: sanhedrin enforcement (LAW-6 self-generated queue items) of $sha" >/dev/null 2>&1 || true
+        git push origin "$branch" >/dev/null 2>&1 || log_action "PUSH-FAIL" "$repo" "$sha" "LAW-6" "push failed"
         log_action "REVERT" "$repo" "$sha" "LAW-6-self-queue" "added=$added_queue"
+      else
+        # Conflict — abort, escalate to human
+        git revert --abort >/dev/null 2>&1 || true
+        echo "$(ts) LAW-6 revert conflict: $(basename "$repo") sha=$sha — manual cleanup needed" >> "$AUDITS_DIR/blockers-escalated.log"
+        log_action "REVERT-CONFLICT" "$repo" "$sha" "LAW-6-self-queue" "escalated"
       fi
       continue
     fi
