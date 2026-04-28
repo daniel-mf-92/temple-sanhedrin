@@ -60,3 +60,4 @@
 2026-04-28T01:23:43Z | Cross-repo GPU Book-of-Truth event vocabulary drift audit across TempleOS and holyc-inference; 4 findings
 2026-04-28T03:36:03+02:00 | Retroactive audit across next unaudited 3 TempleOS and 3 holyc-inference commits; 16 findings across 6 reports
 2026-04-28T03:52:22+02:00 | Cross-repo serial benchmark contract drift audit across TempleOS and holyc-inference; 4 findings
+2026-04-28T04:02:11+02:00 | Cross-repo secure-local release-gate coverage drift audit across TempleOS and holyc-inference; 5 findings
