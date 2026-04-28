@@ -69,12 +69,12 @@ for repo in "${REPOS[@]}"; do
     msg=$(git log -1 --format=%s "$sha")
 
     # LAW 4: Identifier compounding (filename or function-name lengths)
-    bad_files=$(git diff-tree --no-commit-id --name-only -r "$sha" 2>/dev/null | while read f; do
+    bad_files=$(git diff-tree --no-commit-id --name-only -r "$sha" 2>/dev/null | while read -r f; do
       [[ -z "$f" ]] && continue
-      # Skip generated artifacts — the source is the violation, not the build output
-      case "$f" in
-        *__pycache__*|*.pyc|*.bak|*.deprecated.bak) continue ;;
-      esac
+      # Skip generated artifacts; source files are what matters for enforcement.
+      if [[ "$f" == *__pycache__* || "$f" == *.pyc || "$f" == *.bak || "$f" == *.deprecated.bak ]]; then
+        continue
+      fi
       base=$(basename "$f")
       name="${base%.*}"
       if (( ${#name} > 40 )); then echo "$f"; continue; fi
