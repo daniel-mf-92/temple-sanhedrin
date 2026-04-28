@@ -56,3 +56,4 @@
 2026-04-28T02:48:38+02:00 | Cross-repo Book-of-Truth serial artifact boundary drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-28T02:58:42+02:00 | Cross-repo queue floor doctrine drift audit across TempleOS and holyc-inference committed task queues; 5 findings
 2026-04-28T01:07:13Z | Retroactive audit of latest unaudited TempleOS commit 17d919b; 0 findings
+2026-04-28T03:15:19+02:00 | Retroactive TempleOS commit audit for 5 unaudited scheduler-band commits; 4 Law 5 warnings, 0 critical findings
