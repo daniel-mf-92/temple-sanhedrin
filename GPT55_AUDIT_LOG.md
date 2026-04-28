@@ -52,3 +52,4 @@
 2026-04-28T02:15:35+02:00 | Retroactive audit of latest unaudited TempleOS commit c49ce7c; 1 finding
 2026-04-28T02:23:50+02:00 | Retroactive audit across next unaudited 3 TempleOS and 3 holyc-inference commits; 15 findings across 6 reports
 2026-04-28T02:32:33+02:00 | Retroactive audit of latest unaudited TempleOS commit 93ad594; 0 findings
+2026-04-28T02:40:49+02:00 | WS8 networking-task compliance backfill across TempleOS and holyc-inference histories/current policy; 4 findings
