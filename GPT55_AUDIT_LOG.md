@@ -101,3 +101,4 @@
 2026-04-28T12:18:44+02:00 | Historical QEMU safety evidence recording drift audit against temple-central.db and current reports; 5 findings
 2026-04-28T12:48:45+02:00 | Cross-repo GGUF model-image boundary drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-28T13:16:47+02:00 | Cross-repo resource-pressure and inference memory drift audit across TempleOS and holyc-inference; 5 findings
+2026-04-28T13:28:01+02:00 | Law 4 post-rule identifier-compounding regression backfill across TempleOS and holyc-inference; 6 findings
