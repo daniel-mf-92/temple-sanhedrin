@@ -85,3 +85,4 @@
 2026-04-28T08:00:01+02:00 | Retroactive audit across latest 3 unaudited TempleOS and 3 holyc-inference commits; 3 findings across 6 reports
 2026-04-28T08:08:25+02:00 | Cross-repo scheduler/worker-plane contract drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-28T08:19:33+02:00 | Retroactive audit of latest unaudited TempleOS host-automation guard commit c0f1f16; 1 Law 5 warning finding
+2026-04-28T08:30:54+02:00 | Historical Law 5 busywork/task-reuse drift audit against temple-central.db builder rows; 5 findings
