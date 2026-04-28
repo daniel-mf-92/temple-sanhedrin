@@ -137,3 +137,4 @@
 2026-04-28T22:06:14+02:00 | Retroactive audit of latest unaudited TempleOS DMA Book-of-Truth commit 6eb5748; 3 findings
 2026-04-28T22:15:59+02:00 | Retroactive audit across latest unaudited 3 TempleOS side-branch commits and 3 holyc-inference benchmark commits; 1 finding across 6 reports
 2026-04-28T22:32:03+02:00 | Retroactive audit of latest unaudited TempleOS Book-of-Truth remediation queue commit a16b11d; 0 findings
+2026-04-28T22:52:55+02:00 | Cross-repo JSONL iteration logging drift audit across TempleOS, holyc-inference, and Sanhedrin policy surfaces; 5 findings
