@@ -249,3 +249,7 @@
 2026-04-28T02:04:43Z action=CLEAN repo=all sha=- law=- detail=no violations detected
 2026-04-28T02:09:54Z action=CLEAN repo=all sha=- law=- detail=no violations detected
 2026-04-28T02:10:43Z action=CLEAN repo=all sha=- law=- detail=no violations detected
+2026-04-28T02:15:59Z action=DETECT repo=TempleOS sha=6c0c561670637e945fb61064b283a7838a96f147 law=LAW-4-compounding detail=automation/sched-lifecycle-invariant-digest-window-rows-clamp-status-digest-pair-window-tail-digest-smoke-queue-depth.sh
+2026-04-28T02:16:00Z action=ALREADY-CLEAN repo=TempleOS sha=6c0c561670637e945fb61064b283a7838a96f147 law=LAW-4-compounding detail=automation/sched-lifecycle-invariant-digest-window-rows-clamp-status-digest-pair-window-tail-digest-smoke-queue-depth.sh
+2026-04-28T02:16:25Z action=DETECT repo=TempleOS sha=6c0c561670637e945fb61064b283a7838a96f147 law=LAW-4-compounding detail=automation/sched-lifecycle-invariant-digest-window-rows-clamp-status-digest-pair-window-tail-digest-smoke-queue-depth.sh
+2026-04-28T02:16:27Z action=RM repo=TempleOS sha=6c0c561670637e945fb61064b283a7838a96f147 law=LAW-4-compounding detail=automation/sched-lifecycle-invariant-digest-window-rows-clamp-status-digest-pair-window-tail-digest-smoke-queue-depth.sh
