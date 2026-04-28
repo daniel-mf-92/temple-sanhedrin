@@ -67,3 +67,4 @@
 2026-04-28T02:40:22Z | Cross-repo identifier-compounding gate drift audit across TempleOS, holyc-inference, and Sanhedrin enforcement; 4 findings
 2026-04-28T04:53:24+02:00 | Cross-repo prompt transport and telemetry provenance drift audit across TempleOS and holyc-inference; 4 findings
 2026-04-28T05:05:02+02:00 | Retroactive audit across latest unaudited 3 TempleOS and 3 holyc-inference commits; 5 findings across 6 reports
+2026-04-28T05:14:12+02:00 | Cross-repo GPU failstop ledger proof drift audit across TempleOS and holyc-inference; 4 findings
