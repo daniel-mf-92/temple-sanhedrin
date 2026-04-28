@@ -336,3 +336,5 @@
 2026-04-28T04:21:36Z action=CLEAN repo=all sha=- law=- detail=no violations detected
 2026-04-28T04:25:39Z action=CLEAN repo=all sha=- law=- detail=no violations detected
 2026-04-28T04:27:39Z action=CLEAN repo=all sha=- law=- detail=no violations detected
+2026-04-28T04:32:10Z action=DETECT repo=TempleOS sha=848ec838a3e173390df8fb6d65304873fe381a49 law=LAW-4-compounding detail=automation/sched-lifecycle-invariant-digest-window-rows-clamp-status-digest-pair-window-tail-parity-smoke-queue-depth-smoke.sh
+2026-04-28T04:32:12Z action=RM repo=TempleOS sha=848ec838a3e173390df8fb6d65304873fe381a49 law=LAW-4-compounding detail=automation/sched-lifecycle-invariant-digest-window-rows-clamp-status-digest-pair-window-tail-parity-smoke-queue-depth-smoke.sh
