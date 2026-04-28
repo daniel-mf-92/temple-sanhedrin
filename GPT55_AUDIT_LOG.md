@@ -125,3 +125,4 @@
 2026-04-28T19:19:30+02:00 | Historical temple-central.db provenance-linkage drift audit against builder git history; 7 findings
 2026-04-28T19:37:47+02:00 | Retroactive audit across latest unaudited 4 TempleOS commits; 3 Book-of-Truth control-plane and SMI threshold findings across 4 reports
 2026-04-28T19:50:24+02:00 | Cross-repo generated artifact hygiene drift audit across TempleOS and holyc-inference; 5 findings
+2026-04-28T20:02:10+02:00 | Retroactive audit across latest unaudited 2 TempleOS and 3 holyc-inference commits; 6 findings across 5 reports
