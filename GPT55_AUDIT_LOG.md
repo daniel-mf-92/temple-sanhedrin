@@ -127,3 +127,4 @@
 2026-04-28T19:50:24+02:00 | Cross-repo generated artifact hygiene drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-28T20:02:10+02:00 | Retroactive audit across latest unaudited 2 TempleOS and 3 holyc-inference commits; 6 findings across 5 reports
 2026-04-28T20:15:21+02:00 | Retroactive audit of latest unaudited TempleOS I/O port Book-of-Truth commit; 3 findings across 1 report
+2026-04-28T20:27:23+02:00 | Cross-repo I/O-port vs GPU-MMIO allowlist semantics drift audit across TempleOS and holyc-inference; 5 findings
