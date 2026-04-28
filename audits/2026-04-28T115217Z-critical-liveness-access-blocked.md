@@ -1,0 +1,25 @@
+# CRITICAL Audit
+
+- Time (UTC): 2026-04-28T115217Z
+- enforce-laws:     enforce-laws: 0 violations
+- Liveness CRITICAL: missing heartbeat files in TempleOS + holyc-inference; logs stale >10m.
+  - TempleOS log age: 531965s
+  - holyc-inference log age: 531899s
+- Restart attempt blocked by sandbox/network policy:
+  - ssh 127.0.0.1 -> Operation not permitted
+- Process-list check blocked by sandbox policy:
+  - ps aux -> operation not permitted
+- Code-output check:
+  - modernization .HC/.sh in last 5 commits: 7
+  - inference .HC in last 5 commits: 1
+  - inference .HC/.sh/.py in last 5 commits: 4
+- Law checks:
+  - Law 1 (non-HolyC core files): none found
+  - Law 2 (network terms in TempleOS HEAD~3 diff): none
+  - Law 4 (float tokens in holyc-inference/src): present as metadata token readers/comments only
+  - Law 6 open CQ count: 34
+- Central DB recency warning: latest builder iterations are stale (last seen 2026-04-23), so DB is not a reliable liveness source for this cycle.
+- Trinity / secure-local / GPU parity: present across controlling docs; no drift detected.
+- CI status check blocked: gh could not connect to api.github.com.
+- Email failure notifications check blocked: outlook CLI unauthenticated.
+- Azure VM test DB check blocked: ssh to 52.157.85.234 operation not permitted.
