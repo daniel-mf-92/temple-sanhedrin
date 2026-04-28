@@ -104,3 +104,4 @@
 2026-04-28T13:28:01+02:00 | Law 4 post-rule identifier-compounding regression backfill across TempleOS and holyc-inference; 6 findings
 2026-04-28T13:36:58+02:00 | Cross-repo quant scale control-plane drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-28T13:47:04+02:00 | Cross-repo dev-local guardrail escape-hatch drift audit across TempleOS, holyc-inference, and Sanhedrin policy surfaces; 5 findings
+2026-04-28T13:55:47+02:00 | Retroactive re-audit across 2 TempleOS and 2 holyc-inference historical commits; 3 findings across 4 reports
