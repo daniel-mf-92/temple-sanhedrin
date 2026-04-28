@@ -99,3 +99,4 @@
 2026-04-28T09:39:55Z | Cross-repo artifact manifest gate drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-28T12:04:51+02:00 | Law 7 blocker escalation compliance backfill against temple-central.db and escalation logs; 4 findings
 2026-04-28T12:18:44+02:00 | Historical QEMU safety evidence recording drift audit against temple-central.db and current reports; 5 findings
+2026-04-28T12:48:45+02:00 | Cross-repo GGUF model-image boundary drift audit across TempleOS and holyc-inference; 5 findings
