@@ -93,3 +93,4 @@
 2026-04-28T09:57:11+02:00 | Cross-repo speculative decode control-plane drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-28T10:42:25+02:00 | Retroactive audit across latest 3 unaudited TempleOS and 3 holyc-inference commits; 5 findings across 6 reports
 2026-04-28T10:54:55+02:00 | Cross-repo GPU Book-of-Truth bridge drift audit across TempleOS and holyc-inference; 5 findings
+2026-04-28T11:09:06+02:00 | Cross-repo attestation/key-release trust-plane drift audit across TempleOS and holyc-inference; 5 findings
