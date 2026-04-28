@@ -90,3 +90,4 @@
 2026-04-28T09:23:07+02:00 | Cross-repo prompt-token policy drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-28T09:31:37+02:00 | Retroactive audit of latest unaudited 1 TempleOS and 2 holyc-inference commits; 3 findings across 3 reports
 2026-04-28T09:41:24+02:00 | Cross-repo sampling seed provenance drift audit across TempleOS and holyc-inference; 5 findings
+2026-04-28T09:57:11+02:00 | Cross-repo speculative decode control-plane drift audit across TempleOS and holyc-inference; 5 findings
