@@ -83,3 +83,4 @@
 2026-04-28T07:36:31+02:00 | Retroactive audit across next unaudited 3 TempleOS and 3 holyc-inference historical commits; 8 findings across 6 reports
 2026-04-28T07:49:37+02:00 | Historical temple-central freshness and instrumentation drift audit with post-cutoff git comparison; 6 findings
 2026-04-28T08:00:01+02:00 | Retroactive audit across latest 3 unaudited TempleOS and 3 holyc-inference commits; 3 findings across 6 reports
+2026-04-28T08:08:25+02:00 | Cross-repo scheduler/worker-plane contract drift audit across TempleOS and holyc-inference; 5 findings
