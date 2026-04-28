@@ -131,3 +131,4 @@
 2026-04-28T20:39:35+02:00 | Historical temple-central.db violation-recording drift audit across Sanhedrin iterations and structured violations; 5 findings
 2026-04-28T20:52:51+02:00 | Retroactive audit of latest TempleOS W^X commit and holyc-inference McNemar gate commit; 2 findings across 2 reports
 2026-04-28T21:09:54+02:00 | Retroactive audit across latest unaudited 2 TempleOS and 2 holyc-inference commits; 4 findings across 4 reports
+2026-04-28T21:30:16+02:00 | Retroactive audit across latest unaudited 3 TempleOS and 5 holyc-inference commits; 3 findings across 8 reports
