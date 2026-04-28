@@ -134,3 +134,4 @@
 2026-04-28T21:30:16+02:00 | Retroactive audit across latest unaudited 3 TempleOS and 5 holyc-inference commits; 3 findings across 8 reports
 2026-04-28T21:41:39+02:00 | Retroactive audit across latest unaudited 2 TempleOS commits; 3 findings across 2 reports
 2026-04-28T21:53:23+02:00 | Retroactive audit across latest unaudited 1 TempleOS and 2 holyc-inference commits; 1 finding across 3 reports
+2026-04-28T22:06:14+02:00 | Retroactive audit of latest unaudited TempleOS DMA Book-of-Truth commit 6eb5748; 3 findings
