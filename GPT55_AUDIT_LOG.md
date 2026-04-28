@@ -129,3 +129,4 @@
 2026-04-28T20:15:21+02:00 | Retroactive audit of latest unaudited TempleOS I/O port Book-of-Truth commit; 3 findings across 1 report
 2026-04-28T20:27:23+02:00 | Cross-repo I/O-port vs GPU-MMIO allowlist semantics drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-28T20:39:35+02:00 | Historical temple-central.db violation-recording drift audit across Sanhedrin iterations and structured violations; 5 findings
+2026-04-28T20:52:51+02:00 | Retroactive audit of latest TempleOS W^X commit and holyc-inference McNemar gate commit; 2 findings across 2 reports
