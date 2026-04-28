@@ -50,3 +50,4 @@
 2026-04-28T02:01:15+02:00 | Historical compound-name and CQ/IQ task-reuse drift audit against temple-central.db builder rows; 5 findings
 2026-04-28T02:08:25+02:00 | Retroactive audit of latest unaudited TempleOS commit a73a28d; 1 finding
 2026-04-28T02:15:35+02:00 | Retroactive audit of latest unaudited TempleOS commit c49ce7c; 1 finding
+2026-04-28T02:23:50+02:00 | Retroactive audit across next unaudited 3 TempleOS and 3 holyc-inference commits; 15 findings across 6 reports
