@@ -106,3 +106,4 @@
 2026-04-28T13:47:04+02:00 | Cross-repo dev-local guardrail escape-hatch drift audit across TempleOS, holyc-inference, and Sanhedrin policy surfaces; 5 findings
 2026-04-28T13:55:47+02:00 | Retroactive re-audit across 2 TempleOS and 2 holyc-inference historical commits; 3 findings across 4 reports
 2026-04-28T14:07:19+02:00 | Retroactive re-audit across 2 TempleOS commits and 1 holyc-inference commit; 4 findings across 3 reports
+2026-04-28T14:37:14+02:00 | Retroactive audit of latest 2 unaudited TempleOS commits; 3 findings across 2 reports
