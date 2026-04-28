@@ -71,3 +71,4 @@
 2026-04-28T05:37:36+02:00 | Law 3 Book of Truth immutability compliance backfill across TempleOS history/current source; 4 findings
 2026-04-28T03:47:48Z | Cross-repo Trinity policy gate coverage drift audit across TempleOS, holyc-inference, and Sanhedrin docs; 5 findings
 2026-04-28T05:55:59+02:00 | Retroactive audit of latest 2 unaudited TempleOS host-automation commits; 0 findings across 2 reports
+2026-04-28T06:05:18+02:00 | Cross-repo trusted model manifest schema drift audit across TempleOS and holyc-inference; 4 findings
