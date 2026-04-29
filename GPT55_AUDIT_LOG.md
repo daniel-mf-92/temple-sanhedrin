@@ -230,3 +230,4 @@
 2026-04-29T21:20:12+02:00 | Retroactive audit of TempleOS mem-map hook completion commit 00d1bdcd92c1af0b5c10b5ccc25cc1503f98937e; 3 findings
 2026-04-29T19:28:49Z | Cross-repo QEMU serial retention artifact drift audit; 4 findings.
 2026-04-29T21:37:48+02:00 | Cross-repo attestation and key-release binding drift audit across TempleOS and holyc-inference current heads; 5 findings
+2026-04-29T19:49:33Z | Cross-repo QEMU control-channel local-access drift audit; 3 findings
