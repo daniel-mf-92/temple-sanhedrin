@@ -170,3 +170,4 @@
 2026-04-29T05:33:29+02:00 | Cross-repo prompt/token ingress boundary drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-29T05:45:04+02:00 | Retroactive audit across latest unaudited 4 TempleOS and 6 holyc-inference commits; 6 findings across 10 reports
 2026-04-29T03:58:17Z | Cross-repo artifact provenance gate drift audit across TempleOS host reports and holyc-inference bench manifests; 4 findings
+2026-04-29T06:09:49+02:00 | Cross-repo Book-of-Truth write-fail/token-event contract drift audit across TempleOS and holyc-inference; 4 findings
