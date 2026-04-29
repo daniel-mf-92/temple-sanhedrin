@@ -178,3 +178,4 @@
 2026-04-29T07:18:49+02:00 | Retroactive audit across latest unaudited 4 TempleOS and 6 holyc-inference commits; 17 findings across 10 reports
 2026-04-29T07:33:32+02:00 | Retroactive audit of TempleOS model quarantine commit 75727979e5cba07e7959d4770c9abffe85be78e1; 3 findings
 2026-04-29T07:43:20+02:00 | Cross-repo model quarantine control-plane drift audit across TempleOS and holyc-inference; 5 findings
+2026-04-29T07:53:18+02:00 | Cross-repo key-release control-plane ownership drift audit across TempleOS and holyc-inference; 5 findings
