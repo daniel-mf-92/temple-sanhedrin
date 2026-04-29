@@ -245,3 +245,4 @@
 2026-04-29T23:50:43+02:00 | Law 4 post-backfill regression update across 45 TempleOS and 1 holyc-inference commits; 1 finding
 2026-04-29T23:58:49+02:00 | Cross-repo IRQ Book-of-Truth token evidence contract drift audit across TempleOS and holyc-inference; 3 findings
 2026-04-30T00:10:09+02:00 | Cross-repo model trust manifest proof-tuple drift audit across TempleOS and holyc-inference; 5 findings
+2026-04-29T22:19:47Z | Retroactive audit across latest unaudited 3 TempleOS and 3 holyc-inference commits; 6 findings across 6 reports
