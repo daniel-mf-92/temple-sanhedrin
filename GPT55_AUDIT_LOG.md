@@ -218,3 +218,4 @@
 2026-04-29T18:48:57+02:00 | Cross-repo token Book-of-Truth emission ledger schema drift audit across TempleOS and holyc-inference; 4 findings
 2026-04-29T19:00:49+02:00 | Cross-repo reference-output and model-parse gate contract drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-29T19:13:50+02:00 | Cross-repo QEMU argument escape and host ISO fetch drift audit across TempleOS and holyc-inference; 4 findings
+2026-04-29T19:32:20+02:00 | Historical temple-central queue materialization gap drift audit across builder task ids; 5 findings
