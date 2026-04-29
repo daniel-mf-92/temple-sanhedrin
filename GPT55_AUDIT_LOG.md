@@ -249,3 +249,4 @@
 2026-04-30T00:29:44+02:00 | Law 10 QEMU readonly post-backfill regression update across 41 TempleOS commits; 5 findings
 2026-04-30T00:39:02+02:00 | Cross-repo air-gap, immutable-image, and local-only evidence drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-30T00:49:39+02:00 | Historical builder change-accounting drift audit against temple-central.db; 5 findings
+2026-04-30T00:58:57+02:00 | Retroactive audit of TempleOS deterministic model gate commit e4543e10d3dc1c56ea6f5ce491ea1dfee54a1490; 3 findings
