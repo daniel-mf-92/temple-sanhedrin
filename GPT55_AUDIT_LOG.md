@@ -188,3 +188,4 @@
 2026-04-29T09:21:40+02:00 | Historical temple-central files_changed delimiter drift audit across builder evidence rows; 5 findings
 2026-04-29T09:33:12+02:00 | Retroactive audit across latest unaudited 1 TempleOS commit and 5 holyc-inference commits; 3 findings across 6 reports
 2026-04-29T09:46:24+02:00 | Cross-repo QEMU benchmark proof drift audit across TempleOS and holyc-inference; 5 findings
+2026-04-29T10:23:28+02:00 | Historical temple-central validation-evidence and air-gap auditability drift audit; 5 findings
