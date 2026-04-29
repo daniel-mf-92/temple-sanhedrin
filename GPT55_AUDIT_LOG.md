@@ -162,3 +162,4 @@
 2026-04-29T03:49:58+02:00 | Retroactive audit backfilled 22 missing gpt55 TempleOS/holyc-inference commits since 2026-04-29T00:00; 24 findings across 22 reports
 2026-04-29T03:59:12+02:00 | Retroactive audit of latest unaudited TempleOS North-Star harness commit 6a6ee0bb104e6b13614d0953bcc1d4163e036240; 2 findings
 2026-04-29T04:09:28+02:00 | Cross-repo QEMU input-injection contract drift audit across TempleOS and holyc-inference; 5 findings
+2026-04-29T04:22:38+02:00 | Retroactive audit across latest unaudited 3 TempleOS and 3 holyc-inference commits; 9 findings across 6 reports
