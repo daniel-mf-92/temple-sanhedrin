@@ -242,3 +242,4 @@
 2026-04-29T23:21:16+02:00 | Deeper LAWS.md serial locality ambiguity research with local issue ISSUE-LAWS-006 opened; 4 findings
 2026-04-29T23:30:30+02:00 | Historical builder task-id sequence drift audit against temple-central.db; 5 findings
 2026-04-29T23:39:29+02:00 | Retroactive audit across latest unaudited 4 TempleOS and 4 holyc-inference commits; 5 findings across 8 reports
+2026-04-29T23:50:43+02:00 | Law 4 post-backfill regression update across 45 TempleOS and 1 holyc-inference commits; 1 finding
