@@ -164,3 +164,4 @@
 2026-04-29T04:09:28+02:00 | Cross-repo QEMU input-injection contract drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-29T04:22:38+02:00 | Retroactive audit across latest unaudited 3 TempleOS and 3 holyc-inference commits; 9 findings across 6 reports
 2026-04-29T04:38:02+02:00 | Cross-repo AVX2 compiler execution-contract drift audit across TempleOS and holyc-inference; 5 findings
+2026-04-29T02:55:57Z | Retroactive audit across 3 TempleOS and 3 holyc-inference historical commits; 13 findings across 6 reports
