@@ -215,3 +215,4 @@
 2026-04-29T16:48:28+02:00 | Retro audit of TempleOS d9c3b620 parser hardening commit; 2 findings (1 critical, 1 warning)
 2026-04-29T18:03:44+02:00 | Cross-repo model identity and policy contract drift audit across TempleOS and holyc-inference current heads; 5 findings
 2026-04-29T18:24:25+02:00 | Historical temple-central validation shell-control drift audit across builder rows; 5 findings
+2026-04-29T18:48:57+02:00 | Cross-repo token Book-of-Truth emission ledger schema drift audit across TempleOS and holyc-inference; 4 findings
