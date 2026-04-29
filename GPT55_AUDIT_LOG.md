@@ -213,3 +213,4 @@
 2026-04-29T16:17:17+02:00 | Historical temple-central validation-outcome semantics drift audit across builder and Sanhedrin rows; 5 findings
 2026-04-29T16:28:51+02:00 | Historical Sanhedrin auxiliary-task saturation trend audit against temple-central.db; 5 findings
 2026-04-29T16:48:28+02:00 | Retro audit of TempleOS d9c3b620 parser hardening commit; 2 findings (1 critical, 1 warning)
+2026-04-29T18:03:44+02:00 | Cross-repo model identity and policy contract drift audit across TempleOS and holyc-inference current heads; 5 findings
