@@ -243,3 +243,4 @@
 2026-04-29T23:30:30+02:00 | Historical builder task-id sequence drift audit against temple-central.db; 5 findings
 2026-04-29T23:39:29+02:00 | Retroactive audit across latest unaudited 4 TempleOS and 4 holyc-inference commits; 5 findings across 8 reports
 2026-04-29T23:50:43+02:00 | Law 4 post-backfill regression update across 45 TempleOS and 1 holyc-inference commits; 1 finding
+2026-04-29T23:58:49+02:00 | Cross-repo IRQ Book-of-Truth token evidence contract drift audit across TempleOS and holyc-inference; 3 findings
