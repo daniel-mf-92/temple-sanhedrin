@@ -179,3 +179,5 @@
 2026-04-29T07:33:32+02:00 | Retroactive audit of TempleOS model quarantine commit 75727979e5cba07e7959d4770c9abffe85be78e1; 3 findings
 2026-04-29T07:43:20+02:00 | Cross-repo model quarantine control-plane drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-29T07:53:18+02:00 | Cross-repo key-release control-plane ownership drift audit across TempleOS and holyc-inference; 5 findings
+2026-04-29T06:06:21Z | Cross-repo QEMU immutable-image contract audit across TempleOS/holyc-inference; 3 findings (2 critical, 1 warning)
+2026-04-29T06:11:17Z | Historical temple-central Book-of-Truth local-access evidence drift audit; 5 findings
