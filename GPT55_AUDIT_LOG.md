@@ -166,3 +166,4 @@
 2026-04-29T04:38:02+02:00 | Cross-repo AVX2 compiler execution-contract drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-29T02:55:57Z | Retroactive audit across 3 TempleOS and 3 holyc-inference historical commits; 13 findings across 6 reports
 2026-04-29T05:09:28+02:00 | Cross-repo matrix-shape versus Q4/Q8 matmul geometry contract drift audit; 5 findings
+2026-04-29T05:21:57+02:00 | Retroactive audit of TempleOS write-fail halt commit abbc679bc7c429c0d89cdef04432b2e7a9d51fc7; 2 findings
