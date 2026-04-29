@@ -196,3 +196,4 @@
 2026-04-29T11:43:28+02:00 | Retroactive audit of latest unaudited 2 TempleOS commits; 3 findings across 2 reports
 2026-04-29T11:56:09+02:00 | Historical language-boundary and network-runtime drift audit against temple-central.db with current source spot-checks; 5 findings
 2026-04-29T12:13:42+02:00 | Retroactive audit of TempleOS North Star harness commit 63780d214b9bbb999ad271c83895a062c3485150; 5 findings
+2026-04-29T12:29:55+02:00 | Cross-repo GPU policy source-of-truth drift audit across TempleOS and holyc-inference current heads; 4 findings
