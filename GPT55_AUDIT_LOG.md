@@ -156,3 +156,4 @@
 2026-04-29T02:39:25+02:00 | Historical Book-of-Truth hardware-proximity evidence drift audit against temple-central.db and current source spot-checks; 5 findings
 2026-04-29T02:49:19+02:00 | Cross-repo serial forward-result contract drift audit across TempleOS and holyc-inference; 4 findings
 2026-04-29T03:00:02+02:00 | Retroactive audit of TempleOS tamper policy commit b3d8fa44833190d4f29a4ef8e4705756a7263942; 3 findings
+2026-04-29T03:13:13+02:00 | Retroactive audit of TempleOS no-delete proof guard commit 9ecc6aa996307f8e20f05a843c4188ad7f72f6dd; 4 findings
