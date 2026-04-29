@@ -157,3 +157,4 @@
 2026-04-29T02:49:19+02:00 | Cross-repo serial forward-result contract drift audit across TempleOS and holyc-inference; 4 findings
 2026-04-29T03:00:02+02:00 | Retroactive audit of TempleOS tamper policy commit b3d8fa44833190d4f29a4ef8e4705756a7263942; 3 findings
 2026-04-29T03:13:13+02:00 | Retroactive audit of TempleOS no-delete proof guard commit 9ecc6aa996307f8e20f05a843c4188ad7f72f6dd; 4 findings
+2026-04-29T03:23:48+02:00 | Retroactive audit of TempleOS reclaim cascade commit 4967d62878fabc30ddee1bc81904a8d832e7a52c; 4 findings
