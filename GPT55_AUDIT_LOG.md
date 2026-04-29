@@ -221,3 +221,4 @@
 2026-04-29T19:32:20+02:00 | Historical temple-central queue materialization gap drift audit across builder task ids; 5 findings
 2026-04-29T19:48:27+02:00 | Cross-repo forward-pass serial result contract drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-29T20:05:16+02:00 | Cross-repo GPT55 progress-ledger timestamp contract drift audit across TempleOS and holyc-inference committed HEADs; 5 findings
+2026-04-29T20:18:41+02:00 | Cross-repo Book-of-Truth replay fixture portability drift audit across TempleOS and holyc-inference; 5 findings
