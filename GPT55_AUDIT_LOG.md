@@ -232,3 +232,4 @@
 2026-04-29T21:37:48+02:00 | Cross-repo attestation and key-release binding drift audit across TempleOS and holyc-inference current heads; 5 findings
 2026-04-29T19:49:33Z | Cross-repo QEMU control-channel local-access drift audit; 3 findings
 2026-04-29T19:59:04Z | Retroactive audit of five unaudited TempleOS host-reporting commits from 2026-04-29; 0 findings
+2026-04-29T22:10:09+02:00 | Cross-repo immutable OS image QEMU contract drift audit across TempleOS and holyc-inference current heads; 5 findings
