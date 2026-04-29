@@ -253,3 +253,4 @@
 2026-04-30T01:11:52+02:00 | Retroactive audit across latest unaudited 3 TempleOS and 1 holyc-inference commits; 1 finding across 4 reports
 2026-04-30T01:22:31+02:00 | Historical research trigger traceability drift audit against temple-central.db; 5 findings
 2026-04-30T01:33:17+02:00 | Cross-repo deterministic gate/reference join drift audit across TempleOS and holyc-inference current heads; 5 findings
+2026-04-30T01:41:55+02:00 | Retroactive audit of TempleOS Book-of-Truth no-delete guard commit f247f4ea41c581d7585a4daab75f4d5137f11986; 2 findings
