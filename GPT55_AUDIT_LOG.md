@@ -240,3 +240,4 @@
 2026-04-29T23:02:30+02:00 | Retroactive audit of seven unaudited holyc-inference GPU security-perf commits from 2026-04-27; 20 findings
 2026-04-29T23:11:27+02:00 | Retroactive audit of TempleOS PIC IRQ Book-of-Truth coverage commit d84df3da3e8c241f43882f76493e1ae5a2f03b9e; 1 finding
 2026-04-29T23:21:16+02:00 | Deeper LAWS.md serial locality ambiguity research with local issue ISSUE-LAWS-006 opened; 4 findings
+2026-04-29T23:30:30+02:00 | Historical builder task-id sequence drift audit against temple-central.db; 5 findings
