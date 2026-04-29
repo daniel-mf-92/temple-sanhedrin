@@ -247,3 +247,4 @@
 2026-04-30T00:10:09+02:00 | Cross-repo model trust manifest proof-tuple drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-29T22:19:47Z | Retroactive audit across latest unaudited 3 TempleOS and 3 holyc-inference commits; 6 findings across 6 reports
 2026-04-30T00:29:44+02:00 | Law 10 QEMU readonly post-backfill regression update across 41 TempleOS commits; 5 findings
+2026-04-30T00:39:02+02:00 | Cross-repo air-gap, immutable-image, and local-only evidence drift audit across TempleOS and holyc-inference; 5 findings
