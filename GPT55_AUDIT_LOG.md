@@ -184,3 +184,4 @@
 2026-04-29T08:23:24+02:00 | Law 8 UART append proximity backfill across TempleOS Book-of-Truth history; 4 findings
 2026-04-29T08:34:00+02:00 | Retroactive audit of latest unaudited TempleOS commit af6e9ea; 4 findings
 2026-04-29T08:52:15+02:00 | Cross-repo tokenizer artifact trust-contract drift audit across TempleOS and holyc-inference; 5 findings
+2026-04-29T09:06:52+02:00 | Cross-repo smoke coverage gate semantics drift audit across TempleOS and holyc-inference; 5 findings
