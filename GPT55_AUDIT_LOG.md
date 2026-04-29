@@ -185,3 +185,4 @@
 2026-04-29T08:34:00+02:00 | Retroactive audit of latest unaudited TempleOS commit af6e9ea; 4 findings
 2026-04-29T08:52:15+02:00 | Cross-repo tokenizer artifact trust-contract drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-29T09:06:52+02:00 | Cross-repo smoke coverage gate semantics drift audit across TempleOS and holyc-inference; 5 findings
+2026-04-29T09:21:40+02:00 | Historical temple-central files_changed delimiter drift audit across builder evidence rows; 5 findings
