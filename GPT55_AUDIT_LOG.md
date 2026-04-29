@@ -236,3 +236,4 @@
 2026-04-29T22:18:56+02:00 | Cross-repo north-star runner handoff drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-29T22:33:39+02:00 | Retroactive audit across latest unaudited 3 TempleOS and 3 holyc-inference commits; 3 identifier-compounding findings across 6 reports
 2026-04-29T22:43:17+02:00 | Historical law-register and violation-sink drift audit against temple-central.db; 5 findings
+2026-04-29T22:53:13+02:00 | Cross-repo fixture provenance contract drift audit across TempleOS Book-of-Truth replay and holyc-inference GPT-2 reference fixtures; 5 findings
