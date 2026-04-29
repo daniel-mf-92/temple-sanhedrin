@@ -173,3 +173,4 @@
 2026-04-29T06:09:49+02:00 | Cross-repo Book-of-Truth write-fail/token-event contract drift audit across TempleOS and holyc-inference; 4 findings
 2026-04-29T06:23:07+02:00 | Historical temple-central timestamp integrity drift audit across Sanhedrin/builder evidence rows; 6 findings
 2026-04-29T06:39:15+02:00 | Historical temple-central research reference-quality drift audit across research rows; 5 findings
+2026-04-29T06:54:27+02:00 | Cross-repo GGUF parser manifest contract drift audit across TempleOS and holyc-inference; 5 findings
