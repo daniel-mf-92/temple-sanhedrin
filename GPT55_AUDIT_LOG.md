@@ -192,3 +192,5 @@
 2026-04-29T10:33:02+02:00 | Historical temple-central status-semantics drift audit across builder evidence rows; 5 findings
 2026-04-29T10:50:49+02:00 | Cross-repo model gate payload truth-contract drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-29T09:10:40Z | Retroactive audit across latest unaudited 3 TempleOS and 3 holyc-inference commits; 2 critical identifier-compounding findings across 6 reports
+2026-04-29T11:29:13+02:00 | Historical temple-central cadence and duration telemetry drift audit across builder rows; 5 findings
+2026-04-29T11:43:28+02:00 | Retroactive audit of latest unaudited 2 TempleOS commits; 3 findings across 2 reports
