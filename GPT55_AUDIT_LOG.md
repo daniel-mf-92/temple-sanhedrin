@@ -153,3 +153,4 @@
 2026-04-29T02:10:28+02:00 | Retroactive audit of latest unaudited TempleOS fail-stop clamp commit e59af356; 2 findings
 2026-04-29T02:18:15+02:00 | Cross-repo serial capture lifecycle contract drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-29T02:28:12+02:00 | Cross-repo attestation ledger anchor drift audit; 5 findings
+2026-04-29T02:39:25+02:00 | Historical Book-of-Truth hardware-proximity evidence drift audit against temple-central.db and current source spot-checks; 5 findings
