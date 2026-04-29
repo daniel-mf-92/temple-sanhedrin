@@ -210,3 +210,4 @@
 2026-04-29T15:39:24+02:00 | Retroactive audit across latest unaudited 3 TempleOS and 3 holyc-inference commits; 3 findings across 6 reports
 2026-04-29T13:51:11Z | Cross-repo secure-local executable gate drift audit across TempleOS and holyc-inference current heads; 3 findings
 2026-04-29T16:03:08+02:00 | Retroactive audit across latest unaudited 2 TempleOS and 3 holyc-inference commits; 3 findings across 5 reports
+2026-04-29T16:17:17+02:00 | Historical temple-central validation-outcome semantics drift audit across builder and Sanhedrin rows; 5 findings
