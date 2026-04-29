@@ -223,3 +223,4 @@
 2026-04-29T20:05:16+02:00 | Cross-repo GPT55 progress-ledger timestamp contract drift audit across TempleOS and holyc-inference committed HEADs; 5 findings
 2026-04-29T20:18:41+02:00 | Cross-repo Book-of-Truth replay fixture portability drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-29T20:28:31+02:00 | Retroactive audit of TempleOS North Star harness commit 4d8e7ae5ab0fd8ce12606db12d016e4858e2782a; 1 finding
+2026-04-29T20:36:00+02:00 | Retroactive audit of TempleOS memory-map Book of Truth commit fc7d7ca5e27eb55211639d6d6a0ac27a4db1b20b; 1 finding
