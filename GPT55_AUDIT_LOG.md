@@ -238,3 +238,4 @@
 2026-04-29T22:43:17+02:00 | Historical law-register and violation-sink drift audit against temple-central.db; 5 findings
 2026-04-29T22:53:13+02:00 | Cross-repo fixture provenance contract drift audit across TempleOS Book-of-Truth replay and holyc-inference GPT-2 reference fixtures; 5 findings
 2026-04-29T23:02:30+02:00 | Retroactive audit of seven unaudited holyc-inference GPU security-perf commits from 2026-04-27; 20 findings
+2026-04-29T23:11:27+02:00 | Retroactive audit of TempleOS PIC IRQ Book-of-Truth coverage commit d84df3da3e8c241f43882f76493e1ae5a2f03b9e; 1 finding
