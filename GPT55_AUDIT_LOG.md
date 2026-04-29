@@ -204,3 +204,4 @@
 2026-04-29T13:25:34+02:00 | Retroactive audit across latest unaudited 3 TempleOS commits and 1 holyc-inference commit; 0 findings across 4 reports
 2026-04-29T13:42:33+02:00 | Cross-repo preemption/worker quantum contract drift audit across TempleOS and holyc-inference current heads; 5 findings
 2026-04-29T13:56:47+02:00 | Cross-repo Trinity policy gate provenance drift audit across sibling worktrees; 5 findings
+2026-04-29T14:58:57+02:00 | Historical temple-central task-id monotonicity and queue-lineage drift audit across builder rows; 5 findings
