@@ -169,3 +169,4 @@
 2026-04-29T05:21:57+02:00 | Retroactive audit of TempleOS write-fail halt commit abbc679bc7c429c0d89cdef04432b2e7a9d51fc7; 2 findings
 2026-04-29T05:33:29+02:00 | Cross-repo prompt/token ingress boundary drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-29T05:45:04+02:00 | Retroactive audit across latest unaudited 4 TempleOS and 6 holyc-inference commits; 6 findings across 10 reports
+2026-04-29T03:58:17Z | Cross-repo artifact provenance gate drift audit across TempleOS host reports and holyc-inference bench manifests; 4 findings
