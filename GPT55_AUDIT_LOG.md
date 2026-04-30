@@ -274,3 +274,4 @@
 2026-04-30T04:50:44+02:00 | Retroactive audit of TempleOS north-star preflight commit 6417dc9f; 1 finding
 2026-04-30T04:59:35+02:00 | Cross-repo key-release control-plane drift audit across TempleOS and holyc-inference current heads; 5 findings
 2026-04-30T05:08:45+02:00 | Historical local QEMU skip-as-pass validation drift audit against temple-central.db; 5 findings
+2026-04-30T05:28:00+02:00 | Historical Sanhedrin artifact-accounting drift audit against temple-central.db; 5 findings
