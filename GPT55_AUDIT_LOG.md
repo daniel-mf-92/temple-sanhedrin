@@ -261,3 +261,4 @@
 2026-04-30T02:30:58+02:00 | Retroactive audit of holyc-inference QEMU prompt exit-class telemetry commit 09318622e0308decd9d7c29d4cd9cfdf321899df; 2 findings
 2026-04-30T02:41:19+02:00 | Cross-repo secure-local GPU proof-anchor drift audit across TempleOS and holyc-inference current heads; 5 findings
 2026-04-30T02:51:54+02:00 | Retroactive audit of three unaudited TempleOS host-reporting commits from 2026-04-29 22:37-22:54; 2 findings across 3 reports
+2026-04-30T03:00:23+02:00 | Historical research-ledger LAWS.md coverage drift audit against temple-central.db research rows; 5 findings
