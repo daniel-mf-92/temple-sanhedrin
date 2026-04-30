@@ -288,3 +288,4 @@
 2026-04-30T07:33:29+02:00 | Retroactive audit of latest unaudited TempleOS evidence-decay dashboard commit c8d89082; 1 finding
 2026-04-30T07:46:55+02:00 | Cross-repo GPU Book-of-Truth event schema drift audit across TempleOS and holyc-inference current heads; 4 findings
 2026-04-30T07:59:46+02:00 | Retroactive audit of TempleOS architecture-interface boundary commit 5cad1338; 2 findings
+2026-04-30T08:14:20+02:00 | Retroactive audit of latest two unaudited TempleOS commits c821d6ac and 2e3b9750; 2 findings across 2 reports
