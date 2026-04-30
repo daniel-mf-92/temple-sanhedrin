@@ -263,3 +263,4 @@
 2026-04-30T02:51:54+02:00 | Retroactive audit of three unaudited TempleOS host-reporting commits from 2026-04-29 22:37-22:54; 2 findings across 3 reports
 2026-04-30T03:00:23+02:00 | Historical research-ledger LAWS.md coverage drift audit against temple-central.db research rows; 5 findings
 2026-04-30T03:09:15+02:00 | Cross-repo GGUF model-info layout proof drift audit across TempleOS and holyc-inference current heads; 4 findings
+2026-04-30T03:19:08+02:00 | Retroactive audit of latest holyc-inference GGUF model-info commit 2799283c; 3 findings
