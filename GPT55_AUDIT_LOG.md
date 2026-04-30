@@ -272,3 +272,4 @@
 2026-04-30T04:34:16+02:00 | Cross-repo law enforcement surface drift audit across TempleOS and holyc-inference current heads; 4 findings
 2026-04-30T04:41:33+02:00 | Retroactive audit of two latest unaudited TempleOS host-report commits 6d55f2ac and a4e15540; 3 findings across 2 reports
 2026-04-30T04:50:44+02:00 | Retroactive audit of TempleOS north-star preflight commit 6417dc9f; 1 finding
+2026-04-30T04:59:35+02:00 | Cross-repo key-release control-plane drift audit across TempleOS and holyc-inference current heads; 5 findings
