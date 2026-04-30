@@ -296,3 +296,4 @@
 2026-04-30T09:37:15+02:00 | Cross-repo per-token Book-of-Truth authority drift audit across TempleOS and holyc-inference current heads; 5 findings
 2026-04-30T09:53:27+02:00 | Law 9 diagnostic fail-stop boundary research with local issue opened; 4 findings
 2026-04-30T10:03:45+02:00 | Retroactive audit of unaudited holyc-inference GPU security-perf commits 3e6726d5, 46d57863, and 9f629654; 9 findings across 3 reports
+2026-04-30T08:15:29Z | Retroactive audited 10 previously missing TempleOS/holyc-inference commits; 1 info finding (generated CSV trailing whitespace)
