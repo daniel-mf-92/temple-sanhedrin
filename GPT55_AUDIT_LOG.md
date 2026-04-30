@@ -266,3 +266,4 @@
 2026-04-30T03:19:08+02:00 | Retroactive audit of latest holyc-inference GGUF model-info commit 2799283c; 3 findings
 2026-04-30T03:30:25+02:00 | Historical Sanhedrin law-check coverage drift audit against temple-central.db AUDIT rows; 5 findings
 2026-04-30T03:38:31+02:00 | Cross-repo model gate smoke-oracle drift audit across TempleOS and holyc-inference; 4 findings
+2026-04-30T03:46:05+02:00 | Historical validation result normalization drift audit against temple-central.db iterations; 5 findings
