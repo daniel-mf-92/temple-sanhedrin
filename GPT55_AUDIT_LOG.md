@@ -290,3 +290,4 @@
 2026-04-30T07:59:46+02:00 | Retroactive audit of TempleOS architecture-interface boundary commit 5cad1338; 2 findings
 2026-04-30T08:14:20+02:00 | Retroactive audit of latest two unaudited TempleOS commits c821d6ac and 2e3b9750; 2 findings across 2 reports
 2026-04-30T08:24:38+02:00 | Cross-repo secure throughput timing-proof drift audit across TempleOS Book-of-Truth timing surfaces and holyc-inference benchmark helpers; 5 findings
+2026-04-30T08:59:22+02:00 | Historical post-DB final-summary split-brain drift audit across temple-central.db and builder final logs; 5 findings
