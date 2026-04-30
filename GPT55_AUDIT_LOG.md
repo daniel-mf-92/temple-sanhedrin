@@ -78,6 +78,7 @@
 2026-04-28T04:45:52Z | Historical temple-central validation-evidence quality trend audit across modernization and inference loops; 5 findings
 2026-04-28T06:55:59+02:00 | Cross-repo Book-of-Truth token ABI drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-28T07:07:21+02:00 | Retroactive audit of latest 3 unaudited TempleOS automation commits; 1 finding across 3 reports
+2026-04-30T13:00:36+02:00 | Cross-repo GPU Book-of-Truth bridge-to-ledger schema drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-29T20:56:36+02:00 | Cross-repo reference corpus promotion provenance drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-28T07:16:45+02:00 | Cross-repo promotion-gate deterministic eval and parser-hardening drift audit across TempleOS and holyc-inference; 4 findings
 2026-04-28T07:27:10+02:00 | Retroactive audit of latest unaudited TempleOS commit b61659b; 1 Law 5 warning finding
