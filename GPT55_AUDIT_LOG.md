@@ -302,3 +302,4 @@
 2026-04-30T11:39:14+02:00 | Retroactive audit of latest unaudited 2 TempleOS host-dashboard commits; 0 findings across 2 reports
 2026-04-30T09:50:33Z | Cross-repo Book-of-Truth GPU bridge vs immutable ledger audit; 3 findings
 2026-04-30T12:00:46+02:00 | Historical builder line-delta accounting drift audit against temple-central.db; 5 findings
+2026-04-30T12:20:05+02:00 | Law 4 regression backfill continuation from prior baselines to current committed heads; 3 findings
