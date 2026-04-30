@@ -277,3 +277,4 @@
 2026-04-30T05:28:00+02:00 | Historical Sanhedrin artifact-accounting drift audit against temple-central.db; 5 findings
 2026-04-30T05:28:31+02:00 | Historical temple-central.db iteration duration and repeat-accounting drift audit; 5 findings
 2026-04-30T05:38:04+02:00 | Cross-repo profile transition ledger contract drift audit across TempleOS and holyc-inference current heads; 4 findings
+2026-04-30T05:52:03+02:00 | LAWS/North Star clean-run enforcement proof ambiguity research; 4 findings
