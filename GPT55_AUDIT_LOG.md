@@ -311,3 +311,4 @@
 2026-04-30T11:33:13Z | Retroactive audit of TempleOS MSR Book-of-Truth wrapper commit 2e13db4d; 3 findings
 2026-04-30T13:49:03+02:00 | Cross-repo secure-local IOMMU policy digest drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-30T13:59:30+02:00 | Retroactive audit across 6 TempleOS and 6 holyc-inference historical unaudited commits; 15 findings across 12 reports
+2026-04-30T14:13:46+02:00 | No-self-generated-queue pending-artifact drift backfill across TempleOS and holyc-inference sibling worktrees; 5 findings
