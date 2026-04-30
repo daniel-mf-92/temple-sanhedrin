@@ -256,3 +256,4 @@
 2026-04-30T01:41:55+02:00 | Retroactive audit of TempleOS Book-of-Truth no-delete guard commit f247f4ea41c581d7585a4daab75f4d5137f11986; 2 findings
 2026-04-30T01:50:10+02:00 | Retroactive audit across six unaudited TempleOS commits from 2026-04-27 06:19-06:58; 10 findings across 6 reports
 2026-04-30T01:59:44+02:00 | Retroactive audit across five unaudited TempleOS scheduler lifecycle commits from 2026-04-27 07:03-07:31; 5 findings across 5 reports
+2026-04-30T02:08:26+02:00 | Retroactive audit across four unaudited TempleOS host-report commits from 2026-04-30 01:16-02:05; 12 findings across 4 reports
