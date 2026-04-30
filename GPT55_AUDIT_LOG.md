@@ -286,3 +286,4 @@
 2026-04-30T05:10:58Z | Retroactive audit of latest 2 unaudited TempleOS host-dashboard commits; 1 identifier-compounding finding across 2 reports
 2026-04-30T07:22:53+02:00 | Compliance continuation backfill for No Self-Generated Queue Items across TempleOS and holyc-inference post-2026-04-27 heads; 0 findings
 2026-04-30T07:33:29+02:00 | Retroactive audit of latest unaudited TempleOS evidence-decay dashboard commit c8d89082; 1 finding
+2026-04-30T07:46:55+02:00 | Cross-repo GPU Book-of-Truth event schema drift audit across TempleOS and holyc-inference current heads; 4 findings
