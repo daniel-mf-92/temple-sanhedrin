@@ -298,3 +298,4 @@
 2026-04-30T10:03:45+02:00 | Retroactive audit of unaudited holyc-inference GPU security-perf commits 3e6726d5, 46d57863, and 9f629654; 9 findings across 3 reports
 2026-04-30T08:15:29Z | Retroactive audited 10 previously missing TempleOS/holyc-inference commits; 1 info finding (generated CSV trailing whitespace)
 2026-04-30T10:51:08+02:00 | Retroactive audit of latest three unaudited TempleOS host-reporting commits 04d0918d, d58cb715, and 5befa9d8; 0 findings across 3 reports
+2026-04-30T11:25:41+02:00 | Historical validation-command compounding drift audit against temple-central.db; 5 findings
