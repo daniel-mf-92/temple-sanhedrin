@@ -308,3 +308,4 @@
 2026-04-30T12:50:15+02:00 | Historical Sanhedrin status evidence null-field drift audit against temple-central.db; 5 findings
 2026-04-30T13:13:21+02:00 | Retroactive audit across next unaudited 4 TempleOS and 4 holyc-inference historical commits; 22 findings across 8 reports
 2026-04-30T13:22:23+02:00 | Retroactive audit across latest unaudited 3 TempleOS commits; 2 findings across 3 reports
+2026-04-30T11:33:13Z | Retroactive audit of TempleOS MSR Book-of-Truth wrapper commit 2e13db4d; 3 findings
