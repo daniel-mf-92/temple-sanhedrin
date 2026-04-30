@@ -331,3 +331,4 @@
 2026-04-30T19:45:59+02:00 | Retroactive audit of TempleOS family-coverage commit a55f575c and holyc-inference QEMU source-smoke commit 2eff9dd6; 2 findings across 2 reports
 2026-04-30T20:16:17+02:00 | Retroactive audit of TempleOS IRQ fault wrapper commit 0fbfde44; 2 findings
 2026-04-30T20:31:31+02:00 | Generated cache/log artifact compliance backfill across TempleOS and holyc-inference histories; 4 findings
+2026-04-30T21:07:15+02:00 | Cross-repo north-star model/storage/QEMU contract drift audit across TempleOS and holyc-inference; 5 findings
