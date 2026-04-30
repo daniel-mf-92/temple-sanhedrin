@@ -303,3 +303,4 @@
 2026-04-30T09:50:33Z | Cross-repo Book-of-Truth GPU bridge vs immutable ledger audit; 3 findings
 2026-04-30T12:00:46+02:00 | Historical builder line-delta accounting drift audit against temple-central.db; 5 findings
 2026-04-30T12:20:05+02:00 | Law 4 regression backfill continuation from prior baselines to current committed heads; 3 findings
+2026-04-30T12:38:03+02:00 | Retroactive audit of TempleOS WS13-05 I/O logging commit 0b35c1a7; 1 finding
