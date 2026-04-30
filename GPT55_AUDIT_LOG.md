@@ -329,3 +329,4 @@
 2026-04-30T19:13:18+02:00 | Retroactive audit of TempleOS WS13-06 MSR I/O status commit f0140c73; 3 warning findings
 2026-04-30T19:27:13+02:00 | Cross-repo QEMU air-gap and immutable-image launch drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-30T19:45:59+02:00 | Retroactive audit of TempleOS family-coverage commit a55f575c and holyc-inference QEMU source-smoke commit 2eff9dd6; 2 findings across 2 reports
+2026-04-30T20:16:17+02:00 | Retroactive audit of TempleOS IRQ fault wrapper commit 0fbfde44; 2 findings
