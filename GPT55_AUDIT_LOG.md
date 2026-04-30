@@ -323,3 +323,4 @@
 2026-04-30T17:34:46+02:00 | Retroactive audit across 4 latest unaudited TempleOS host-report commits; 7 findings across 4 reports
 2026-04-30T17:50:04+02:00 | Retroactive audit of latest unaudited TempleOS compiler-harness commit 90205721; 2 warning findings
 2026-04-30T18:24:21+02:00 | Retroactive audit of TempleOS scheduler/MM trace commit b15a2d21; 3 warning findings
+2026-04-30T18:37:38+02:00 | Retroactive audit of 2 TempleOS and 2 holyc-inference historical commits from 2026-04-29; 2 warning findings across 4 reports
