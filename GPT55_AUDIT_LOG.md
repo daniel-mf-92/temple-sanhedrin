@@ -315,3 +315,4 @@
 2026-04-30T14:23:54+02:00 | Retroactive commit audit of 6 previously unaudited TempleOS/holyc-inference commits from 2026-04-29; 2 findings
 2026-04-30T14:42:36+02:00 | Cross-repo host-report dashboard sidecar contract drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-30T14:56:23+02:00 | Retroactive audit of latest 3 unaudited TempleOS host-report commits; 1 warning finding across 3 reports
+2026-04-30T15:12:18+02:00 | Retroactive re-audit of TempleOS MSR commit plus latest scheduler interface commit; 4 findings across 2 reports
