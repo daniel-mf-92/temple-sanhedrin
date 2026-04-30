@@ -336,3 +336,4 @@
 2026-04-30T22:11:26+02:00 | Retroactive audit of latest 3 TempleOS commits 64827c16, 928a49f0, and 636487f3; 4 findings across 3 reports
 2026-04-30T22:48:29+02:00 | Cross-repo profile policy authority drift audit across TempleOS and holyc-inference; 5 findings
 2026-04-30T23:05:29+02:00 | Cross-repo prefix/KV cache reuse trust-boundary drift audit across TempleOS and holyc-inference; 5 findings
+2026-04-30T23:21:20+02:00 | Retroactive audit across latest 3 unaudited TempleOS commits; 2 findings across 3 reports
