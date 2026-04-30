@@ -321,3 +321,4 @@
 2026-04-30T16:36:59+02:00 | Deeper Law 11 derived-artifact boundary research with local issue opened; 4 findings
 2026-04-30T16:51:49+02:00 | Retroactive audit of TempleOS WS14-06 build attestation commit 417743ee; 1 finding
 2026-04-30T17:34:46+02:00 | Retroactive audit across 4 latest unaudited TempleOS host-report commits; 7 findings across 4 reports
+2026-04-30T17:50:04+02:00 | Retroactive audit of latest unaudited TempleOS compiler-harness commit 90205721; 2 warning findings
