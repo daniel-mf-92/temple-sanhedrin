@@ -350,3 +350,5 @@
 2026-05-01T04:01:23+02:00 | Historical temple-central validation timeout-containment drift audit across builder rows; 5 findings
 2026-05-01T04:11:38+02:00 | Historical temple-central compound task-id traceability drift audit across builder rows; 5 findings
 2026-05-01T04:21:19+02:00 | Cross-repo shared-image content contract drift audit across TempleOS and holyc-inference; 5 findings
+2026-05-01T04:45:56+02:00 | Retroactive audit of latest 3 unaudited TempleOS commits c2308743, 2bac8a1a, and 738206d0; 2 findings across 3 reports
+2026-05-01T04:50:51+02:00 | Cross-repo host automation executable/shebang contract drift audit across TempleOS and holyc-inference; 3 warning findings
