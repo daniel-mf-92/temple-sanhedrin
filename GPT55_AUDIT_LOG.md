@@ -424,3 +424,4 @@
 2026-05-02T00:45:42+02:00 | Historical violation-ledger null drift audit against temple-central.db and local audit corpus; 5 findings
 2026-05-02T00:54:36+02:00 | Cross-repo Trinity policy gate coverage drift audit across TempleOS, holyc-inference, and Sanhedrin; 5 warning findings
 2026-05-02T01:02:37+02:00 | Cross-repo key-release control-plane drift audit across TempleOS and holyc-inference; 4 findings
+2026-05-02T01:12:17+02:00 | Historical temple-central.db CI blocker dedupe Law 7 drift audit; 4 warning findings
