@@ -422,3 +422,4 @@
 2026-05-02T00:27:07+02:00 | Retroactive audit of 4 TempleOS and 4 holyc-inference historical commits; 3 warning findings across 8 reports
 2026-05-01T22:35:53Z | Retroactive holyc-inference audit backfilled 20 commit reports; 53 findings (20 critical identifier-compounding, 20 queue self-padding warnings, 13 generated-cache warnings)
 2026-05-02T00:45:42+02:00 | Historical violation-ledger null drift audit against temple-central.db and local audit corpus; 5 findings
+2026-05-02T00:54:36+02:00 | Cross-repo Trinity policy gate coverage drift audit across TempleOS, holyc-inference, and Sanhedrin; 5 warning findings
