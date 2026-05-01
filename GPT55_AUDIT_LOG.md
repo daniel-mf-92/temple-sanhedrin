@@ -340,3 +340,4 @@
 2026-04-30T23:31:22+02:00 | Retroactive audit of latest unaudited TempleOS GPT55 scope-guard commit f1f1995e; 1 warning finding
 2026-04-30T23:41:49+02:00 | Retroactive audit of TempleOS host-report/host-smoke manifest commits f79c666a and 40c5b032; 2 warning findings across 2 reports
 2026-04-30T23:51:25+02:00 | Cross-repo text-integrity/model-info proof boundary drift audit across TempleOS and holyc-inference; 5 findings
+2026-05-01T02:38:55+02:00 | Retroactive audit of latest missing TempleOS text-integrity commit 5c268564; 1 warning finding
