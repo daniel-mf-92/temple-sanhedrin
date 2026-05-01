@@ -412,3 +412,4 @@
 2026-05-01T22:42:13+02:00 | Retroactive audit of latest 4 unaudited TempleOS gpt55 host/QEMU report commits; 2 warning findings across 4 reports
 2026-05-01T20:52:26Z | Retroactive audit of unaudited TempleOS host generated-artifact inventory commit a66bd2a1; 0 findings
 2026-05-01T21:13:37Z | Cross-repo QEMU readonly policy audit gap across TempleOS and holyc-inference; 2 critical findings, 1 info finding
+2026-05-01T23:21:21+02:00 | Cross-repo policy digest attestation canonicalization drift audit across TempleOS and holyc-inference; 5 findings
