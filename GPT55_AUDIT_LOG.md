@@ -421,3 +421,4 @@
 2026-05-02T00:18:50+02:00 | Retroactive audit of latest 3 unaudited TempleOS host-report/QEMU manifest commits; 1 warning finding across 3 reports
 2026-05-02T00:27:07+02:00 | Retroactive audit of 4 TempleOS and 4 holyc-inference historical commits; 3 warning findings across 8 reports
 2026-05-01T22:35:53Z | Retroactive holyc-inference audit backfilled 20 commit reports; 53 findings (20 critical identifier-compounding, 20 queue self-padding warnings, 13 generated-cache warnings)
+2026-05-02T00:45:42+02:00 | Historical violation-ledger null drift audit against temple-central.db and local audit corpus; 5 findings
