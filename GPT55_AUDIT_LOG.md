@@ -347,3 +347,4 @@
 2026-05-01T01:31:18Z | Cross-repo token-event Book-of-Truth ingestion ABI drift audit across TempleOS and holyc-inference; 3 warning findings
 2026-05-01T03:41:04+02:00 | Historical temple-central timestamp-format drift audit across iteration rows; 5 findings
 2026-05-01T03:52:05+02:00 | Historical temple-central files_changed current-head join drift audit across builder rows; 5 findings
+2026-05-01T04:01:23+02:00 | Historical temple-central validation timeout-containment drift audit across builder rows; 5 findings
