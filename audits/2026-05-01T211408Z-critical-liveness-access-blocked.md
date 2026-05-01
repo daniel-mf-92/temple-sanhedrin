@@ -1,0 +1,12 @@
+- Severity: CRITICAL
+- Liveness violation: builder loop heartbeats stale >10 minutes.
+  - TempleOS heartbeat age: 42189s (`automation/logs/loop.heartbeat`)
+  - holyc-inference heartbeat age: 41292s (`automation/logs/loop.heartbeat`)
+  - sanhedrin heartbeat age: 5s (`automation/logs/loop.heartbeat`)
+- Restart blocked in this sandbox: localhost SSH denied (`Operation not permitted`).
+- CI/VM checks blocked in this sandbox:
+  - `gh run list` failed (`error connecting to api.github.com`)
+  - Azure VM SSH failed (`Operation not permitted`)
+- Policy/trinity checks: no secure-local, quarantine, IOMMU, Book-of-Truth, or split-plane drift detected in control docs.
+- Law 5 code-output checks passed (TempleOS .HC/.sh last5=10; inference .HC last5=2; inference .HC/.sh/.py last5=7).
+- Queue-depth law check reports `CQ open=9`; queue-floor rule is deprecated by override and not treated as violation.
