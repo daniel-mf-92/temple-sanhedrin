@@ -371,3 +371,4 @@
 2026-05-01T10:30:45+02:00 | Historical temple-central changed-file to validation-target coupling drift audit across builder rows; 5 findings
 2026-05-01T10:44:06+02:00 | Retroactive audit of latest unaudited TempleOS commit e5a670c; 3 warning findings
 2026-05-01T10:55:00+02:00 | Historical temple-central Sanhedrin severity/status normalization drift audit; 5 findings
+2026-05-01T11:05:52+02:00 | Retroactive audit of latest 3 unaudited TempleOS host-dashboard/report-index commits 4100943e, df38f87d, and 48d4837d; 1 warning finding across 3 reports
