@@ -383,3 +383,5 @@
 2026-05-01T13:28:45+02:00 | Retroactive audit across latest unaudited 8 TempleOS gpt55 host-automation commits; 8 Law 4 identifier findings across 8 reports
 2026-05-01T13:50:15+02:00 | Cross-repo inference Book-of-Truth event/profile/policy ABI drift audit across TempleOS and holyc-inference current heads; 5 warning findings
 2026-05-01T14:06:23+02:00 | Cross-repo token-ID width and prefix-hash contract drift audit across TempleOS and holyc-inference current heads; 5 warning findings
+2026-05-01T14:32:33+02:00 | Cross-repo quant-profile/trust-manifest contract drift audit across TempleOS and holyc-inference current heads; 4 warning findings
+2026-05-01T14:43:56+02:00 | Supplemental retroactive audit of TempleOS WS13-21 disk-reclaim commit a070ae63; 1 critical finding
