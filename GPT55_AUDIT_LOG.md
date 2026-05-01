@@ -349,3 +349,4 @@
 2026-05-01T03:52:05+02:00 | Historical temple-central files_changed current-head join drift audit across builder rows; 5 findings
 2026-05-01T04:01:23+02:00 | Historical temple-central validation timeout-containment drift audit across builder rows; 5 findings
 2026-05-01T04:11:38+02:00 | Historical temple-central compound task-id traceability drift audit across builder rows; 5 findings
+2026-05-01T04:21:19+02:00 | Cross-repo shared-image content contract drift audit across TempleOS and holyc-inference; 5 findings
