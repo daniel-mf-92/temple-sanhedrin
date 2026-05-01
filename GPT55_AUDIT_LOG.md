@@ -361,3 +361,4 @@
 2026-05-01T06:40:47+02:00 | Historical temple-central queue-ID monotonicity drift audit across builder rows; 5 findings
 2026-05-01T06:49:31+02:00 | Cross-repo serial contract drift audit across TempleOS Book-of-Truth and holyc-inference token output paths; 4 warning findings
 2026-05-01T06:05:24Z | Historical temple-central builder status taxonomy collapse audit across modernization and inference rows; 5 findings
+2026-05-01T08:17:59+02:00 | Cross-repo current-head QEMU launch enforcement drift audit across TempleOS and holyc-inference; 4 findings
