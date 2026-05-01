@@ -343,3 +343,5 @@
 2026-05-01T02:38:55+02:00 | Retroactive audit of latest missing TempleOS text-integrity commit 5c268564; 1 warning finding
 2026-05-01T00:49:17Z | Cross-repo network-dependent model acquisition drift audit across TempleOS and holyc-inference; 5 findings
 2026-05-01T01:00:57Z | Cross-repo model trust attestation tuple drift audit across TempleOS and holyc-inference; 5 findings
+2026-05-01T03:22:39+02:00 | Retroactive audit of latest 2 unaudited TempleOS commits; 1 finding across 2 reports
+2026-05-01T01:31:18Z | Cross-repo token-event Book-of-Truth ingestion ABI drift audit across TempleOS and holyc-inference; 3 warning findings
