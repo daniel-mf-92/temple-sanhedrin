@@ -1,0 +1,21 @@
+# Sanhedrin Critical Audit
+
+- Severity: CRITICAL
+- Trigger: Modernization/inference loop heartbeats stale beyond 10 minutes.
+- Heartbeat ages:
+  - TempleOS `automation/logs/loop.heartbeat`: 5356s
+  - holyc-inference `automation/logs/loop.heartbeat`: 4459s
+  - temple-sanhedrin `automation/logs/loop.heartbeat`: 2s
+- Restart attempts (required localhost ssh pattern) failed in this sandbox:
+  - `ssh ... localhost ...`: `Could not resolve hostname localhost: -65563`
+  - `ssh ... 127.0.0.1 ...`: `connect to host 127.0.0.1 port 22: Operation not permitted`
+- Additional blocked checks:
+  - `ps aux` denied: `operation not permitted`
+  - `gh run list` API blocked: `error connecting to api.github.com`
+  - Azure VM SSH blocked: `Operation not permitted`
+- Law signals (non-critical):
+  - Code-output check last 5 commits: TempleOS `.HC`=6, `.sh`=4; inference `.HC`=2, `.sh/.py`=4.
+  - Law 1 non-HolyC core files found: 0
+  - Law 2 network keywords in TempleOS HEAD~3 diff: 0 lines
+  - Law 4 float references in inference `src/`: 111 (info)
+  - Law 6 open modernization CQ count: 9 (queue-floor checks deprecated by override; informational only)
