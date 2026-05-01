@@ -368,3 +368,4 @@
 2026-05-01T07:28:15Z | Retroactive audit of latest 2 unaudited TempleOS gpt55 host-report commits 7385a5fd and 95faebfe; 1 warning finding across 2 reports
 2026-05-01T08:06:40Z | Cross-repo QEMU control-socket/config-include air-gap drift audit across TempleOS and holyc-inference; 3 warning findings
 2026-05-01T10:21:24+02:00 | Retroactive audit of latest 2 unaudited TempleOS scheduler/SMP scaffold commits 7ef23969 and 68bcfa8b; 3 warning findings across 2 reports
+2026-05-01T10:30:45+02:00 | Historical temple-central changed-file to validation-target coupling drift audit across builder rows; 5 findings
