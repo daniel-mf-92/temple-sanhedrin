@@ -381,3 +381,4 @@
 2026-05-01T12:45:04+02:00 | Cross-repo IOMMU/MMIO proof contract drift audit across TempleOS and holyc-inference; 5 warning findings
 2026-05-01T13:18:37+02:00 | Historical token/Book-of-Truth evidence drift audit against temple-central.db and current source spot-checks; 5 warning findings
 2026-05-01T13:28:45+02:00 | Retroactive audit across latest unaudited 8 TempleOS gpt55 host-automation commits; 8 Law 4 identifier findings across 8 reports
+2026-05-01T13:50:15+02:00 | Cross-repo inference Book-of-Truth event/profile/policy ABI drift audit across TempleOS and holyc-inference current heads; 5 warning findings
