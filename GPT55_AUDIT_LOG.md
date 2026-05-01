@@ -394,3 +394,4 @@
 2026-05-01T16:55:15+02:00 | Cross-repo GPU command/lease proof contract drift audit across TempleOS and holyc-inference; 5 findings
 2026-05-01T17:07:59+02:00 | Retroactive audit of latest unaudited TempleOS real-repo QEMU manifest smoke commit e06cfb79; 1 warning finding
 2026-05-01T17:23:34+02:00 | Law 4 continuation compliance backfill across 21 newer TempleOS commits and unchanged holyc-inference head; 0 violations, 1 informational finding
+2026-05-01T17:54:44+02:00 | Historical Book of Truth signal-saturation drift audit against temple-central.db modernization rows; 5 findings
