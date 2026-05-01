@@ -376,3 +376,4 @@
 2026-05-01T11:25:18+02:00 | Historical validation-result specificity drift audit against temple-central.db builder rows; 5 findings
 2026-05-01T12:17:48+02:00 | Retroactive audit of latest 2 unaudited TempleOS commits covering WS13-21 disk reclaim and WS14-11 GPU MMIO; 6 findings across 2 reports
 2026-05-01T12:27:58+02:00 | Deeper Law 9 disk-reclaim priority-boundary research with local issue opened; 5 findings
+2026-05-01T12:36:25+02:00 | Supplemental retroactive audit of TempleOS commits a070ae63 and 9f3abbf2; 6 warning findings across 2 reports
