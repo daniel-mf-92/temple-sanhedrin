@@ -402,3 +402,4 @@
 2026-05-01T20:04:24+02:00 | Historical status/payload semantic overload drift audit against temple-central.db; 5 findings
 2026-05-01T20:36:05+02:00 | Retroactive audit of latest 4 unaudited TempleOS gpt55 host/QEMU report commits; 2 warning findings across 4 reports
 2026-05-01T21:10:00+02:00 | Cross-repo attestation/seal trust-boundary drift audit across TempleOS and holyc-inference current heads; 5 warning findings
+2026-05-01T21:39:16+02:00 | Cross-repo GPU Book-of-Truth control-plane acceptance drift audit across TempleOS and holyc-inference; 5 findings
