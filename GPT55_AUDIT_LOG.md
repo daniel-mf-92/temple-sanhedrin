@@ -407,3 +407,4 @@
 2026-05-01T22:03:31+02:00 | Cross-repo shared-image staging atomicity drift audit across TempleOS and holyc-inference; 4 findings
 2026-05-01T20:14:43Z | Cross-repo QEMU prompt benchmark contract audit; 2 actionable findings, 1 informational finding.
 2026-05-01T20:25:07Z | Cross-repo Trinity secure-local/Book-of-Truth invariant audit across TempleOS and holyc-inference; 4 findings
+2026-05-01T22:34:14+02:00 | Cross-repo Trinity policy sync gate audit across TempleOS, holyc-inference, and Sanhedrin; 3 findings
