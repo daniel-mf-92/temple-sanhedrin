@@ -362,3 +362,4 @@
 2026-05-01T06:49:31+02:00 | Cross-repo serial contract drift audit across TempleOS Book-of-Truth and holyc-inference token output paths; 4 warning findings
 2026-05-01T06:05:24Z | Historical temple-central builder status taxonomy collapse audit across modernization and inference rows; 5 findings
 2026-05-01T08:17:59+02:00 | Cross-repo current-head QEMU launch enforcement drift audit across TempleOS and holyc-inference; 4 findings
+2026-05-01T08:26:57+02:00 | Retroactive audit of unaudited holyc-inference commits 75b7cba9, 3371dea1, and 071cc024; 2 findings across 3 reports
