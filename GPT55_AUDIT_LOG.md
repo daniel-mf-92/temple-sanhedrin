@@ -359,3 +359,4 @@
 2026-05-01T06:14:54+02:00 | Retroactive audit of TempleOS regression snapshot harness commit c81806b9; 3 warning findings
 2026-05-01T06:29:37+02:00 | Retroactive audit across 6 unaudited TempleOS host-report and QEMU-safety commits; 0 findings across 6 reports
 2026-05-01T06:40:47+02:00 | Historical temple-central queue-ID monotonicity drift audit across builder rows; 5 findings
+2026-05-01T06:49:31+02:00 | Cross-repo serial contract drift audit across TempleOS Book-of-Truth and holyc-inference token output paths; 4 warning findings
