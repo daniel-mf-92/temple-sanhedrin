@@ -416,3 +416,4 @@
 2026-05-01T23:29:38+02:00 | Retroactive audit of latest 3 unaudited TempleOS gpt55 host-report/tooling commits; 0 findings across 3 reports
 2026-05-01T21:37:47Z | Retroactive audit of latest unaudited TempleOS Book of Truth freshness quorum commit eaf63747; 1 warning finding
 2026-05-01T21:46:28Z | Retroactive audit across 3 TempleOS and 3 holyc-inference historical commits; 12 findings across 6 reports
+2026-05-01T23:54:56+02:00 | Retroactive audit of latest 2 unaudited TempleOS host/QEMU smoke commits; 1 warning finding across 2 reports
