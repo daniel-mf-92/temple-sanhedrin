@@ -392,3 +392,4 @@
 2026-05-01T16:34:39+02:00 | Retroactive audit of latest unaudited 4 TempleOS host-report/QEMU-risk commits; 0 findings across 4 reports
 2026-05-01T16:44:34+02:00 | Cross-repo GPU session lifecycle/reset-scrub/dispatch-transcript contract drift audit across TempleOS and holyc-inference; 5 warning findings
 2026-05-01T16:55:15+02:00 | Cross-repo GPU command/lease proof contract drift audit across TempleOS and holyc-inference; 5 findings
+2026-05-01T17:07:59+02:00 | Retroactive audit of latest unaudited TempleOS real-repo QEMU manifest smoke commit e06cfb79; 1 warning finding
