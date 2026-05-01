@@ -369,3 +369,4 @@
 2026-05-01T08:06:40Z | Cross-repo QEMU control-socket/config-include air-gap drift audit across TempleOS and holyc-inference; 3 warning findings
 2026-05-01T10:21:24+02:00 | Retroactive audit of latest 2 unaudited TempleOS scheduler/SMP scaffold commits 7ef23969 and 68bcfa8b; 3 warning findings across 2 reports
 2026-05-01T10:30:45+02:00 | Historical temple-central changed-file to validation-target coupling drift audit across builder rows; 5 findings
+2026-05-01T10:44:06+02:00 | Retroactive audit of latest unaudited TempleOS commit e5a670c; 3 warning findings
