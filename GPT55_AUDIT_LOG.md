@@ -396,3 +396,4 @@
 2026-05-01T17:23:34+02:00 | Law 4 continuation compliance backfill across 21 newer TempleOS commits and unchanged holyc-inference head; 0 violations, 1 informational finding
 2026-05-01T17:54:44+02:00 | Historical Book of Truth signal-saturation drift audit against temple-central.db modernization rows; 5 findings
 2026-05-01T19:12:23+02:00 | Historical duration telemetry null drift audit against temple-central.db; 5 findings
+2026-05-01T19:21:51+02:00 | Historical Sanhedrin skip-saturation drift audit against temple-central.db; 5 findings
