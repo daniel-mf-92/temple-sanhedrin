@@ -342,3 +342,4 @@
 2026-04-30T23:51:25+02:00 | Cross-repo text-integrity/model-info proof boundary drift audit across TempleOS and holyc-inference; 5 findings
 2026-05-01T02:38:55+02:00 | Retroactive audit of latest missing TempleOS text-integrity commit 5c268564; 1 warning finding
 2026-05-01T00:49:17Z | Cross-repo network-dependent model acquisition drift audit across TempleOS and holyc-inference; 5 findings
+2026-05-01T01:00:57Z | Cross-repo model trust attestation tuple drift audit across TempleOS and holyc-inference; 5 findings
