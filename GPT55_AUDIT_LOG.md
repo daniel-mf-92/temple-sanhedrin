@@ -482,3 +482,4 @@
 2026-05-02T10:16:53+02:00 | Historical host-absolute validation path provenance drift audit against temple-central.db builder rows; 5 findings
 2026-05-02T08:26:34Z | Historical QEMU wrapper evidence opacity drift audit against temple-central.db modernization rows; 5 warning findings
 2026-05-02T10:42:14+02:00 | Historical North Star Discipline evidence blindspot audit against temple-central.db builder rows; 5 warning findings
+2026-05-02T10:51:09+02:00 | Retroactive audit across latest 6 unaudited TempleOS host QEMU/Book-of-Truth report commits; 1 warning finding across 6 reports
