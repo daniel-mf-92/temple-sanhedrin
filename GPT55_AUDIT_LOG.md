@@ -444,3 +444,4 @@
 2026-05-02T03:53:33+02:00 | Cross-repo WS8 namespace collision drift audit across TempleOS and holyc-inference; 4 findings
 2026-05-02T04:02:11+02:00 | Cross-repo serial token channel and Book-of-Truth mirror drift audit across TempleOS and holyc-inference; 5 warning findings
 2026-05-02T04:10:12+02:00 | Retroactive audit of 2 unaudited holyc-inference perf-regression host-tooling commits; 2 findings across 2 reports
+2026-05-02T04:18:45+02:00 | Historical pending central-DB replay backlog drift audit; 5 findings
