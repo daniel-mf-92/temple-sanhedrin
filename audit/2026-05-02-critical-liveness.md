@@ -1,4 +1,4 @@
-# CRITICAL
-- TempleOS and holyc-inference loop heartbeats are stale (>10 min).
-- Restart via ssh localhost failed in this sandbox (`Operation not permitted`).
-- Policy/trinity checks passed; no secure-local/GPU drift detected.
+# CRITICAL: Builder liveness outage
+- TempleOS modernization heartbeat stale: 79345s.
+- holyc-inference heartbeat stale: 78448s.
+- Required restart attempts via `ssh ... localhost` failed in this sandbox (`Could not resolve hostname localhost` / `Operation not permitted`).
