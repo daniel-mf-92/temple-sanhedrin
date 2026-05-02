@@ -463,3 +463,4 @@
 2026-05-02T06:40:31+02:00 | Cross-repo Book-of-Truth GPU/token ABI drift audit across TempleOS and holyc-inference current heads; 4 findings
 2026-05-02T04:49:00Z | Historical retro current-branch coverage drift audit across TempleOS and holyc-inference; 5 findings
 2026-05-02T07:05:10+02:00 | Retroactive audit of 7 unaudited TempleOS gpt55 host-reporting commits; 0 findings across 7 reports
+2026-05-02T07:14:26+02:00 | Cross-repo GPU Book-of-Truth hook contract drift audit across TempleOS and holyc-inference current heads; 5 warning findings
