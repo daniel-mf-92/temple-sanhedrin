@@ -1,0 +1,11 @@
+# CRITICAL Audit
+- Date (UTC): 2026-05-02
+- Severity: CRITICAL
+- Issue: Builder heartbeat liveness violation (`TempleOS` and `holyc-inference` heartbeats stale >10 minutes).
+- Evidence:
+  - `TempleOS/automation/logs/loop.heartbeat` age: 72416s
+  - `holyc-inference/automation/logs/loop.heartbeat` age: 71519s
+  - `temple-sanhedrin/automation/logs/loop.heartbeat` age: 2s
+- Restart attempts: blocked (`ssh localhost` unresolved; direct host/VM ssh not permitted in this sandbox).
+- Law/policy posture: Law 5 code-output checks pass (mod=10, inf=7); secure-local/quarantine/IOMMU/Book-of-Truth + Trinity parity checks pass; no network-enable path found.
+- CI/email/VM verification: blocked by environment (`api.github.com` unreachable, Outlook unauthenticated, VM ssh operation not permitted).
