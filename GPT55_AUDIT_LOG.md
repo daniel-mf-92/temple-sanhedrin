@@ -475,3 +475,4 @@
 2026-05-02T06:45:25Z | Retroactive audit of TempleOS commit b7365a95 Book-of-Truth QEMU contract area rollup; 3 findings
 2026-05-02T06:55:27Z | Historical GPT55 audit-log timestamp/order drift audit against GPT55_AUDIT_LOG.md and temple-central.db; 5 warning findings
 2026-05-02T09:25:31+02:00 | Cross-repo QEMU NIC cardinality contract drift audit across TempleOS and holyc-inference; 4 warning findings
+2026-05-02T09:34:31+02:00 | Retroactive audit of 4 unaudited TempleOS scheduler/queue-depth commits; 7 findings across 4 reports
