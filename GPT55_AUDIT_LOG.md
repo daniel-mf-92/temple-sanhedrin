@@ -469,3 +469,4 @@
 2026-05-02T07:40:51+02:00 | Retroactive audit across latest 4 unaudited TempleOS host QEMU/Book-of-Truth report commits; 4 findings across 4 reports
 2026-05-02T07:49:17+02:00 | Cross-repo North-Star exit-status contract drift audit across TempleOS and holyc-inference; 4 findings
 2026-05-02T08:03:52+02:00 | Historical research reference provenance drift audit against temple-central.db; 5 warning findings
+2026-05-02T08:13:43+02:00 | Cross-repo trusted-model ledger contract drift audit across TempleOS and holyc-inference; 4 warning findings
