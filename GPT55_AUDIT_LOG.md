@@ -460,3 +460,4 @@
 2026-05-02T06:15:49+02:00 | Retroactive audit of 4 unaudited TempleOS host audit/dashboard commits; 0 findings across 4 reports
 2026-05-02T06:24:40+02:00 | Cross-repo fixed prompt-token correctness contract drift audit across TempleOS and holyc-inference; 5 findings
 2026-05-02T06:32:28+02:00 | Cross-repo Book-of-Truth hook semantics drift audit across TempleOS and holyc-inference; 5 warning findings
+2026-05-02T06:40:31+02:00 | Cross-repo Book-of-Truth GPU/token ABI drift audit across TempleOS and holyc-inference current heads; 4 findings
