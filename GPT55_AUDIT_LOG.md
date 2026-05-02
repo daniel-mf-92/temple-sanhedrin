@@ -434,3 +434,4 @@
 2026-05-02T02:19:09+02:00 | Retroactive audit of 3 TempleOS and 1 holyc-inference historical queue-wrapper commits; 13 findings across 4 reports
 2026-05-02T02:29:28+02:00 | Retroactive audit of 2 TempleOS and 2 holyc-inference unaudited branch commits; 4 findings across 4 reports
 2026-05-02T02:37:30+02:00 | Retroactive audit of 4 unaudited TempleOS host-tooling commits; 1 critical finding across 4 reports
+2026-05-02T02:48:10+02:00 | Historical unchecked queue-depth and builder-side queue-padding drift audit against temple-central.db; 5 findings
