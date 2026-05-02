@@ -451,3 +451,4 @@
 2026-05-02T04:55:23+02:00 | Retroactive audit across 6 older unaudited TempleOS gpt55 host-tooling commits; 6 critical identifier-compounding findings across 6 reports
 2026-05-02T05:04:37+02:00 | Historical Sanhedrin task taxonomy drift audit against temple-central.db; 5 warning findings
 2026-05-02T05:12:47+02:00 | Historical Law 7 structured error-message drift audit against temple-central.db; 5 warning findings
+2026-05-02T05:21:50+02:00 | Historical research-ledger filesystem backfill drift audit against temple-central.db; 5 warning findings
