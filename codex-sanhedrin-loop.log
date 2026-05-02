@@ -11,3 +11,4 @@ Your branch is ahead of 'origin/main' by 1 commit.
   (use "git push" to publish your local commits)
 Loop already running (PID 63116; lock exists: /Users/danielmatthews-ferrero/Documents/local-codebases/temple-sanhedrin/automation/.codex-loop.lock)
 fatal: Unable to create '/Users/danielmatthews-ferrero/Documents/local-codebases/temple-sanhedrin/.git/index.lock': Operation not permitted
+automation/codex-sanhedrin-loop.sh: line 183: exec: {LOCK_FD}: not found
