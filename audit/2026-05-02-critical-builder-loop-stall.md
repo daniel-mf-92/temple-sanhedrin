@@ -1,7 +1,13 @@
-# CRITICAL Audit — 2026-05-02
-- enforce-laws: 0 violations
-- liveness: TempleOS and holyc-inference heartbeats stale (>10 min); sanhedrin heartbeat fresh
-- restart attempts: failed (`ssh localhost` unresolved in this sandbox)
-- law5 code-output check: TempleOS=10, holyc-inference .HC/.sh/.py=7, holyc-inference .HC=2
-- policy checks: secure-local/quarantine/IOMMU/Book-of-Truth/trinity parity present
-- CI/email/Azure VM checks: blocked by network/auth limits in this session
+# CRITICAL: Builder Loop Liveness Failure (2026-05-02)
+
+- TempleOS and holyc-inference loop heartbeats are stale (>10 minutes):
+  - TempleOS `automation/logs/loop.heartbeat` age ~59,739s
+  - holyc-inference `automation/logs/loop.heartbeat` age ~58,842s
+- Builder loop logs are stale (~855,835s / ~855,834s).
+- Restart attempts failed due environment constraints:
+  - `ssh ... localhost`: hostname resolution failed (`-65563`)
+  - `ssh ... 127.0.0.1`: `Operation not permitted` on port 22
+- Sanhedrin loop heartbeat remains fresh.
+
+Impact:
+- Builder agents currently not live; no new iterations can be produced.
