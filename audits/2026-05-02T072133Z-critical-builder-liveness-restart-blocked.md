@@ -1,0 +1,11 @@
+# Sanhedrin Audit (CRITICAL)
+- timestamp_utc: 2026-05-02T072133Z
+- enforce_laws: pass (0 violations)
+- liveness: CRITICAL (TempleOS heartbeat age 78634s; holyc-inference heartbeat age 77738s; sanhedrin heartbeat age 2s)
+- restart_attempt: blocked (`ssh localhost` failed: could not resolve hostname)
+- builder_db_recent: latest builder entries are from 2026-04-23 (stale)
+- law5_code_output: pass (TempleOS last5 .HC/.sh=10, inference last5 .HC/.sh/.py=7)
+- policy_parity: pass (secure-local default + quarantine/hash + IOMMU/Book-of-Truth + split-plane/attestation/policy-digest gates present)
+- ci_check: blocked (gh cannot reach api.github.com)
+- email_check: blocked (Daniel-Google MCP unavailable; outlook not authenticated)
+- vm_compile_check: blocked (ssh to 52.157.85.234 operation not permitted)
