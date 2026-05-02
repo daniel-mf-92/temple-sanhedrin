@@ -439,3 +439,4 @@
 2026-05-02T03:07:02+02:00 | Historical remote host-key bypass validation drift audit against temple-central.db; 5 findings
 2026-05-02T03:16:14+02:00 | Retroactive audit of 2 TempleOS and 2 holyc-inference unaudited host-tooling commits; 1 warning finding across 4 reports
 2026-05-02T03:24:12+02:00 | Historical duration-null liveness blind spot audit against temple-central.db; 4 warning findings
+2026-05-02T03:36:04+02:00 | Historical retro audit artifact schema drift audit across 811 commit reports; 5 warning findings
