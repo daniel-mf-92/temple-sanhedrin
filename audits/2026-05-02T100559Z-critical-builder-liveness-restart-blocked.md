@@ -1,0 +1,5 @@
+- severity: CRITICAL
+- issue: builder loop liveness failed (>10m stale heartbeats) and restart channel unavailable.
+- evidence: TempleOS heartbeat age 88512s; holyc-inference heartbeat age 87615s; sanhedrin heartbeat fresh.
+- action: attempted localhost restarts for modernization and inference loops; both failed (`ssh: Could not resolve hostname localhost: -65563`).
+- policy: secure-local / GPU / attestation parity checks passed; no policy drift detected.
