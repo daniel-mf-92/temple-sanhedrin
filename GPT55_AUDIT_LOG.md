@@ -454,3 +454,4 @@
 2026-05-02T05:21:50+02:00 | Historical research-ledger filesystem backfill drift audit against temple-central.db; 5 warning findings
 2026-05-02T05:31:04+02:00 | Cross-repo immutable QEMU OS-drive readonly drift audit across TempleOS and holyc-inference; 5 findings
 2026-05-02T05:39:28+02:00 | Historical builder pass-status and queue-join drift audit against temple-central.db; 5 findings
+2026-05-02T05:48:33+02:00 | Cross-repo benchmark image handoff drift audit across TempleOS and holyc-inference; 5 findings
