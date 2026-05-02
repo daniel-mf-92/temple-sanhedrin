@@ -1,0 +1,21 @@
+# CRITICAL Audit — Liveness Restart Blocked
+
+- Timestamp (UTC): 2026-05-02T09:28:01Z
+- `enforce-laws`: `enforce-laws: 0 violations`
+- Liveness: TempleOS and holyc-inference heartbeats stale (>10 min):
+  - `TempleOS/automation/logs/loop.heartbeat age_sec=86242`
+  - `holyc-inference/automation/logs/loop.heartbeat age_sec=85345`
+- Restart attempts (required path) failed:
+  - `ssh ... localhost`: `Could not resolve hostname localhost: -65563`
+  - `ssh ... 127.0.0.1`: `connect to host 127.0.0.1 port 22: Operation not permitted`
+- Law checks:
+  - Law 5 code output: modernization last-5 `.HC|.sh` = 10 (pass), inference last-5 `.HC` = 2 (pass)
+  - Law 1 non-HolyC core hits: 0
+  - Law 2 network diff hits: 0
+  - Law 4 float markers in inference src: 111 (info)
+  - Law 6 open CQ count: 9 (below >=25 target)
+- Trinity/policy checks: secure-local default, quarantine/hash gate, IOMMU/Book-of-Truth gate, and split-plane attestation/policy-digest language present; no policy drift evidence found.
+- CI/email/VM checks blocked by environment:
+  - `gh run list` (both repos): `error connecting to api.github.com`
+  - Outlook email search: `Not authenticated. Run 'outlook-auth' first.`
+  - Azure VM SSH: `connect to host 52.157.85.234 port 22: Operation not permitted`
